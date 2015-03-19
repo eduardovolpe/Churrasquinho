@@ -7,102 +7,98 @@
     android:background="#ffefdfc6">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentStart="true"
+        android:columnCount="2"
+        android:rowCount="10">
+
+
+        <ImageView
+
         android:id="@+id/lblConvidados"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/lbl_convidados" />
+        android:src="@drawable/lbl_convidados"
+        android:layout_gravity="left|top"
+        android:layout_columnSpan="2"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <ImageView
         android:id="@+id/iconHomem"
         android:src="@drawable/homem"
-        android:layout_below="@+id/lblConvidados"
+        android:layout_alignBottom="@+id/txtHomens"
         android:layout_toStartOf="@+id/edtHomem"
-        android:layout_marginTop="44dp" />
+        android:layout_gravity="left|top"
+        />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/homem"
         android:id="@+id/txtHomens"
         android:textSize="70px"
-        android:layout_alignBottom="@+id/iconHomem"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="top"
+        android:layout_width="218dp" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/edtHomem"
         android:text="@string/num"
         android:gravity="center"
-        android:layout_below="@+id/txtHomens"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/iconHomem"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_columnSpan="2"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/iconMulher"
         android:src="@drawable/mulher"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/edtMulher" />
+        android:layout_toStartOf="@+id/edtMulher"
+        android:layout_gravity="left|top"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/mulher"
         android:id="@+id/txtMulheres"
         android:textSize="70px"
-        android:layout_above="@+id/edtMulher"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="left|top"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/edtMulher"
-        android:layout_below="@+id/iconMulher"
-        android:layout_alignStart="@+id/edtHomem"
         android:text="@string/num"
-        android:gravity="center" />
+        android:layout_alignStart="@+id/edtHomem"
+        android:gravity="center"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center_horizontal|bottom"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/iconCrianca"
         android:src="@drawable/crianca"
-        android:layout_below="@+id/edtMulher"
         android:layout_toStartOf="@+id/edtCriancas"
-        android:layout_marginTop="62dp" />
+        android:layout_gravity="center_horizontal|right|top"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/crianca"
         android:id="@+id/txtCrianca"
         android:textSize="70px"
-        android:layout_alignTop="@+id/iconCrianca"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/txtHomens"
+        android:layout_gravity="left"/>
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/edtCriancas"
         android:text="@string/num"
         android:gravity="center"
-        android:layout_below="@+id/iconCrianca"
-        android:layout_alignStart="@+id/edtMulher" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_columnSpan="2"/>
 
+    </GridLayout>
 
 </RelativeLayout>
