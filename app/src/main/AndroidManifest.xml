@@ -24,6 +24,14 @@
             android:name=".iniciarActivity"
             android:label="@string/title_activity_iniciar" >
         </activity>
+        <activity
+            android:name=".carneActivity"
+            android:label="@string/title_activity_carne" >
+        </activity>
+        <activity
+            android:name=".bebidaActivity"
+            android:label="@string/title_activity_bebida" >
+        </activity>
     </application>
 
 </manifest>

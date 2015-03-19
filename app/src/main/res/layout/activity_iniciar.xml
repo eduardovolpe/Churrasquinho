@@ -1,19 +1,109 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="br.com.e3.churrasquinho.iniciarActivity"
-    android:background="#ffefdfc6">
+    android:background="#ffefdfc6"
+    android:id="@+id/">
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblConvidados"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lbl_convidados" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconHomem"
+        android:src="@drawable/homem"
+        android:layout_below="@+id/lblConvidados"
+        android:layout_toStartOf="@+id/edtHomem"
+        android:layout_marginTop="44dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/iniciar"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
+        android:text="@string/homem"
+        android:id="@+id/txtHomens"
+        android:textSize="70px"
+        android:layout_alignBottom="@+id/iconHomem"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edtHomem"
+        android:text="@string/num"
+        android:gravity="center"
+        android:layout_below="@+id/txtHomens"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconMulher"
+        android:src="@drawable/mulher"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/edtMulher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/mulher"
+        android:id="@+id/txtMulheres"
+        android:textSize="70px"
+        android:layout_above="@+id/edtMulher"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edtMulher"
+        android:layout_below="@+id/iconMulher"
+        android:layout_alignStart="@+id/edtHomem"
+        android:text="@string/num"
+        android:gravity="center" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconCrianca"
+        android:src="@drawable/crianca"
+        android:layout_below="@+id/edtMulher"
+        android:layout_toStartOf="@+id/edtCriancas"
+        android:layout_marginTop="62dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/crianca"
+        android:id="@+id/txtCrianca"
+        android:textSize="70px"
+        android:layout_alignTop="@+id/iconCrianca"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edtCriancas"
+        android:text="@string/num"
+        android:gravity="center"
+        android:layout_below="@+id/iconCrianca"
+        android:layout_alignStart="@+id/edtMulher" />
+
+
 </RelativeLayout>
