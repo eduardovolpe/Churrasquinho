@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentStart="true"
-        android:columnCount="2"
+        android:columnCount="3"
         android:rowCount="10">
 
 
@@ -22,14 +22,15 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/lbl_convidados"
         android:layout_gravity="left|top"
-        android:layout_columnSpan="2"/>
+        android:layout_columnSpan="3"
+        android:layout_marginBottom="80px"/>
 
         <ImageView
         android:id="@+id/iconHomem"
         android:src="@drawable/homem"
         android:layout_alignBottom="@+id/txtHomens"
         android:layout_toStartOf="@+id/edtHomem"
-        android:layout_gravity="left|top"
+        android:layout_gravity="fill_horizontal|bottom"
         />
 
     <TextView
@@ -38,8 +39,9 @@
         android:id="@+id/txtHomens"
         android:textSize="70px"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="top"
-        android:layout_width="218dp" />
+        android:layout_gravity="bottom"
+        android:layout_width="218dp"
+        android:layout_columnSpan="2"/>
 
     <EditText
         android:inputType="number"
@@ -50,21 +52,25 @@
         android:layout_below="@+id/iconHomem"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_columnSpan="2"/>
+        android:layout_columnSpan="3"
+        android:layout_marginTop="30px"
+        android:layout_marginBottom="50px"/>
 
     <ImageView
         android:id="@+id/iconMulher"
         android:src="@drawable/mulher"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/edtMulher"
-        android:layout_gravity="left|top"/>
+        android:layout_gravity="fill_horizontal|bottom"
+        android:layout_rowSpan="2" />
 
     <TextView
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/mulher"
         android:id="@+id/txtMulheres"
         android:textSize="70px"
-        android:layout_gravity="left|top"/>
+        android:layout_gravity="bottom"
+        android:layout_columnSpan="2"/>
 
     <EditText
         android:inputType="number"
@@ -73,14 +79,16 @@
         android:text="@string/num"
         android:layout_alignStart="@+id/edtHomem"
         android:gravity="center"
-        android:layout_columnSpan="2"
-        android:layout_gravity="center_horizontal|bottom"/>
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="30px"
+        android:layout_marginBottom="50px"/>
 
     <ImageView
         android:id="@+id/iconCrianca"
         android:src="@drawable/crianca"
         android:layout_toStartOf="@+id/edtCriancas"
-        android:layout_gravity="center_horizontal|right|top"/>
+        android:layout_gravity="fill_horizontal|bottom"/>
 
     <TextView
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -88,7 +96,8 @@
         android:id="@+id/txtCrianca"
         android:textSize="70px"
         android:layout_alignStart="@+id/txtHomens"
-        android:layout_gravity="left"/>
+        android:layout_gravity="bottom|left"
+        android:layout_columnSpan="2"/>
 
     <EditText
         android:inputType="number"
@@ -97,7 +106,9 @@
         android:text="@string/num"
         android:gravity="center"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_columnSpan="2"/>
+        android:layout_columnSpan="3"
+        android:layout_marginTop="30px"
+        android:layout_marginBottom="50px"/>
 
     </GridLayout>
 
