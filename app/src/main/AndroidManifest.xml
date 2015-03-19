@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".editarActivity"
+            android:label="@string/title_activity_editar" >
+        </activity>
+        <activity
+            android:name=".iniciarActivity"
+            android:label="@string/title_activity_iniciar" >
+        </activity>
     </application>
 
 </manifest>
