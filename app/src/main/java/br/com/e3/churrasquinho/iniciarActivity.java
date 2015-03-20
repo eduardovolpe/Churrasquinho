@@ -16,7 +16,7 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
-    TextView txtTotalConvidados;
+    EditText txtTotalConvidados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +28,17 @@ public class iniciarActivity extends ActionBarActivity {
         edtMulher = (EditText) findViewById(R.id.edtMulher);
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
 
+    /*   txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
+        Double homem = Double.parseDouble(edtHomem.getText().toString());
+        Double mulher = Double.parseDouble(edtMulher.getText().toString());
+        Double crianca = Double.parseDouble(edtCrianca.getText().toString());
 
-       txtTotalConvidados = (TextView) findViewById(R.id.txtTotalConvidados);
-        int homem = Integer.parseInt(edtHomem.getText().toString());
-        int mulher = Integer.parseInt(edtMulher.getText().toString());
-        int crianca = Integer.parseInt(edtCrianca.getText().toString());
+        Double convidados= 0.0;
+        convidados = homem + mulher + crianca;
 
-        int convidados = homem + mulher + crianca;
+        txtTotalConvidados.setText(convidados.toString());
 
-        txtTotalConvidados.setText(convidados);
-
-
+*/
         btnBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -126,14 +126,16 @@
         android:layout_row="6"
         android:layout_column="0" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total"
+            android:inputType="number"
+            android:ems="10"
             android:id="@+id/txtTotalConvidados"
             android:layout_row="7"
             android:layout_column="1"
-            android:layout_gravity="center_horizontal" />
+            android:enabled="true"
+            android:editable="false" />
 
         <Button
             android:layout_width="wrap_content"
