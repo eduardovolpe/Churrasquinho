@@ -1,6 +1,7 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
+import android.renderscript.Int2;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
+    TextView txtTotalConvidados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +29,14 @@ public class iniciarActivity extends ActionBarActivity {
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
 
 
-       TextView txtTotalConvidados = (TextView) findViewById(R.id.txtTotalConvidados);
-        int homem = Integer.parseInt(edtHomem.toString());
-        int mulher = Integer.parseInt(edtMulher.toString());
-        int crianca = Integer.parseInt(edtCrianca.toString());
+       txtTotalConvidados = (TextView) findViewById(R.id.txtTotalConvidados);
+        int homem = Integer.parseInt(edtHomem.getText().toString());
+        int mulher = Integer.parseInt(edtMulher.getText().toString());
+        int crianca = Integer.parseInt(edtCrianca.getText().toString());
 
-        int convidados = 0;
-        convidados = homem + mulher + crianca;
+        int convidados = homem + mulher + crianca;
 
-        txtTotalConvidados.setText("Total de Convidados: " + convidados);
+        txtTotalConvidados.setText(convidados);
 
 
         btnBebidas.setOnClickListener(new View.OnClickListener() {
