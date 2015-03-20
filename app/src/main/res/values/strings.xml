@@ -11,8 +11,9 @@
     <string name="title_activity_carne">carneActivity</string>
     <string name="title_activity_bebida">bebidaActivity</string>
     <string name="homem">Homens</string>
-    <string name="num">00</string>
     <string name="mulher">Mulheres</string>
     <string name="crianca">Crianças</string>
+    <string name="continuar">Prosseguir</string>
+    <string name="total"></string>
 
 </resources>
