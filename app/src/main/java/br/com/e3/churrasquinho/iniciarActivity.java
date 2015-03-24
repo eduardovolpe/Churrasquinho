@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -17,6 +18,8 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtMulher;
     EditText edtCrianca;
     EditText txtTotalConvidados;
+    ImageView menosH;
+    ImageView maisH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +30,36 @@ public class iniciarActivity extends ActionBarActivity {
         edtHomem = (EditText) findViewById(R.id.edtHomem);
         edtMulher = (EditText) findViewById(R.id.edtMulher);
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
+        menosH = (ImageView) findViewById(R.id.menosH);
+        maisH = (ImageView) findViewById(R.id.maisH);
 
-    /*   txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
-        Double homem = Double.parseDouble(edtHomem.getText().toString());
-        Double mulher = Double.parseDouble(edtMulher.getText().toString());
-        Double crianca = Double.parseDouble(edtCrianca.getText().toString());
+/*
+        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
+        int homem = Integer.parseInt(edtHomem.getText().toString());
+        int mulher = Integer.parseInt(edtMulher.getText().toString());
+        int crianca = Integer.parseInt(edtCrianca.getText().toString());
 
-        Double convidados= 0.0;
+        int convidados= 0;
         convidados = homem + mulher + crianca;
 
-        txtTotalConvidados.setText(convidados.toString());
+        txtTotalConvidados.setText(convidados);
 
+
+        maisH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               int totalHomem =  Integer.parseInt(edtHomem.getText().toString());
+               totalHomem ++;
+            }
+        });
+
+        menosH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int totalHomem =  Integer.parseInt(edtHomem.getText().toString());
+                totalHomem --;
+            }
+        });
 */
         btnBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
