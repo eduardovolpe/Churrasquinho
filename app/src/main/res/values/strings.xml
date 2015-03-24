@@ -15,5 +15,6 @@
     <string name="crianca">Crianças</string>
     <string name="continuar">Prosseguir</string>
     <string name="total"></string>
+    <string name="title_activity_convidados">ConvidadosActivity</string>
 
 </resources>

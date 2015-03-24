@@ -20,6 +20,11 @@ public class iniciarActivity extends ActionBarActivity {
     EditText txtTotalConvidados;
     ImageView menosH;
     ImageView maisH;
+    ImageView menosM;
+    ImageView maisM;
+    ImageView menosC;
+    ImageView maisC;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,10 @@ public class iniciarActivity extends ActionBarActivity {
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
         menosH = (ImageView) findViewById(R.id.menosH);
         maisH = (ImageView) findViewById(R.id.maisH);
+        menosM = (ImageView) findViewById(R.id.menosM);
+        maisM = (ImageView) findViewById(R.id.maisM);
+        menosC = (ImageView) findViewById(R.id.menosC);
+        maisC = (ImageView) findViewById(R.id.maisC);
 
 /*
         txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
@@ -67,7 +76,9 @@ public class iniciarActivity extends ActionBarActivity {
                 Intent intent = new Intent(iniciarActivity.this, bebidaActivity.class);
                 startActivity(intent);
             }
+
         });
+
     }
 
 }
