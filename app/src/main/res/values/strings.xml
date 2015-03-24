@@ -16,5 +16,6 @@
     <string name="continuar">Prosseguir</string>
     <string name="total"></string>
     <string name="title_activity_convidados">ConvidadosActivity</string>
+    <string name="zero">0</string>
 
 </resources>

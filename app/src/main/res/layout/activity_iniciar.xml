@@ -64,7 +64,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtHomens"
-        android:layout_alignStart="@+id/edtMulher" />
+        android:layout_alignStart="@+id/edtMulher"
+        android:text="@string/zero" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -113,7 +114,8 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_below="@+id/txtMulheres"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/zero" />
 
     <ImageView
         android:id="@+id/iconCrianca"
@@ -149,7 +151,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtCrianca"
-        android:layout_alignStart="@+id/edtMulher" />
+        android:layout_alignStart="@+id/edtMulher"
+        android:text="@string/zero" />
 
     <EditText
         android:layout_width="wrap_content"

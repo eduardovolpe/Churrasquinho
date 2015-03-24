@@ -44,6 +44,8 @@ public class iniciarActivity extends ActionBarActivity {
 
 // NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO..Att O PROGRAMADOR
 
+
+
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
