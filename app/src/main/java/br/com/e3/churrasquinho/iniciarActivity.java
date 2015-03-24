@@ -42,7 +42,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosC = (ImageView) findViewById(R.id.menosC);
         maisC = (ImageView) findViewById(R.id.maisC);
 
-// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO..Att O PROGRAMADOR
+// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
 
 
 
