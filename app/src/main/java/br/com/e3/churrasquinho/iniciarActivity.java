@@ -1,14 +1,14 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
-import android.renderscript.Int2;
+//import android.renderscript.Int2;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+//import android.widget.TextView;
 
 
 public class iniciarActivity extends ActionBarActivity {
@@ -17,7 +17,7 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
-    EditText txtTotalConvidados;
+    //EditText txtTotalConvidados;
     ImageView menosH;
     ImageView maisH;
     ImageView menosM;
