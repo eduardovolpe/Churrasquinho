@@ -42,34 +42,78 @@ public class iniciarActivity extends ActionBarActivity {
         menosC = (ImageView) findViewById(R.id.menosC);
         maisC = (ImageView) findViewById(R.id.maisC);
 
-/*
-        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
-        int homem = Integer.parseInt(edtHomem.getText().toString());
-        int mulher = Integer.parseInt(edtMulher.getText().toString());
-        int crianca = Integer.parseInt(edtCrianca.getText().toString());
-
-        int convidados= 0;
-        convidados = homem + mulher + crianca;
-
-        txtTotalConvidados.setText(convidados);
-
+// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO..Att O PROGRAMADOR
 
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               int totalHomem =  Integer.parseInt(edtHomem.getText().toString());
-               totalHomem ++;
+                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
+                totalHomem ++;
+                edtHomem.setText(totalHomem.toString());
+
             }
         });
 
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int totalHomem =  Integer.parseInt(edtHomem.getText().toString());
+                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
                 totalHomem --;
+                edtHomem.setText(totalHomem.toString());
+
             }
         });
+
+        maisM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                totalMulher ++;
+                edtMulher.setText(totalMulher.toString());
+
+            }
+        });
+
+        menosM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                totalMulher --;
+                edtMulher.setText(totalMulher.toString());
+
+            }
+        });
+
+        maisC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                totalCrianca ++;
+                edtCrianca.setText(totalCrianca.toString());
+
+            }
+        });
+
+        menosC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                totalCrianca --;
+                edtCrianca.setText(totalCrianca.toString());
+
+            }
+        });
+
+
+
+/*
+        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
+        int convidados = 0;
+        convidados = homem + mulher + crianca;
+        txtTotalConvidados.setText("Total de Convidados: " + convidados);
+
 */
+
         btnBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
