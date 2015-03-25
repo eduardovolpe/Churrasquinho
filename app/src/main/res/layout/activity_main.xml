@@ -25,26 +25,32 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnEditar"
-        android:layout_above="@+id/imgRodape"
-        android:layout_alignStart="@+id/imgRodape"
-        android:layout_marginBottom="29dp"
-        android:src="@drawable/btn_03" />
+        android:id="@+id/btnIniciar"
+        android:src="@drawable/img_03"
+        android:layout_above="@+id/btnEditar"
+        android:layout_toStartOf="@+id/imgLing"
+        android:layout_alignParentLeft="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnIniciar"
-        android:layout_above="@+id/btnEditar"
-        android:layout_alignStart="@+id/btnEditar"
-        android:src="@drawable/btn_01" />
+        android:id="@+id/btnEditar"
+        android:src="@drawable/img_04"
+        android:layout_alignBottom="@+id/imgLing"
+        android:layout_alignStart="@+id/imgRodape"
+        android:layout_alignParentRight="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgLing"
-        android:src="@drawable/btn_02"
-        android:layout_alignTop="@+id/btnIniciar"
-        android:layout_alignEnd="@+id/imgRodape" />
+        android:src="@drawable/img_02"
+        android:layout_below="@+id/imgLabel"
+        android:layout_toEndOf="@+id/btnEditar"
+        android:layout_marginLeft="1px" />
 
 </RelativeLayout>

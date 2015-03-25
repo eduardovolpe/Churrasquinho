@@ -31,7 +31,7 @@ public class iniciarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar);
 
-        btnBebidas = (Button) findViewById(R.id.btnIniciar);
+        btnBebidas = (Button) findViewById(R.id.btnEditar);
         edtHomem = (EditText) findViewById(R.id.edtHomem);
         edtMulher = (EditText) findViewById(R.id.edtMulher);
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
@@ -47,7 +47,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
+                Short totalHomem =  Short.parseShort(edtHomem.getText().toString());
                 totalHomem ++;
                 edtHomem.setText(totalHomem.toString());
 
@@ -57,7 +57,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
+                Short totalHomem =  Short.parseShort(edtHomem.getText().toString());
 
                 if (totalHomem > 0) {
                     totalHomem --;
@@ -73,7 +73,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
+                Short totalMulher =  Short.parseShort(edtMulher.getText().toString());
                 totalMulher ++;
                 edtMulher.setText(totalMulher.toString());
 
@@ -84,7 +84,7 @@ public class iniciarActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
+                Short totalMulher =  Short.parseShort(edtMulher.getText().toString());
                 if (totalMulher > 0) {
                     totalMulher --;
                 } else {
@@ -99,7 +99,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
+                Short totalCrianca =  Short.parseShort(edtCrianca.getText().toString());
                 totalCrianca ++;
                 edtCrianca.setText(totalCrianca.toString());
 
@@ -110,7 +110,7 @@ public class iniciarActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-               Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
+                Short totalCrianca =  Short.parseShort(edtCrianca.getText().toString());
                 if (totalCrianca > 0) {
                     totalCrianca--;
                 } else {

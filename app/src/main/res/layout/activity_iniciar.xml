@@ -173,7 +173,7 @@
 
         android:enabled="false"
         android:editable="false"
-        android:layout_above="@+id/btnIniciar"
+        android:layout_above="@+id/btnEditar"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10px"
         android:textIsSelectable="false" />
@@ -182,7 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="70px"
         android:text="@string/continuar"
-        android:id="@+id/btnIniciar"
+        android:id="@+id/btnEditar"
 
         android:gravity="center|center_vertical"
         android:layout_gravity="center"
