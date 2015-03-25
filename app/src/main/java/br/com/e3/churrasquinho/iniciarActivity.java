@@ -17,7 +17,7 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
-    //EditText txtTotalConvidados;
+   // EditText txtTotalConvidados;
     ImageView menosH;
     ImageView maisH;
     ImageView menosM;
@@ -42,7 +42,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosC = (ImageView) findViewById(R.id.menosC);
         maisC = (ImageView) findViewById(R.id.maisC);
 
-// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO..Att O PROGRAMADOR
+// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
 
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
                 totalMulher ++;
                 edtMulher.setText(totalMulher.toString());
 
@@ -77,7 +77,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
                 totalMulher --;
                 edtMulher.setText(totalMulher.toString());
 
@@ -87,7 +87,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
                 totalCrianca ++;
                 edtCrianca.setText(totalCrianca.toString());
 
@@ -97,7 +97,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
                 totalCrianca --;
                 edtCrianca.setText(totalCrianca.toString());
 
@@ -106,7 +106,22 @@ public class iniciarActivity extends ActionBarActivity {
 
 
 
-/*
+/* Volpe
+        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
+
+        //int convidados ;
+
+        int totalH =  Integer.parseInt(edtHomem.getText().toString());
+        int totalM =  Integer.parseInt(edtMulher.getText().toString());
+        int totalC =  Integer.parseInt(edtCrianca.getText().toString());
+
+       int convidados = totalC + totalH + totalM;
+
+        txtTotalConvidados.setText("Total de Convidados: " + convidados);
+
+*/
+
+/* Favarin
         txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
         int convidados = 0;
         convidados = homem + mulher + crianca;
