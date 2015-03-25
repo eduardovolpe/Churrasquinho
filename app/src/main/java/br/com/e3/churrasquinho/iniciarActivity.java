@@ -58,7 +58,13 @@ public class iniciarActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
-                totalHomem --;
+
+                if (totalHomem > 0) {
+                    totalHomem --;
+                } else {
+                    totalHomem = 0;
+                }
+
                 edtHomem.setText(totalHomem.toString());
 
             }
@@ -77,8 +83,14 @@ public class iniciarActivity extends ActionBarActivity {
         menosM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
-                totalMulher --;
+                if (totalMulher > 0) {
+                    totalMulher --;
+                } else {
+                    totalMulher = 0;
+                }
+
                 edtMulher.setText(totalMulher.toString());
 
             }
@@ -97,8 +109,13 @@ public class iniciarActivity extends ActionBarActivity {
         menosC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
-                totalCrianca --;
+
+               Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
+                if (totalCrianca > 0) {
+                    totalCrianca--;
+                } else {
+                    totalCrianca = 0;
+                }
                 edtCrianca.setText(totalCrianca.toString());
 
             }
@@ -132,7 +149,7 @@ public class iniciarActivity extends ActionBarActivity {
         btnBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(iniciarActivity.this, bebidaActivity.class);
+                Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
                 startActivity(intent);
             }
 
