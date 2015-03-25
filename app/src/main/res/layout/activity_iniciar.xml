@@ -58,7 +58,7 @@
         android:gravity="center"
         android:layout_gravity="center_horizontal|bottom"
          android:enabled="true"
-        android:focusable="false"
+        android:focusable="true"
 
         android:textSize="60px"
         android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
         android:textIsSelectable="false"
         android:linksClickable="false"
         android:longClickable="false"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -120,7 +120,9 @@
         android:layout_below="@+id/txtMulheres"
         android:layout_centerHorizontal="true"
         android:text="@string/zero"
-        android:focusableInTouchMode="false" />
+        android:focusableInTouchMode="true"
+        android:enabled="true"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/iconCrianca"
@@ -157,7 +159,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtCrianca"
         android:layout_alignStart="@+id/edtMulher"
-        android:text="@string/zero" />
+        android:text="@string/zero"
+        android:focusableInTouchMode="true"
+        android:enabled="true"
+        android:focusable="true" />
 
     <EditText
         android:layout_width="wrap_content"
