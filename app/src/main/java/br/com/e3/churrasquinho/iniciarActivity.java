@@ -17,7 +17,7 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
-    //EditText txtTotalConvidados;
+   // EditText txtTotalConvidados;
     ImageView menosH;
     ImageView maisH;
     ImageView menosM;
@@ -108,7 +108,22 @@ public class iniciarActivity extends ActionBarActivity {
 
 
 
-/*
+/* Volpe
+        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
+
+        //int convidados ;
+
+        int totalH =  Integer.parseInt(edtHomem.getText().toString());
+        int totalM =  Integer.parseInt(edtMulher.getText().toString());
+        int totalC =  Integer.parseInt(edtCrianca.getText().toString());
+
+       int convidados = totalC + totalH + totalM;
+
+        txtTotalConvidados.setText("Total de Convidados: " + convidados);
+
+*/
+
+/* Favarin
         txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
         int convidados = 0;
         convidados = homem + mulher + crianca;
