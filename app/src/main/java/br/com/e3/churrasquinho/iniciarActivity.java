@@ -44,12 +44,10 @@ public class iniciarActivity extends ActionBarActivity {
 
 // NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO..Att O PROGRAMADOR
 
-
-
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
+                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
                 totalHomem ++;
                 edtHomem.setText(totalHomem.toString());
 
@@ -59,7 +57,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
+                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
                 totalHomem --;
                 edtHomem.setText(totalHomem.toString());
 
