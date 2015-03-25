@@ -49,7 +49,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
+                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
                 totalHomem ++;
                 edtHomem.setText(totalHomem.toString());
 
@@ -59,7 +59,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalHomem =  Double.parseDouble(edtHomem.getText().toString());
+                Byte totalHomem =  Byte.parseByte(edtHomem.getText().toString());
                 totalHomem --;
                 edtHomem.setText(totalHomem.toString());
 
@@ -69,7 +69,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
                 totalMulher ++;
                 edtMulher.setText(totalMulher.toString());
 
@@ -79,7 +79,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalMulher =  Double.parseDouble(edtMulher.getText().toString());
+                Byte totalMulher =  Byte.parseByte(edtMulher.getText().toString());
                 totalMulher --;
                 edtMulher.setText(totalMulher.toString());
 
@@ -89,7 +89,7 @@ public class iniciarActivity extends ActionBarActivity {
         maisC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
                 totalCrianca ++;
                 edtCrianca.setText(totalCrianca.toString());
 
@@ -99,7 +99,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double totalCrianca =  Double.parseDouble(edtCrianca.getText().toString());
+                Byte totalCrianca =  Byte.parseByte(edtCrianca.getText().toString());
                 totalCrianca --;
                 edtCrianca.setText(totalCrianca.toString());
 
