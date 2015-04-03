@@ -197,16 +197,16 @@ public class iniciarActivity extends ActionBarActivity {
 
     private void aumentar(){
         total++;
-        txtTotalConvidados.setText(String.valueOf(total));
+        txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }
 private void aumentar(Integer ttl){
         total += ttl;
-        txtTotalConvidados.setText(String.valueOf(total));
+        txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }
 
     private void diminuir(){
         total--;
-        txtTotalConvidados.setText(String.valueOf(total));
+        txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }
 
     private void zerar(Integer ttl){
