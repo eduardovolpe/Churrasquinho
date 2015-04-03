@@ -4,6 +4,8 @@ import android.content.Intent;
 //import android.renderscript.Int2;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,13 +19,15 @@ public class iniciarActivity extends ActionBarActivity {
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
-   // EditText txtTotalConvidados;
+    EditText txtTotalConvidados;
     ImageView menosH;
     ImageView maisH;
     ImageView menosM;
     ImageView maisM;
     ImageView menosC;
     ImageView maisC;
+
+    Integer total = 0;
 
 
     @Override
@@ -42,15 +46,43 @@ public class iniciarActivity extends ActionBarActivity {
         menosC = (ImageView) findViewById(R.id.menosC);
         maisC = (ImageView) findViewById(R.id.maisC);
 
-// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
+        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
 
-        maisH.setOnClickListener(new View.OnClickListener() {
+        edtCrianca.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        aumentar(Integer.parseInt(edtCrianca.getText().toString()));
+                    }
+        });
+
+        edtCrianca.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                aumentar(Integer.parseInt(edtCrianca.getText().toString()));
+                return false;
+            }
+        });
+
+        edtCrianca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Short totalHomem =  Short.parseShort(edtHomem.getText().toString());
-                totalHomem ++;
-                edtHomem.setText(totalHomem.toString());
+                zerar(total);
+                edtCrianca.setText("0");
+            }
+        });
 
+
+// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
+
+        maisH.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Integer totalHomem =  Integer.parseInt(edtHomem.getText().toString());
+                totalHomem ++;
+                aumentar();
+                edtHomem.setText(totalHomem.toString());
+                return true;
             }
         });
 
@@ -61,6 +93,7 @@ public class iniciarActivity extends ActionBarActivity {
 
                 if (totalHomem > 0) {
                     totalHomem --;
+                    diminuir();
                 } else {
                     totalHomem = 0;
                 }
@@ -75,6 +108,7 @@ public class iniciarActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Short totalMulher =  Short.parseShort(edtMulher.getText().toString());
                 totalMulher ++;
+                aumentar();
                 edtMulher.setText(totalMulher.toString());
 
             }
@@ -87,6 +121,7 @@ public class iniciarActivity extends ActionBarActivity {
                 Short totalMulher =  Short.parseShort(edtMulher.getText().toString());
                 if (totalMulher > 0) {
                     totalMulher --;
+                    diminuir();
                 } else {
                     totalMulher = 0;
                 }
@@ -101,6 +136,7 @@ public class iniciarActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Short totalCrianca =  Short.parseShort(edtCrianca.getText().toString());
                 totalCrianca ++;
+                aumentar();
                 edtCrianca.setText(totalCrianca.toString());
 
             }
@@ -113,6 +149,7 @@ public class iniciarActivity extends ActionBarActivity {
                 Short totalCrianca =  Short.parseShort(edtCrianca.getText().toString());
                 if (totalCrianca > 0) {
                     totalCrianca--;
+                    diminuir();
                 } else {
                     totalCrianca = 0;
                 }
@@ -157,4 +194,22 @@ public class iniciarActivity extends ActionBarActivity {
 
     }
 
+
+    private void aumentar(){
+        total++;
+        txtTotalConvidados.setText(String.valueOf(total));
+    }
+private void aumentar(Integer ttl){
+        total += ttl;
+        txtTotalConvidados.setText(String.valueOf(total));
+    }
+
+    private void diminuir(){
+        total--;
+        txtTotalConvidados.setText(String.valueOf(total));
+    }
+
+    private void zerar(Integer ttl){
+        total = 0;
+    }
 }
