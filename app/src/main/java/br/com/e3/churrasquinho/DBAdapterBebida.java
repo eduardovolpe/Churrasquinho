@@ -11,14 +11,14 @@ import java.util.List;
 /**
  * Created by Eduardo on 06/04/2015.
  */
-public class DBAdapter {
+public class DBAdapterBebida {
 
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
-    private String[] colunas = {DBHelper.ID,DBHelper.NOME_CARNE,DBHelper.VALOR_CARNE};
+    private String[] colunas = {DBHelper.ID,DBHelper.NOME_BEBIDA,DBHelper.VALOR_BEBIDA};
 
-    public DBAdapter(Context context){
+    public DBAdapterBebida(Context context){
         dbHelper = new DBHelper(context);
     }
     //abre a conexão
@@ -30,12 +30,12 @@ public class DBAdapter {
         database.close();
     }
 
-    public void adicionar (String nomeCarne, double valorCarne){
+    public void adicionar (String nomeBebida, double valorBebida){
         ContentValues contentValues = new ContentValues();
 
         // pega e atribui os dados
-        contentValues.put(DBHelper.NOME_CARNE, nomeCarne);
-        contentValues.put(DBHelper.VALOR_CARNE, valorCarne);
+        contentValues.put(DBHelper.NOME_BEBIDA, nomeBebida);
+        contentValues.put(DBHelper.VALOR_BEBIDA, valorBebida);
 
         //insere no banco
         database.insert(DBHelper.TABELA,null,contentValues);
@@ -43,37 +43,37 @@ public class DBAdapter {
 
     public Cursor getCarne(){
         Cursor cursor = database.rawQuery(
-                "select id,nomeCarne,valorCarne from " + DBHelper.TABELA, null);
+                "select id,nomeBebida,valorBebida from " + DBHelper.TABELA, null);
 
         return cursor;
 
     }
 
-    private Carne cursorCarne(Cursor cursor){
-        Carne carne = new Carne(cursor.getLong(0),
+    private Bebida cursorBebida(Cursor cursor){
+        Bebida bebida = new Bebida(cursor.getLong(0),
                 cursor.getString(1),
                 cursor.getDouble(2));
-        return carne;
+        return bebida;
     }
-    public Carne getCarne(long id){
+    public Bebida getBebida(long id){
         Cursor cursor = database.query(DBHelper.TABELA,
                 colunas, DBHelper.ID + " = " + id, null, null, null, null);
 
         cursor.moveToFirst();
-        return cursorCarne(cursor);
+        return cursorBebida(cursor);
     }
 
-    public List<Carne> listar (){
-        Cursor cursor = this.getCarne();
-        List<Carne> lista = new ArrayList<Carne>();
+    public List<Bebida> listar (){
+        Cursor cursor = this.getBebida();
+        List<Bebida> lista = new ArrayList<Carne>();
 
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
-            Carne carne;
+            Bebida bebida;
 
             while (!cursor.isAfterLast()){
-                carne = cursorCarne(cursor);
-                lista.add(carne);
+                bebida = cursorBebida(cursor);
+                lista.add(bebida);
                 cursor.moveToNext();
             }
         }

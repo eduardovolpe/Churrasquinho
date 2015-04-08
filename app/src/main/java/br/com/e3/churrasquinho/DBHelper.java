@@ -15,13 +15,12 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static String NOME_BANCO = "carne.db";
+    public static String NOME_BANCO = "churrasquinho.db";
     public static int VERSAO_BANCO  = 1;
 
     public static String ID      = "id";
     public static String NOME_CARNE   = "nomeCarne";
     public static String VALOR_CARNE  = "valorCarne";
-
     public static String TABELA = "carne";
 
     public static String CREATE_DATABASE = "create table " + TABELA + " ( " +
