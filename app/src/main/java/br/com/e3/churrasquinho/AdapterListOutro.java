@@ -62,7 +62,7 @@ public class AdapterListOutro extends BaseAdapter {
 
         Outro outro = getItem(position);
         item.nomeOutro.setText(outro.getNomeOutro());
-        item.valorOutro.setText(outro.getNomeOutro());
+        item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
 
         return convertView;
     }

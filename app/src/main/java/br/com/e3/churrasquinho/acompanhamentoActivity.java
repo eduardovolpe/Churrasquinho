@@ -2,8 +2,6 @@ package br.com.e3.churrasquinho;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.List;
@@ -25,7 +23,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
         dbAdapterAcompanhamento.open();
 
         List<Acompanhamento> acompanhamento = dbAdapterAcompanhamento.listar();
-        AdapterListAcompanhamento adapter = new AdapterListAcompanhamento(this, Acompanhamento);
+        AdapterListAcompanhamento adapter = new AdapterListAcompanhamento(this, acompanhamentoActivity);
 
         lstAcompanhamento.setAdapter(adapter);
 

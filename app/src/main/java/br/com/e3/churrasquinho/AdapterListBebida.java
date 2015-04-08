@@ -62,7 +62,7 @@ public class AdapterListBebida extends BaseAdapter{
 
         Bebida bebida = getItem(position);
         item.nomeBebida.setText(bebida.getNomeBebida());
-        item.valorBebida.setText(bebida.getValorBebida());
+        item.valorBebida.setText(String.valueOf(bebida.getValorBebida()));
 
         return convertView;
 

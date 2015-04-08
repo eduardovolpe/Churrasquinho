@@ -62,7 +62,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
         Acompanhamento acompanhamento = getItem(position);
         item.nomeAcompanhamento.setText(acompanhamento.getNomeAcompanhamento());
-        item.valorAcompanhamento.setText(acompanhamento.getValorAcompanhamento());
+        item.valorAcompanhamento.setText(String.valueOf(acompanhamento.getValorAcompanhamento()));
 
         return convertView;
 

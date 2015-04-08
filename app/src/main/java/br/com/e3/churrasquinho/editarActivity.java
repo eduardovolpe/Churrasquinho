@@ -2,8 +2,6 @@ package br.com.e3.churrasquinho;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 public class editarActivity extends ActionBarActivity {

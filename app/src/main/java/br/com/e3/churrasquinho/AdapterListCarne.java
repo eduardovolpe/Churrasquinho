@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -65,7 +64,7 @@ public class AdapterListCarne extends BaseAdapter {
 
         Carne carne = getItem(position);
         item.nomeCarne.setText(carne.getNomeCarne());
-        item.valorCarne.setText(carne.getValorCarne());
+        item.valorCarne.setText(String.valueOf(carne.getValorCarne()));
 
         return convertView;
     }
