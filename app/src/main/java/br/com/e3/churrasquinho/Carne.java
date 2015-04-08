@@ -32,11 +32,11 @@ public class Carne {
         this.nomeCarne = nomeCarne;
     }
 
-    public int getValorCarne() {
+    public double getValorCarne() {
         return valorCarne;
     }
 
-    public void setValorCarne(int ano) {
+    public void setValorCarne(double valorCarne) {
       this.valorCarne = valorCarne;
     }
 

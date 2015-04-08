@@ -19,15 +19,15 @@ public class DBHelper extends SQLiteOpenHelper {
     public static int VERSAO_BANCO  = 1;
 
     public static String ID      = "id";
-    public static String NOME   = "nome";
-    public static String VALOR  = "valor";
+    public static String NOME_CARNE   = "nomeCarne";
+    public static String VALOR_CARNE  = "valorCarne";
 
     public static String TABELA = "carne";
 
     public static String CREATE_DATABASE = "create table " + TABELA + " ( " +
             ID + "integer primary key autoincrement" +
-            NOME + "text" +
-            VALOR + "double );";
+            NOME_CARNE + "text" +
+            VALOR_CARNE + "double );";
 
     public static String DROP_DATABASE = "drop table if exists" + TABELA;
 

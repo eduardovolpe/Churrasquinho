@@ -63,7 +63,7 @@ public class AdapterListCarne extends BaseAdapter {
             item = (ItemSuporte) convertView.getTag();
         }
 
-        carneActivity carne = getCarne(position);
+        Carne carne = getItem(position);
         item.nomeCarne.setText(carne.getNomeCarne());
         item.valorCarne.setText(carne.getValorCarne());
 
