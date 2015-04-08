@@ -179,7 +179,7 @@ public class iniciarActivity extends ActionBarActivity {
         // MessageBox aparece caso nenhum convidado seja colocado e usuário queira prosseguir
         final AlertDialog alertaConvidados = new AlertDialog.Builder(this).create();
         alertaConvidados.setTitle("Nenhum Convidado");
-        alertaConvidados.setMessage("Churrasco sem convidados não é uma boa não. Convida alguém aí!");
+        alertaConvidados.setMessage("Churrasco sem convidados não dá, né.\nConvide alguém aí!");
         alertaConvidados.setButton("OK", new DialogInterface.OnClickListener() {
              public void onClick(DialogInterface dialog, int which){}
         });
