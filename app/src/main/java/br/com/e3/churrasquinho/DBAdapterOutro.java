@@ -79,4 +79,5 @@ public class DBAdapterOutro {
         return lista;
     }
 
+
 }
