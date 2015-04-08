@@ -9,7 +9,7 @@ public class Bebida {
     private double valorBebida;
 
     public Bebida(){}
-    public Bebida(long id, String nomeBebida, double valorBebida){
+    public Bebida(long idBebida, String nomeBebida, double valorBebida){
         this.setIdBebida(idBebida);
         this.setNomeBebida(nomeBebida);
         this.setValorBebida(valorBebida);
@@ -41,4 +41,4 @@ public class Bebida {
 
 }
 
-}
+

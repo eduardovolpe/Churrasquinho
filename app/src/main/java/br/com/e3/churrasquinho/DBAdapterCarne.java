@@ -43,7 +43,7 @@ public class DBAdapterCarne {
 
     public Cursor getCarne(){
         Cursor cursor = database.rawQuery(
-                "select id,nomeCarne,valorCarne from " + DBHelper.TABELA_CARNE, null);
+                "select idCarne, nomeCarne, valorCarne from " + DBHelper.TABELA_CARNE, null);
 
         return cursor;
 
@@ -55,9 +55,9 @@ public class DBAdapterCarne {
                 cursor.getDouble(2));
         return carne;
     }
-    public Carne getCarne(long id){
+    public Carne getCarne(long idCarne){
         Cursor cursor = database.query(DBHelper.TABELA_CARNE,
-                colunas, DBHelper.ID_CARNE + " = " + id, null, null, null, null);
+                colunas, DBHelper.ID_CARNE + " = " + idCarne, null, null, null, null);
 
         cursor.moveToFirst();
         return cursorCarne(cursor);

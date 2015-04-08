@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class DBAdapterBebida {
 
-
     private SQLiteDatabase database;
     private DBHelper dbHelper;
     private String[] colunas = {DBHelper.ID_BEBIDA,DBHelper.NOME_BEBIDA,DBHelper.VALOR_BEBIDA};
@@ -41,9 +40,9 @@ public class DBAdapterBebida {
         database.insert(DBHelper.TABELA_BEBIDA,null,contentValues);
     }
 
-    public Cursor getCarne(){
+    public Cursor getBebida(){
         Cursor cursor = database.rawQuery(
-                "select id,nomeBebida,valorBebida from " + DBHelper.TABELA_BEBIDA, null);
+                "select idBebida,nomeBebida,valorBebida from " + DBHelper.TABELA_BEBIDA, null);
 
         return cursor;
 
@@ -55,9 +54,9 @@ public class DBAdapterBebida {
                 cursor.getDouble(2));
         return bebida;
     }
-    public Bebida getBebida(long id){
+    public Bebida getBebida(long idBebida){
         Cursor cursor = database.query(DBHelper.TABELA_BEBIDA,
-                colunas, DBHelper.ID_BEBIDA + " = " + id, null, null, null, null);
+                colunas, DBHelper.ID_BEBIDA + " = " + idBebida, null, null, null, null);
 
         cursor.moveToFirst();
         return cursorBebida(cursor);
@@ -65,7 +64,7 @@ public class DBAdapterBebida {
 
     public List<Bebida> listar (){
         Cursor cursor = this.getBebida();
-        List<Bebida> lista = new ArrayList<Carne>();
+        List<Bebida> lista = new ArrayList<Bebida>();
 
         if(cursor.getCount() > 0){
             cursor.moveToFirst();

@@ -4,36 +4,32 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.List;
 
 
 public class acompanhamentoActivity extends ActionBarActivity {
+
+    ListView lstAcompanhamento;
+    DBAdapterAcompanhamento dbAdapterAcompanhamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acompanhamento);
-    }
 
+        lstAcompanhamento = (ListView) findViewById(R.id.lstAcompanhamentos);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_acompanhamento, menu);
-        return true;
-    }
+        dbAdapterAcompanhamento = new DBAdapterAcompanhamento(this);
+        dbAdapterAcompanhamento.open();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        List<Acompanhamento> acompanhamento = dbAdapterAcompanhamento.listar();
+        AdapterListAcompanhamento adapter = new AdapterListAcompanhamento(this, Acompanhamento);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        lstAcompanhamento.setAdapter(adapter);
 
-        return super.onOptionsItemSelected(item);
+        dbAdapterAcompanhamento.close();
+
     }
 }

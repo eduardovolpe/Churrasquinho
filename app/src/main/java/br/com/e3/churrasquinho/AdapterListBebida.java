@@ -16,7 +16,7 @@ public class AdapterListBebida {
     private LayoutInflater inflater;
     private List<bebidaActivity> bebida;
 
-    public AdapterListBebida(Context context, List<bebidaActivity> bebidas){
+    public AdapterListBebida(Context context, List<bebidaActivity> bebidas) {
         this.bebida = bebida;
         inflater = LayoutInflater.from(context);
     }
@@ -36,7 +36,7 @@ public class AdapterListBebida {
         return position;
     }
 
-    private class ItemSuporte{
+    private class ItemSuporte {
         CheckBox nomeBebida;
         EditText valorBebida;
     }
@@ -46,7 +46,7 @@ public class AdapterListBebida {
 
         ItemSuporte item;
 
-        if(convertView == null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.list_bebida, null);
 
             item = new ItemSuporte();
@@ -60,9 +60,10 @@ public class AdapterListBebida {
         }
 
         Bebida bebida = getItem(position);
-        item.nomeBebida.setText(bebida.getNomeCarne());
-        item.valorBebida.setText(bebida.getValorCarne());
+        item.nomeBebida.setText(bebida.getNomeBebida());
+        item.valorBebida.setText(bebida.getValorBebida());
 
         return convertView;
 
+    }
 }
