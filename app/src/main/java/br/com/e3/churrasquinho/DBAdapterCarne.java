@@ -16,7 +16,7 @@ public class DBAdapterCarne {
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
-    private String[] colunas = {DBHelper.ID,DBHelper.NOME_CARNE,DBHelper.VALOR_CARNE};
+    private String[] colunas = {DBHelper.ID_CARNE,DBHelper.NOME_CARNE,DBHelper.VALOR_CARNE};
 
     public DBAdapterCarne(Context context){
         dbHelper = new DBHelper(context);
@@ -38,12 +38,12 @@ public class DBAdapterCarne {
         contentValues.put(DBHelper.VALOR_CARNE, valorCarne);
 
         //insere no banco
-        database.insert(DBHelper.TABELA,null,contentValues);
+        database.insert(DBHelper.TABELA_CARNE,null,contentValues);
     }
 
     public Cursor getCarne(){
         Cursor cursor = database.rawQuery(
-                "select id,nomeCarne,valorCarne from " + DBHelper.TABELA, null);
+                "select id,nomeCarne,valorCarne from " + DBHelper.TABELA_CARNE, null);
 
         return cursor;
 
@@ -56,8 +56,8 @@ public class DBAdapterCarne {
         return carne;
     }
     public Carne getCarne(long id){
-        Cursor cursor = database.query(DBHelper.TABELA,
-                colunas, DBHelper.ID + " = " + id, null, null, null, null);
+        Cursor cursor = database.query(DBHelper.TABELA_CARNE,
+                colunas, DBHelper.ID_CARNE + " = " + id, null, null, null, null);
 
         cursor.moveToFirst();
         return cursorCarne(cursor);
