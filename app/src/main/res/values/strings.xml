@@ -17,5 +17,7 @@
     <string name="total"></string>
     <string name="title_activity_convidados">ConvidadosActivity</string>
     <string name="zero">0</string>
+    <string name="title_activity_acompanhamento">acompanhamentoActivity</string>
+    <string name="title_activity_outro">outroActivity</string>
 
 </resources>

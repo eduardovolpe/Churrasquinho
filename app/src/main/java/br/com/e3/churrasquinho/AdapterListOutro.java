@@ -7,32 +7,29 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.List;
 
 /**
- * Created by Eduardo on 06/04/2015.
+ * Created by Eduardo on 08/04/2015.
  */
-
-
-public class AdapterListCarne extends BaseAdapter {
+public class AdapterListOutro extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<carneActivity> carne;
+    private List<outroActivity> outro;
 
-    public AdapterListCarne(Context context, List<carneActivity> carnes){
-        this.carne = carne;
+    public AdapterListOutro(Context context, List<outroActivity> outro){
+        this.outro = outro;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return carne.size();
+        return outro.size();
     }
 
     @Override
-    public carneActivity getItem(int position) {
-        return carne.get(position);
+    public outroActivity getItem(int position) {
+        return outro.get(position);
     }
 
     @Override
@@ -41,8 +38,8 @@ public class AdapterListCarne extends BaseAdapter {
     }
 
     private class ItemSuporte{
-        CheckBox nomeCarne;
-        EditText valorCarne;
+        CheckBox nomeOutro;
+        EditText valorOutro;
     }
 
     @Override
@@ -55,17 +52,17 @@ public class AdapterListCarne extends BaseAdapter {
 
             item = new ItemSuporte();
 
-            item.nomeCarne = (CheckBox) convertView.findViewById(R.id.nomeCarne);
-            item.valorCarne = (EditText) convertView.findViewById(R.id.valorCarne);
+            item.nomeOutro = (CheckBox) convertView.findViewById(R.id.nomeOutro);
+            item.valorOutro = (EditText) convertView.findViewById(R.id.valorOutro);
 
             convertView.setTag(item);
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
 
-        Carne carne = getItem(position);
-        item.nomeCarne.setText(carne.getNomeCarne());
-        item.valorCarne.setText(carne.getValorCarne());
+        Outro outro = getItem(position);
+        item.nomeOutro.setText(outro.getNomeOutro());
+        item.valorOutro.setText(outro.getNomeOutro());
 
         return convertView;
     }

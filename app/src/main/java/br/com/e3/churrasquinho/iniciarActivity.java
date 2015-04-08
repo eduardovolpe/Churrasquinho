@@ -1,7 +1,10 @@
 package br.com.e3.churrasquinho;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 //import android.renderscript.Int2;
+import android.preference.DialogPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -63,15 +66,6 @@ public class iniciarActivity extends ActionBarActivity {
                 return false;
             }
         });
-
-        edtCrianca.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                zerar(total);
-                edtCrianca.setText("0");
-            }
-        });
-
 
 // NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
 
@@ -182,12 +176,24 @@ public class iniciarActivity extends ActionBarActivity {
         txtTotalConvidados.setText("Total de Convidados: " + convidados);
 
 */
+        // MessageBox aparece caso nenhum convidado seja colocado e usuário queira prosseguir
+        final AlertDialog alertaConvidados = new AlertDialog.Builder(this).create();
+        alertaConvidados.setTitle("Nenhum Convidado");
+        alertaConvidados.setMessage("Churrasco sem convidados não dá, né.\nConvide alguém aí!");
+        alertaConvidados.setButton("OK", new DialogInterface.OnClickListener() {
+             public void onClick(DialogInterface dialog, int which){}
+        });
+        alertaConvidados.setIcon(R.drawable.ic_launcher);
 
         btnBebidas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
-                startActivity(intent);
+                if (total == 0) {
+                    alertaConvidados.show();
+                } else {
+                    Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
+                    startActivity(intent);
+                }
             }
 
         });

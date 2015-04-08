@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nomeAcompanhamento"
+            android:checked="false"
+            android:textSize="40px"
+            android:layout_column="0"
+            android:layout_gravity="left|center_vertical" />
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:id="@+id/valorAcompanhamento"
+            android:layout_gravity="center_vertical|right"
+            android:layout_column="1"/>
+
+    </GridLayout>
+
+</LinearLayout>

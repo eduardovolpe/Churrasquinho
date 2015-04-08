@@ -11,14 +11,13 @@ import java.util.List;
 /**
  * Created by Eduardo on 06/04/2015.
  */
-public class DBAdapter {
-
+public class DBAdapterCarne {
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
-    private String[] colunas = {DBHelper.ID,DBHelper.NOME,DBHelper.VALOR};
+    private String[] colunas = {DBHelper.ID_CARNE,DBHelper.NOME_CARNE,DBHelper.VALOR_CARNE};
 
-    public DBAdapter(Context context){
+    public DBAdapterCarne(Context context){
         dbHelper = new DBHelper(context);
     }
     //abre a conexão
@@ -34,31 +33,30 @@ public class DBAdapter {
         ContentValues contentValues = new ContentValues();
 
         // pega e atribui os dados
-        contentValues.put(DBHelper.NOME, nomeCarne);
-        contentValues.put(DBHelper.VALOR, valorCarne);
+        contentValues.put(DBHelper.NOME_CARNE, nomeCarne);
+        contentValues.put(DBHelper.VALOR_CARNE, valorCarne);
 
         //insere no banco
-        database.insert(DBHelper.TABELA,null,contentValues);
+        database.insert(DBHelper.TABELA_CARNE,null,contentValues);
     }
 
-    // Verificar com o prof. Sergio o CURSOR
-    public Cursor getVeiculos(){
+    public Cursor getCarne(){
         Cursor cursor = database.rawQuery(
-                "select id,nomeCarne,valorCarne from " + DBHelper.TABELA, null);
+                "select idCarne, nomeCarne, valorCarne from " + DBHelper.TABELA_CARNE, null);
 
         return cursor;
 
     }
 
     private Carne cursorCarne(Cursor cursor){
-        Carne veiculo = new Carne(cursor.getLong(0),
+        Carne carne = new Carne(cursor.getLong(0),
                 cursor.getString(1),
-                cursor.getDouble(2)
+                cursor.getDouble(2));
         return carne;
     }
-    public Carne getCarne(long id){
-        Cursor cursor = database.query(DBHelper.TABELA,
-                colunas, DBHelper.ID + " = " + id, null, null, null, null);
+    public Carne getCarne(long idCarne){
+        Cursor cursor = database.query(DBHelper.TABELA_CARNE,
+                colunas, DBHelper.ID_CARNE + " = " + idCarne, null, null, null, null);
 
         cursor.moveToFirst();
         return cursorCarne(cursor);

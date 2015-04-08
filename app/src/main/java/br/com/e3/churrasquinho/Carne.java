@@ -5,23 +5,23 @@ package br.com.e3.churrasquinho;
  */
 public class Carne {
 
-    private long id;
+    private long idCarne;
     private String nomeCarne;
     private double valorCarne;
 
     public Carne(){}
-    public Carne(long id, String nomeCarne, double valorCarne){
-        this.setId(id);
+    public Carne(long idCarne, String nomeCarne, double valorCarne){
+        this.setIdCarne(idCarne);
         this.setNomeCarne(nomeCarne);
         this.setValorCarne(valorCarne);
     }
 
-    public long getId() {
-        return id;
+    public long getIdCarne() {
+        return idCarne;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdCarne(long idCarne) {
+        this.idCarne = idCarne;
     }
 
     public String getNomeCarne() {
@@ -32,11 +32,11 @@ public class Carne {
         this.nomeCarne = nomeCarne;
     }
 
-    public int getValorCarne() {
+    public double getValorCarne() {
         return valorCarne;
     }
 
-    public void setValorCarne(int ano) {
+    public void setValorCarne(double valorCarne) {
       this.valorCarne = valorCarne;
     }
 
