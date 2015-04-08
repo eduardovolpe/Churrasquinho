@@ -32,7 +32,14 @@
             android:name=".bebidaActivity"
             android:label="@string/title_activity_bebida" >
         </activity>
-
+        <activity
+            android:name=".acompanhamentoActivity"
+            android:label="@string/title_activity_acompanhamento" >
+        </activity>
+        <activity
+            android:name=".outroActivity"
+            android:label="@string/title_activity_outro" >
+        </activity>
     </application>
 
 </manifest>
