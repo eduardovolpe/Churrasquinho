@@ -4,9 +4,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.List;
 
 
 public class outroActivity extends ActionBarActivity {
+
+    ListView lstOutro;
+    DBAdapterOutro dbAdapterOutro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,26 +20,16 @@ public class outroActivity extends ActionBarActivity {
         setContentView(R.layout.activity_outro);
     }
 
+    lstOutro = (ListView) findViewById(R.id.lstOutro);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_outro, menu);
-        return true;
-    }
+    dbAdapterOutro = new DBAdapterOutro(this);
+    dbAdapterOutro.open();
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    List<Outro> outro = dbAdapterOutro.listar();
+    AdapterListOutro adapter = new AdapterListOutro this, Outro);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    lstOutro.setAdapter(adapter);
 
-        return super.onOptionsItemSelected(item);
-    }
+    dbAdapterOutro.close();
+
 }

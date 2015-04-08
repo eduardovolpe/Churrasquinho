@@ -13,23 +13,23 @@ import java.util.List;
 /**
  * Created by Eduardo on 08/04/2015.
  */
-public class AdapterListBebida extends BaseAdapter{
+public class AdapterListOutro extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<bebidaActivity> bebida;
+    private List<outroActivity> outro;
 
-    public AdapterListBebida(Context context, List<bebidaActivity> bebidas) {
-        this.bebida = bebida;
+    public AdapterListOutro(Context context, List<outroActivity> outro){
+        this.outro = outro;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return bebida.size();
+        return outro.size();
     }
 
     @Override
-    public bebidaActivity getItem(int position) {
-        return bebida.get(position);
+    public outroActivity getItem(int position) {
+        return outro.get(position);
     }
 
     @Override
@@ -37,9 +37,9 @@ public class AdapterListBebida extends BaseAdapter{
         return position;
     }
 
-    private class ItemSuporte {
-        CheckBox nomeBebida;
-        EditText valorBebida;
+    private class ItemSuporte{
+        CheckBox nomeOutro;
+        EditText valorOutro;
     }
 
     @Override
@@ -47,24 +47,23 @@ public class AdapterListBebida extends BaseAdapter{
 
         ItemSuporte item;
 
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.list_bebida, null);
+        if(convertView == null){
+            convertView = inflater.inflate(R.layout.list_carne, null);
 
             item = new ItemSuporte();
 
-            item.nomeBebida = (CheckBox) convertView.findViewById(R.id.nomeBebida);
-            item.valorBebida = (EditText) convertView.findViewById(R.id.valorBebida);
+            item.nomeOutro = (CheckBox) convertView.findViewById(R.id.nomeOutro);
+            item.valorOutro = (EditText) convertView.findViewById(R.id.valorOutro);
 
             convertView.setTag(item);
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
 
-        Bebida bebida = getItem(position);
-        item.nomeBebida.setText(bebida.getNomeBebida());
-        item.valorBebida.setText(bebida.getValorBebida());
+        Outro outro = getItem(position);
+        item.nomeOutro.setText(outro.getNomeOutro());
+        item.valorOutro.setText(outro.getNomeOutro());
 
         return convertView;
-
     }
 }

@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class DBAdapterCarne {
 
-
     private SQLiteDatabase database;
     private DBHelper dbHelper;
     private String[] colunas = {DBHelper.ID_CARNE,DBHelper.NOME_CARNE,DBHelper.VALOR_CARNE};
