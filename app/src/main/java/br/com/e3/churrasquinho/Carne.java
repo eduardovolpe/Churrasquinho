@@ -5,6 +5,8 @@ package br.com.e3.churrasquinho;
  */
 public class Carne {
 
+
+
     private long idCarne;
     private String nomeCarne;
     private double valorCarne;
