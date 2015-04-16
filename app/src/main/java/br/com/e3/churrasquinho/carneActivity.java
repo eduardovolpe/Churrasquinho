@@ -23,7 +23,7 @@ public class carneActivity extends ActionBarActivity {
         dbAdapterCarne.open();
 
         List<Carne> carne = dbAdapterCarne.listar();
-        AdapterListCarne adapter = new AdapterListCarne(this, carneActivity);
+        AdapterListCarne adapter = new AdapterListCarne(this, carne);
 
         lstCarne.setAdapter(adapter);
 

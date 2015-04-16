@@ -23,7 +23,7 @@ public class bebidaActivity extends ActionBarActivity {
         dbAdapterBebida.open();
 
         List<Bebida> bebidas = dbAdapterBebida.listar();
-        AdapterListBebida adapter = new AdapterListCarne(this, bebidas );
+        AdapterListBebida adapter = new AdapterListBebida(this, bebidas );
 
         lstBebida.setAdapter(adapter);
 

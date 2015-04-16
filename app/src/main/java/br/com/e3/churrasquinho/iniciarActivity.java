@@ -25,7 +25,7 @@ public class iniciarActivity extends ActionBarActivity {
     ImageView menosC;
     ImageView maisC;
 
-    Integer total = 0;
+    Integer total = 1;
 
 
     @Override

@@ -23,7 +23,7 @@ public class outroActivity extends ActionBarActivity {
         dbAdapterOutro.open();
 
         List<Outro> outro = dbAdapterOutro.listar();
-        AdapterListOutro adapter = new AdapterListOutro(this, Outro);
+        AdapterListOutro adapter = new AdapterListOutro(this, outro);
 
         lstOutro.setAdapter(adapter);
 

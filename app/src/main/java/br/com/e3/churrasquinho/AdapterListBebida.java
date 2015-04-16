@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class AdapterListBebida extends BaseAdapter{
     private LayoutInflater inflater;
-    private List<bebidaActivity> bebida;
+    private List<Bebida> bebida;
 
-    public AdapterListBebida(Context context, List<bebidaActivity> bebidas) {
+    public AdapterListBebida(Context context, List<Bebida> bebidas) {
         this.bebida = bebida;
         inflater = LayoutInflater.from(context);
     }
@@ -28,7 +28,7 @@ public class AdapterListBebida extends BaseAdapter{
     }
 
     @Override
-    public bebidaActivity getItem(int position) {
+    public Bebida getItem(int position) {
         return bebida.get(position);
     }
 

@@ -17,10 +17,10 @@ import java.util.List;
 
 public class AdapterListCarne extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<carneActivity> carne;
+    private List<Carne> carne;
 
-    public AdapterListCarne(Context context, List<carneActivity> carnes){
-        this.carne = carne;
+    public AdapterListCarne(Context context, List<Carne> carnes){
+        this.carne = carnes;
         inflater = LayoutInflater.from(context);
     }
 
@@ -30,7 +30,7 @@ public class AdapterListCarne extends BaseAdapter {
     }
 
     @Override
-    public carneActivity getItem(int position) {
+    public Carne getItem(int position) {
         return carne.get(position);
     }
 
