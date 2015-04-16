@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class AdapterListAcompanhamento extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<acompanhamentoActivity> acompanhamento;
+    private List<Acompanhamento> acompanhamento;
 
-    public AdapterListAcompanhamento(Context context, List<acompanhamentoActivity> acompanhamento) {
+    public AdapterListAcompanhamento(Context context, List<Acompanhamento> acompanhamento) {
         this.acompanhamento = acompanhamento;
         inflater = LayoutInflater.from(context);
     }
@@ -28,7 +28,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
     }
 
     @Override
-    public acompanhamentoActivity getItem(int position) {
+    public Acompanhamento getItem(int position) {
         return acompanhamento.get(position);
     }
 
@@ -62,7 +62,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
         Acompanhamento acompanhamento = getItem(position);
         item.nomeAcompanhamento.setText(acompanhamento.getNomeAcompanhamento());
-        item.valorAcompanhamento.setText(acompanhamento.getValorAcompanhamento());
+        item.valorAcompanhamento.setText(String.valueOf(acompanhamento.getValorAcompanhamento()));
 
         return convertView;
 

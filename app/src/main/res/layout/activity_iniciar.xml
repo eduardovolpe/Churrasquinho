@@ -179,17 +179,17 @@
         android:textIsSelectable="false" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="70px"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
         android:text="@string/continuar"
         android:id="@+id/btnEditar"
-
         android:gravity="center|center_vertical"
         android:layout_gravity="center"
         android:background="#ff000000"
         android:textColor="#ffefdfc6"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="30px" />
 
     <ImageView
         android:layout_width="wrap_content"

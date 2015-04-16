@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class AdapterListOutro extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<outroActivity> outro;
+    private List<Outro> outro;
 
-    public AdapterListOutro(Context context, List<outroActivity> outro){
+    public AdapterListOutro(Context context, List<Outro> outro){
         this.outro = outro;
         inflater = LayoutInflater.from(context);
     }
@@ -28,7 +28,7 @@ public class AdapterListOutro extends BaseAdapter {
     }
 
     @Override
-    public outroActivity getItem(int position) {
+    public Outro getItem(int position) {
         return outro.get(position);
     }
 
@@ -62,7 +62,7 @@ public class AdapterListOutro extends BaseAdapter {
 
         Outro outro = getItem(position);
         item.nomeOutro.setText(outro.getNomeOutro());
-        item.valorOutro.setText(outro.getNomeOutro());
+        item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
 
         return convertView;
     }

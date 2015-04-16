@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -18,10 +17,10 @@ import java.util.List;
 
 public class AdapterListCarne extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<carneActivity> carne;
+    private List<Carne> carne;
 
-    public AdapterListCarne(Context context, List<carneActivity> carnes){
-        this.carne = carne;
+    public AdapterListCarne(Context context, List<Carne> carnes){
+        this.carne = carnes;
         inflater = LayoutInflater.from(context);
     }
 
@@ -31,7 +30,7 @@ public class AdapterListCarne extends BaseAdapter {
     }
 
     @Override
-    public carneActivity getItem(int position) {
+    public Carne getItem(int position) {
         return carne.get(position);
     }
 
@@ -65,7 +64,7 @@ public class AdapterListCarne extends BaseAdapter {
 
         Carne carne = getItem(position);
         item.nomeCarne.setText(carne.getNomeCarne());
-        item.valorCarne.setText(carne.getValorCarne());
+        item.valorCarne.setText(String.valueOf(carne.getValorCarne()));
 
         return convertView;
     }

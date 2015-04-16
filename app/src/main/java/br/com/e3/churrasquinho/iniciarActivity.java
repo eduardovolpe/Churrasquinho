@@ -3,18 +3,13 @@ package br.com.e3.churrasquinho;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-//import android.renderscript.Int2;
-import android.preference.DialogPreference;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-//import android.widget.TextView;
-
 
 public class iniciarActivity extends ActionBarActivity {
 
@@ -30,7 +25,7 @@ public class iniciarActivity extends ActionBarActivity {
     ImageView menosC;
     ImageView maisC;
 
-    Integer total = 0;
+    Integer total = 1;
 
 
     @Override
@@ -66,8 +61,6 @@ public class iniciarActivity extends ActionBarActivity {
                 return false;
             }
         });
-
-// NÃO MEXA NO MEU LINDO E MARAVILHOSO CÓDIGO...Att O PROGRAMADOR
 
         maisH.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -152,30 +145,6 @@ public class iniciarActivity extends ActionBarActivity {
             }
         });
 
-
-
-/* Volpe
-        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
-
-        //int convidados ;
-
-        int totalH =  Integer.parseInt(edtHomem.getText().toString());
-        int totalM =  Integer.parseInt(edtMulher.getText().toString());
-        int totalC =  Integer.parseInt(edtCrianca.getText().toString());
-
-       int convidados = totalC + totalH + totalM;
-
-        txtTotalConvidados.setText("Total de Convidados: " + convidados);
-
-*/
-
-/* Favarin
-        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
-        int convidados = 0;
-        convidados = homem + mulher + crianca;
-        txtTotalConvidados.setText("Total de Convidados: " + convidados);
-
-*/
         // MessageBox aparece caso nenhum convidado seja colocado e usuário queira prosseguir
         final AlertDialog alertaConvidados = new AlertDialog.Builder(this).create();
         alertaConvidados.setTitle("Nenhum Convidado");
@@ -197,15 +166,14 @@ public class iniciarActivity extends ActionBarActivity {
             }
 
         });
-
     }
-
 
     private void aumentar(){
         total++;
         txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }
-private void aumentar(Integer ttl){
+    
+    private void aumentar(Integer ttl){
         total += ttl;
         txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }

@@ -19,6 +19,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/lstCarne"
         android:layout_below="@+id/lblCarne"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/continuar"
+        android:id="@+id/btnProsCarne"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="18sp" />
 
 </RelativeLayout>

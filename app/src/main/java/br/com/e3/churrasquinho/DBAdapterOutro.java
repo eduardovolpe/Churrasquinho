@@ -40,7 +40,7 @@ public class DBAdapterOutro {
         database.insert(DBHelper.TABELA_OUTRO,null,contentValues);
     }
 
-    public Cursor getCarne(){
+    public Cursor getOutro(){
         Cursor cursor = database.rawQuery(
                 "select idOutro, nomeOutro, valorOutro from " + DBHelper.TABELA_OUTRO, null);
 
