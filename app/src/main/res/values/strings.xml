@@ -14,10 +14,18 @@
     <string name="mulher">Mulheres</string>
     <string name="crianca">Crianças</string>
     <string name="continuar">Prosseguir</string>
+    <string name="cadCarne">Adicionar Carnes</string>
+    <string name="cadBebida">Adicionar Bebidas</string>
+    <string name="cadAcompanhamento">Cadastrar Acompanhamentos</string>
+    <string name="cadOutro">Cadastrar Outros</string>
+    <string name="cadItem">Cadastrar Itens</string>
+    <string name="cifrao">R$: </string>
     <string name="total"></string>
     <string name="title_activity_convidados">ConvidadosActivity</string>
     <string name="zero">0</string>
     <string name="title_activity_acompanhamento">acompanhamentoActivity</string>
     <string name="title_activity_outro">outroActivity</string>
+    <string name="title_activity_inserir">inserirActivity</string>
+    <string name="title_activity_inserir_carne">InserirCarne</string>
 
 </resources>

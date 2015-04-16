@@ -25,14 +25,28 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="@string/continuar"
-        android:id="@+id/btnProsBebida"
+        android:text="@string/cadBebida"
+        android:id="@+id/btnCadBebida"
         android:gravity="center|center_vertical"
         android:layout_gravity="center"
         android:background="#ff000000"
         android:textColor="#ffefdfc6"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:textSize="18sp" />
+        android:textSize="15sp"
+        android:layout_marginBottom="45dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/continuar"
+        android:id="@+id/btnProsseguir"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp" />
 
 </RelativeLayout>

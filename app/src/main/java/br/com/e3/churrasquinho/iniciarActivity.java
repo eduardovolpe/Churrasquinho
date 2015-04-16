@@ -13,7 +13,7 @@ import android.widget.ImageView;
 
 public class iniciarActivity extends ActionBarActivity {
 
-    Button btnBebidas;
+    Button btnCarne;
     EditText edtHomem;
     EditText edtMulher;
     EditText edtCrianca;
@@ -33,7 +33,7 @@ public class iniciarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar);
 
-        btnBebidas = (Button) findViewById(R.id.btnEditar);
+        btnCarne = (Button) findViewById(R.id.btnCarne);
         edtHomem = (EditText) findViewById(R.id.edtHomem);
         edtMulher = (EditText) findViewById(R.id.edtMulher);
         edtCrianca = (EditText) findViewById(R.id.edtCriancas);
@@ -154,7 +154,7 @@ public class iniciarActivity extends ActionBarActivity {
         });
         alertaConvidados.setIcon(R.drawable.ic_launcher);
 
-        btnBebidas.setOnClickListener(new View.OnClickListener() {
+        btnCarne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (total == 0) {

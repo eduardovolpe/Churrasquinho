@@ -40,6 +40,14 @@
             android:name=".outroActivity"
             android:label="@string/title_activity_outro" >
         </activity>
+        <activity
+            android:name=".inserirActivity"
+            android:label="@string/title_activity_inserir" >
+        </activity>
+        <activity
+            android:name=".InserirCarne"
+            android:label="@string/title_activity_inserir_carne" >
+        </activity>
     </application>
 
 </manifest>

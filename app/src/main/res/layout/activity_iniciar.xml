@@ -173,23 +173,23 @@
 
         android:enabled="false"
         android:editable="false"
-        android:layout_above="@+id/btnEditar"
+        android:layout_above="@+id/btnCarne"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10px"
         android:textIsSelectable="false" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="90px"
+        android:layout_height="40dp"
         android:text="@string/continuar"
-        android:id="@+id/btnEditar"
+        android:id="@+id/btnCarne"
         android:gravity="center|center_vertical"
         android:layout_gravity="center"
         android:background="#ff000000"
         android:textColor="#ffefdfc6"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:textSize="30px" />
+        android:textSize="15sp" />
 
     <ImageView
         android:layout_width="wrap_content"

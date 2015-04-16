@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         btnIniciar = (ImageView) findViewById(R.id.btnIniciar);
-        btnEditar = (ImageView) findViewById(R.id.btnEditar);
+        btnEditar = (ImageView) findViewById(R.id.btnCarne);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override

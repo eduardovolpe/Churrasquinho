@@ -1,18 +1,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="#ffefdfc6"
     tools:context="br.com.e3.churrasquinho.editarActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/editar"
-        android:id="@+id/textView2"
+        android:id="@+id/lblChurras"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lbl_churras" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/cadItem"
+        android:id="@+id/btnCadItem"
+        android:gravity="center|center_vertical"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lstMeusChurras"
+        android:layout_below="@+id/lblChurras"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"/>
+
 </RelativeLayout>

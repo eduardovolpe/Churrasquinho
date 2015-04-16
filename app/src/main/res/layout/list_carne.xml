@@ -7,30 +7,44 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nomeCarne"
             android:checked="false"
-            android:textSize="40px"
-            android:layout_column="0"
-            android:layout_gravity="left|center_vertical" />
+            android:textSize="20dp"
+            android:layout_column="0"/>
 
-
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="5"
-            android:id="@+id/valorCarne"
-            android:layout_gravity="center_vertical|right"
-            android:layout_column="1"/>
+            android:layout_gravity="right"
+            android:layout_column="1">
 
-        </GridLayout>
+            <TextView
+                android:text="@string/cifrao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
 
+            <EditText
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="5"
+                android:id="@+id/valorCarne"
+                android:numeric="decimal"
+                android:textAlignment="center"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:enabled="true" />
+        </LinearLayout>
+    </GridLayout>
 
 
 </LinearLayout>

@@ -20,7 +20,21 @@
         android:id="@+id/lstCarne"
         android:layout_below="@+id/lblCarne"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginBottom="90dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/cadCarne"
+        android:id="@+id/btnCadCarne"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        android:layout_marginBottom="45dp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -33,6 +47,6 @@
         android:textColor="#ffefdfc6"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
 </RelativeLayout>
