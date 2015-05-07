@@ -36,27 +36,26 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String TABELA_OUTRO  = "outro";
 
 
-    public static String CREATE_DATABASE =
-            // Criando a tabela CARNE
+    public static String CREATE_TB_CARNE=            // Criando a tabela CARNE
             "create table " + TABELA_CARNE + " ( " +
             ID_CARNE + " integer primary key autoincrement, " +
             NOME_CARNE + " text, " +
-            VALOR_CARNE + " double );" +
+            VALOR_CARNE + " double );";
 
             // Criando a tabela BEBIDA
-            " create table " + TABELA_BEBIDA + " ( " +
+     public static String CREATE_TB_BEBIDA=      " create table " + TABELA_BEBIDA + " ( " +
             ID_BEBIDA + " integer primary key autoincrement, " +
             NOME_BEBIDA + " text, " +
-            VALOR_BEBIDA + " double );" +
+            VALOR_BEBIDA + " double );";
 
             // Criando a tabela ACOMPANHAMENTOS
-            " create table " + TABELA_ACOMPANHAMENTO + " ( " +
+     public static String CREATE_TB_ACOMPANHAMENTO = " create table " + TABELA_ACOMPANHAMENTO + " ( " +
             ID_ACOMPANHAMENTO + " integer primary key autoincrement ," +
             NOME_ACOMPANHAMENTO + " text, " +
-            VALOR_ACOMPANHAMENTO + " double );" +
+            VALOR_ACOMPANHAMENTO + " double );";
 
-            // Criando a tabela ACOMPANHAMENTOS
-            " create table " + TABELA_OUTRO + " ( " +
+            // Criando a tabela outro
+     public static String CREATE_TB_OUTRO = " create table " + TABELA_OUTRO + " ( " +
             ID_OUTRO + " integer primary key autoincrement, " +
             NOME_OUTRO + " text, " +
             VALOR_OUTRO + " double );";
@@ -73,7 +72,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override //criando.
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_DATABASE);
+        db.execSQL(CREATE_TB_ACOMPANHAMENTO);
+        db.execSQL(CREATE_TB_BEBIDA);
+        db.execSQL(CREATE_TB_CARNE);
+        db.execSQL(CREATE_TB_OUTRO);
     }
 
     @Override //apagando e recriando.
