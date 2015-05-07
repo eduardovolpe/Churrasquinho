@@ -29,9 +29,9 @@ public class bebidaActivity extends ActionBarActivity {
 
         List<Bebida> bebidas = dbAdapterBebida.listar();
         AdapterListBebida adapter = new AdapterListBebida(this, bebidas );
-
         lstBebida.setAdapter(adapter);
-        dbAdapterBebida.close();
+
+       dbAdapterBebida.close();
 
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override

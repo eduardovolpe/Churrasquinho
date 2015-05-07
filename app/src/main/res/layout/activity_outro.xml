@@ -9,16 +9,16 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lblOutro"
+        android:id="@+id/lblDespesas"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/lbl_outros" />
+        android:src="@drawable/lbl_despesas" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lstOutro"
-        android:layout_below="@+id/lblOutro"
+        android:layout_below="@+id/lblDespesas"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"/>
 

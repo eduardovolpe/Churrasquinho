@@ -18,7 +18,7 @@ public class AdapterListBebida extends BaseAdapter{
     private List<Bebida> bebida;
 
     public AdapterListBebida(Context context, List<Bebida> bebidas) {
-        this.bebida = bebida;
+        this.bebida = bebidas;
         inflater = LayoutInflater.from(context);
     }
 

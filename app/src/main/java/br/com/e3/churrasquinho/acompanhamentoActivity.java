@@ -22,8 +22,8 @@ public class acompanhamentoActivity extends ActionBarActivity {
         dbAdapterAcompanhamento = new DBAdapterAcompanhamento(this);
         dbAdapterAcompanhamento.open();
 
-        List<Acompanhamento> acompanhamento = dbAdapterAcompanhamento.listar();
-        AdapterListAcompanhamento adapter = new AdapterListAcompanhamento(this,acompanhamento);
+        List<Acompanhamento> acompanhamentos = dbAdapterAcompanhamento.listar();
+        AdapterListAcompanhamento adapter = new AdapterListAcompanhamento(this, acompanhamentos);
 
         lstAcompanhamento.setAdapter(adapter);
 

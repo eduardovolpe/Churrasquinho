@@ -40,9 +40,14 @@ public class DBAdapterBebida {
         database.insert(DBHelper.TABELA_BEBIDA,null,contentValues);
     }
 
-    public Cursor getBebida(){
-        Cursor cursor = database.rawQuery(
-                "select idBebida,nomeBebida,valorBebida from " + DBHelper.TABELA_BEBIDA, null);
+    public Cursor getBebidas(){
+
+
+
+            Cursor cursor = database.rawQuery(
+                    "select idBebida,nomeBebida,valorBebida from bebida", null);
+
+
 
         return cursor;
 
@@ -63,7 +68,7 @@ public class DBAdapterBebida {
     }
 
     public List<Bebida> listar (){
-        Cursor cursor = this.getBebida();
+        Cursor cursor = this.getBebidas();
         List<Bebida> lista = new ArrayList<Bebida>();
 
         if(cursor.getCount() > 0){
@@ -78,5 +83,7 @@ public class DBAdapterBebida {
         }
         return lista;
     }
+
+
 
 }

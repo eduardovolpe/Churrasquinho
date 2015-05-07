@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.e3.churrasquinho.FinalizarActivity"    android:background="#ffefdfc6">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblFinalizar"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lbl_finalizacao"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/compartilhar"
+        android:id="@+id/compChurras"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        android:layout_marginBottom="45dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/salvar"
+        android:id="@+id/salvarChurras"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp" />
+
+
+</RelativeLayout>

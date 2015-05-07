@@ -40,7 +40,7 @@ public class DBAdapterAcompanhamento {
         database.insert(DBHelper.TABELA_ACOMPANHAMENTO,null,contentValues);
     }
 
-    public Cursor getAcompanhamento(){
+    public Cursor getAcompanhamentos(){
         Cursor cursor = database.rawQuery(
                 "select idAcompanhamento, nomeAcompanhamento, valorAcompanhamento from " + DBHelper.TABELA_ACOMPANHAMENTO, null);
 
@@ -54,6 +54,7 @@ public class DBAdapterAcompanhamento {
                 cursor.getDouble(2));
         return acompanhamento;
     }
+
     public Acompanhamento getAcompanhamento(long idAcompanhamento){
         Cursor cursor = database.query(DBHelper.TABELA_ACOMPANHAMENTO,
                 colunas, DBHelper.ID_ACOMPANHAMENTO + " = " + idAcompanhamento, null, null, null, null);
@@ -63,7 +64,7 @@ public class DBAdapterAcompanhamento {
     }
 
     public List<Acompanhamento> listar (){
-        Cursor cursor = this.getAcompanhamento();
+        Cursor cursor = this.getAcompanhamentos();
         List<Acompanhamento> lista = new ArrayList<Acompanhamento>();
 
         if(cursor.getCount() > 0){

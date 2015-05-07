@@ -44,19 +44,19 @@ public class DBHelper extends SQLiteOpenHelper {
             VALOR_CARNE + " double );" +
 
             // Criando a tabela BEBIDA
-            "create table " + TABELA_BEBIDA + " ( " +
+            " create table " + TABELA_BEBIDA + " ( " +
             ID_BEBIDA + " integer primary key autoincrement, " +
             NOME_BEBIDA + " text, " +
             VALOR_BEBIDA + " double );" +
 
             // Criando a tabela ACOMPANHAMENTOS
-            "create table " + TABELA_ACOMPANHAMENTO + " ( " +
+            " create table " + TABELA_ACOMPANHAMENTO + " ( " +
             ID_ACOMPANHAMENTO + " integer primary key autoincrement ," +
             NOME_ACOMPANHAMENTO + " text, " +
             VALOR_ACOMPANHAMENTO + " double );" +
 
             // Criando a tabela ACOMPANHAMENTOS
-            "create table " + TABELA_OUTRO + " ( " +
+            " create table " + TABELA_OUTRO + " ( " +
             ID_OUTRO + " integer primary key autoincrement, " +
             NOME_OUTRO + " text, " +
             VALOR_OUTRO + " double );";

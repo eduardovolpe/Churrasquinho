@@ -2,14 +2,13 @@
 <resources>
 
     <string name="app_name">Churrasquinho</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_editar">editarActivity</string>
-    <string name="title_activity_iniciar">iniciarActivity</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_editar">Meus Churras</string>
+    <string name="title_activity_iniciar">Convidados</string>
     <string name="iniciar">Iniciar</string>
     <string name="editar">Editar</string>
-    <string name="title_activity_carne">carneActivity</string>
-    <string name="title_activity_bebida">bebidaActivity</string>
+    <string name="title_activity_carne">Carnes</string>
+    <string name="title_activity_bebida">Bebidas</string>
     <string name="homem">Homens</string>
     <string name="mulher">Mulheres</string>
     <string name="crianca">Crianças</string>
@@ -21,11 +20,15 @@
     <string name="cadItem">Cadastrar Itens</string>
     <string name="cifrao">R$: </string>
     <string name="total"></string>
-    <string name="title_activity_convidados">ConvidadosActivity</string>
+    <string name="title_activity_convidados">Quantidade de Convidados</string>
     <string name="zero">0</string>
-    <string name="title_activity_acompanhamento">acompanhamentoActivity</string>
-    <string name="title_activity_outro">outroActivity</string>
-    <string name="title_activity_inserir">inserirActivity</string>
-    <string name="title_activity_inserir_carne">InserirCarne</string>
+    <string name="title_activity_acompanhamento">Acompanhamentos</string>
+    <string name="title_activity_outro">Outras Despesas</string>
+    <string name="title_activity_inserir">Cadastrar</string>
+    <string name="title_activity_inserir_carne">Cadastrar Carne</string>
+    <string name="title_activity_resumo">Resumo do Churras</string>
+    <string name="title_activity_finalizar">Finalizar Churrasco</string>
+    <string name="salvar">Salvar Churrasco</string>
+    <string name="compartilhar">Chamar a Galera</string>
 
 </resources>

@@ -48,6 +48,14 @@
             android:name=".InserirCarne"
             android:label="@string/title_activity_inserir_carne" >
         </activity>
+        <activity
+            android:name=".ResumoActivity"
+            android:label="@string/title_activity_resumo" >
+        </activity>
+        <activity
+            android:name=".FinalizarActivity"
+            android:label="@string/title_activity_finalizar" >
+        </activity>
     </application>
 
 </manifest>

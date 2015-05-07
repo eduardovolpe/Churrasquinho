@@ -4,9 +4,6 @@ package br.com.e3.churrasquinho;
  * Created by Eduardo on 06/04/2015.
  */
 public class Carne {
-
-
-
     private long idCarne;
     private String nomeCarne;
     private double valorCarne;
