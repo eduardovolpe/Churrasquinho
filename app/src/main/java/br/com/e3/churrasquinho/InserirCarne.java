@@ -1,5 +1,7 @@
 package br.com.e3.churrasquinho;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -75,15 +77,14 @@ public class InserirCarne extends ActionBarActivity {
                     default:
                         Toast.makeText(InserirCarne.this,"Erro no Cadastro", Toast.LENGTH_LONG).show();
                 }
+                alertaSair(finalTxt);
             }
         });
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
+    btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InserirCarne.this, carneActivity.class);
-                startActivity(intent);
-
+                voltarTela(finalTxt);
             }
         });
     }
@@ -115,5 +116,48 @@ public class InserirCarne extends ActionBarActivity {
         dbAdapterOutro.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
         dbAdapterOutro.close();
         Toast.makeText(InserirCarne.this,"Despesa inserida", Toast.LENGTH_LONG).show();
+    }
+    public void voltarTela(String finalTxt){
+
+        switch (finalTxt) {
+            case "carne":
+                Intent intCarne = new Intent(InserirCarne.this, carneActivity.class);
+                startActivity(intCarne);
+                break;
+            case "bebida":
+                Intent intBebida = new Intent(InserirCarne.this, bebidaActivity.class);
+                startActivity(intBebida);
+                break;
+            case "acompanhamento":
+
+                Intent intAcompanhamento = new Intent(InserirCarne.this, acompanhamentoActivity.class);
+                startActivity(intAcompanhamento);
+                break;
+            case "outro":
+                Intent intOutro = new Intent(InserirCarne.this, outroActivity.class);
+                startActivity(intOutro);
+                break;
+        }
+
+        InserirCarne.this.finish();
+    }
+    public void alertaSair(final String finalTxt){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Inserir");
+        alertDialogBuilder
+                .setMessage("Deseja adicionar mais " + finalTxt + " ?")
+                .setCancelable(false)
+                .setPositiveButton("Sim",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton("Não",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        voltarTela(finalTxt);
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
