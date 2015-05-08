@@ -42,7 +42,6 @@ public class InserirCarne extends ActionBarActivity {
             Bundle params = intent.getExtras();
             if(params != null){
                 txt = params.getString("texto");
-                Toast.makeText(InserirCarne.this,"Intent: " + txt, Toast.LENGTH_LONG).show();
             }
         }
 
@@ -52,24 +51,26 @@ public class InserirCarne extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(InserirCarne.this, .class);
-
                 switch (finalTxt) {
                     case "carne":
                         inserirCarne();
-                        startActivity(intent);
+                        Intent intCarne = new Intent(InserirCarne.this, carneActivity.class);
+                        startActivity(intCarne);
                         break;
                     case "bebida":
                         inserirBebida();
-                        startActivity(intent);
+                        Intent intBebida = new Intent(InserirCarne.this, bebidaActivity.class);
+                        startActivity(intBebida);
                         break;
                     case "acompanhamento":
                         inserirAcompanhamento();
-                        startActivity(intent);
+                        Intent intAcompanhamento = new Intent(InserirCarne.this, acompanhamentoActivity.class);
+                        startActivity(intAcompanhamento);
                         break;
                     case "outro":
                         inserirDespesa();
-                        startActivity(intent);
+                        Intent intOutro = new Intent(InserirCarne.this, outroActivity.class);
+                        startActivity(intOutro);
                         break;
                     default:
                         Toast.makeText(InserirCarne.this,"Erro no Cadastro", Toast.LENGTH_LONG).show();
