@@ -20,7 +20,21 @@
         android:id="@+id/lstOutro"
         android:layout_below="@+id/lblDespesas"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="90dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/cadOutro"
+        android:id="@+id/btnCadOutro"
+        android:gravity="center|center_vertical"
+        android:layout_gravity="center"
+        android:background="#ff000000"
+        android:textColor="#ffefdfc6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        android:layout_marginBottom="45dp"/>
 
     <Button
         android:layout_width="match_parent"

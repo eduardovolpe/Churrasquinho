@@ -16,7 +16,7 @@
     <string name="cadCarne">Adicionar Carnes</string>
     <string name="cadBebida">Adicionar Bebidas</string>
     <string name="cadAcompanhamento">Cadastrar Acompanhamentos</string>
-    <string name="cadOutro">Cadastrar Outros</string>
+    <string name="cadOutro">Cadastrar Despesas</string>
     <string name="cadItem">Cadastrar Itens</string>
     <string name="cifrao">R$: </string>
     <string name="total"></string>
