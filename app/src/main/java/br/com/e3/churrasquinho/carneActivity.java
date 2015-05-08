@@ -17,6 +17,9 @@ public class carneActivity extends ActionBarActivity {
     Button btnProsseguir;
     Button btnInserir;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,11 @@ public class carneActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                     Intent intent = new Intent(carneActivity.this, InserirCarne.class);
+
+                      Bundle param = new Bundle();
+                      param.putString("texto", "carne");
+                      intent.putExtras(param);
+
                     startActivity(intent);
             }
 

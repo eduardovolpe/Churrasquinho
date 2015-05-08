@@ -33,7 +33,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edtNomeCarne" />
+            android:id="@+id/edtNome" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:id="@+id/edtValorCarne"
+            android:id="@+id/edtValor"
             />
 
 
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Salvar"
-            android:id="@+id/btnSalvarCarne"
+            android:id="@+id/btnSalvar"
             android:gravity="center|center_vertical"
             android:layout_gravity="center"
             android:background="#ff000000"

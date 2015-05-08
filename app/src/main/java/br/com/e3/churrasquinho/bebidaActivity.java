@@ -15,6 +15,7 @@ public class bebidaActivity extends ActionBarActivity {
     Button btnProsseguir;
     ListView lstBebida;
     DBAdapterBebida dbAdapterBebida;
+    Button btnInserir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class bebidaActivity extends ActionBarActivity {
 
         lstBebida = (ListView) findViewById(R.id.lstBebidas);
         btnProsseguir = (Button) findViewById(R.id.btnProsseguir);
+        btnInserir = (Button) findViewById(R.id.btnCadBebida);
 
         dbAdapterBebida = new DBAdapterBebida(this);
         dbAdapterBebida.open();
@@ -30,8 +32,21 @@ public class bebidaActivity extends ActionBarActivity {
         List<Bebida> bebidas = dbAdapterBebida.listar();
         AdapterListBebida adapter = new AdapterListBebida(this, bebidas );
         lstBebida.setAdapter(adapter);
-
        dbAdapterBebida.close();
+
+        btnInserir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(bebidaActivity.this, InserirCarne.class);
+
+                Bundle param = new Bundle();
+                param.putString("texto", "bebida");
+                intent.putExtras(param);
+
+                startActivity(intent);
+            }
+
+        });
 
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override

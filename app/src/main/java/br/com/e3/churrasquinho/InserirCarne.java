@@ -8,40 +8,72 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.Toast;
 
 
 public class InserirCarne extends ActionBarActivity {
 
-    EditText edtNomeCarne;
-    EditText edtValorCarne;
-    Button btnCadCarne;
+    EditText edtNome;
+    EditText edtValor;
+    Button btnCadastrar;
     Button btnVoltar;
 
     DBAdapterCarne dbAdapterCarne;
+    DBAdapterBebida dbAdapterBebida;
+    DBAdapterAcompanhamento dbAdapterAcompanhamento;
+    DBAdapterOutro dbAdapterOutro;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inserir_carne);
 
-        edtNomeCarne = (EditText) findViewById(R.id.edtNomeCarne);
-        edtValorCarne = (EditText) findViewById(R.id.edtValorCarne);
-        btnCadCarne = (Button) findViewById(R.id.btnSalvarCarne);
+        edtNome = (EditText) findViewById(R.id.edtNome);
+        edtValor = (EditText) findViewById(R.id.edtValor);
+        btnCadastrar = (Button) findViewById(R.id.btnSalvar);
         btnVoltar = (Button) findViewById(R.id.btnVoltar);
 
+        String txt = "";
 
-        btnCadCarne.setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+        if(intent != null){
+            Bundle params = intent.getExtras();
+            if(params != null){
+                txt = params.getString("texto");
+                Toast.makeText(InserirCarne.this,"Intent: " + txt, Toast.LENGTH_LONG).show();
+            }
+        }
+
+        final String finalTxt = txt;
+
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbAdapterCarne = new DBAdapterCarne(InserirCarne.this);
 
-                dbAdapterCarne.open();
-                dbAdapterCarne.adicionar(edtNomeCarne.getText().toString(), Double.parseDouble(edtValorCarne.getText().toString()));
-                dbAdapterCarne.close();
+                Intent intent = new Intent(InserirCarne.this, .class);
 
-                Intent intent = new Intent(InserirCarne.this, carneActivity.class);
-                startActivity(intent);
-
+                switch (finalTxt) {
+                    case "carne":
+                        inserirCarne();
+                        startActivity(intent);
+                        break;
+                    case "bebida":
+                        inserirBebida();
+                        startActivity(intent);
+                        break;
+                    case "acompanhamento":
+                        inserirAcompanhamento();
+                        startActivity(intent);
+                        break;
+                    case "outro":
+                        inserirDespesa();
+                        startActivity(intent);
+                        break;
+                    default:
+                        Toast.makeText(InserirCarne.this,"Erro no Cadastro", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -53,5 +85,34 @@ public class InserirCarne extends ActionBarActivity {
 
             }
         });
+    }
+
+    public void inserirCarne() {
+        dbAdapterCarne = new DBAdapterCarne(InserirCarne.this);
+        dbAdapterCarne.open();
+        dbAdapterCarne.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterCarne.close();
+        Toast.makeText(InserirCarne.this,"Carne inserida", Toast.LENGTH_LONG).show();
+    }
+    public void inserirBebida() {
+        dbAdapterBebida = new DBAdapterBebida(InserirCarne.this);
+        dbAdapterBebida.open();
+        dbAdapterBebida.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterBebida.close();
+        Toast.makeText(InserirCarne.this,"Bebida inserida", Toast.LENGTH_LONG).show();
+    }
+    public void inserirAcompanhamento() {
+        dbAdapterAcompanhamento = new DBAdapterAcompanhamento(InserirCarne.this);
+        dbAdapterAcompanhamento.open();
+        dbAdapterAcompanhamento.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterAcompanhamento.close();
+        Toast.makeText(InserirCarne.this,"Acompanhamento inserido", Toast.LENGTH_LONG).show();
+    }
+    public void inserirDespesa() {
+        dbAdapterOutro = new DBAdapterOutro(InserirCarne.this);
+        dbAdapterOutro.open();
+        dbAdapterOutro.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterOutro.close();
+        Toast.makeText(InserirCarne.this,"Despesa inserida", Toast.LENGTH_LONG).show();
     }
 }
