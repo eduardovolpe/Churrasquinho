@@ -56,6 +56,10 @@
             android:name=".FinalizarActivity"
             android:label="@string/title_activity_finalizar" >
         </activity>
+        <activity
+            android:name=".Exemplo"
+            android:label="@string/title_activity_exemplo" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="br.com.e3.churrasquinho.FinalizarActivity"    android:background="#ffefdfc6">
@@ -15,11 +14,56 @@
         android:src="@drawable/lbl_finalizacao"
         />
 
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txtNomeFinalizar"
+            android:text="@string/nome"
+            android:layout_column="0"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txtQtdFinalizar"
+            android:text="@string/quantidade"
+            android:layout_column="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txtValorUnFinalizar"
+            android:text="@string/valorUn"
+            android:layout_column="2"
+            android:layout_gravity="right"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txtValorTotalFinalizar"
+            android:layout_gravity="center|right"
+            android:text="@string/valorTtl"
+            android:layout_column="3" />
+    </GridLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="@string/compartilhar"
-        android:id="@+id/compChurras"
+        android:id="@+id/btnShareChurras"
         android:gravity="center|center_vertical"
         android:layout_gravity="center"
         android:background="#ff000000"
