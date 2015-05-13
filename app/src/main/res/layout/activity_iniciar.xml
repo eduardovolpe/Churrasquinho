@@ -57,23 +57,23 @@
         android:id="@+id/edtHomem"
         android:gravity="center"
         android:layout_gravity="center_horizontal|bottom"
-         android:enabled="true"
-        android:focusable="true"
+         android:enabled="false"
+        android:focusable="false"
 
         android:textSize="60px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtHomens"
-        android:layout_alignStart="@+id/edtMulher"
         android:text="@string/zero"
         android:textIsSelectable="false"
         android:linksClickable="false"
         android:longClickable="false"
-        android:focusableInTouchMode="true"
+        android:focusableInTouchMode="false"
         android:maxLength="999"
         android:nestedScrollingEnabled="false"
         android:numeric="integer"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:layout_below="@+id/iconHomem"
+        android:layout_toEndOf="@+id/menosM" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -121,12 +121,12 @@
         android:textSize="60px"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/txtMulheres"
-        android:layout_centerHorizontal="true"
         android:text="@string/zero"
-        android:focusableInTouchMode="true"
-        android:enabled="true"
-        android:focusable="true" />
+        android:focusableInTouchMode="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:layout_below="@+id/iconMulher"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/iconCrianca"
@@ -148,8 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtMulher"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10px"
-        android:layout_marginBottom="30px" />
+        android:layout_marginTop="29dp" />
 
     <EditText
         android:inputType="number"
@@ -161,12 +160,12 @@
         android:textSize="60px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCrianca"
-        android:layout_alignStart="@+id/edtMulher"
         android:text="@string/zero"
         android:focusableInTouchMode="true"
-        android:enabled="true"
-        android:focusable="true" />
+        android:enabled="false"
+        android:focusable="false"
+        android:layout_below="@+id/iconCrianca"
+        android:layout_alignStart="@+id/edtMulher" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -211,8 +210,8 @@
         android:id="@+id/maisM"
         android:src="@drawable/mais"
         android:layout_gravity="top|left"
-        android:layout_alignTop="@+id/edtMulher"
-        android:layout_toEndOf="@+id/edtMulher" />
+        android:layout_below="@+id/txtMulheres"
+        android:layout_alignStart="@+id/maisH" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -221,7 +220,7 @@
         android:src="@drawable/menos"
         android:layout_gravity="top|right"
         android:focusableInTouchMode="false"
-        android:layout_alignTop="@+id/edtCriancas"
+        android:layout_alignTop="@+id/maisC"
         android:layout_toStartOf="@+id/edtCriancas" />
 
     <ImageView
@@ -230,7 +229,7 @@
         android:id="@+id/maisC"
         android:src="@drawable/mais"
         android:layout_gravity="top|left"
-        android:layout_below="@+id/txtCrianca"
-        android:layout_toEndOf="@+id/edtCriancas" />
+        android:layout_alignBottom="@+id/edtCriancas"
+        android:layout_alignStart="@+id/maisH" />
 
 </RelativeLayout>
