@@ -50,9 +50,6 @@ public class iniciarActivity extends ActionBarActivity {
         menosC = (ImageView) findViewById(R.id.menosC);
         maisC = (ImageView) findViewById(R.id.maisC);
 
-        txtTotalConvidados = (EditText) findViewById(R.id.txtTotalConvidados);
-        txtTotalConvidados.setText("Total de Convidados: 0");
-
         totalMulher = Integer.parseInt(edtMulher.getText().toString());
         totalHomem = Integer.parseInt(edtHomem.getText().toString());
         totalCrianca = Integer.parseInt(edtCrianca.getText().toString());
@@ -64,18 +61,21 @@ public class iniciarActivity extends ActionBarActivity {
                 edtHomem.setText(totalHomem.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
             }
         });
 
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                subtraiConvidado(totalHomem);
+                if(totalHomem <= 0)
+                    totalHomem = 0;
+                else
+                    totalHomem--;
+
+
                 edtHomem.setText(totalHomem.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
             }
         });
 
@@ -86,19 +86,20 @@ public class iniciarActivity extends ActionBarActivity {
                 edtMulher.setText(totalMulher.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
             }
         });
 
         menosM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                subtraiConvidado(totalMulher);
+                if(totalMulher <= 0)
+                    totalMulher = 0;
+                else
+                    totalMulher--;
+
                 edtMulher.setText(totalMulher.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
-
             }
         });
 
@@ -109,18 +110,20 @@ public class iniciarActivity extends ActionBarActivity {
                edtCrianca.setText(totalCrianca.toString());
 
                total = totalHomem + totalMulher + totalCrianca;
-               atualizaTotal(total);
             }
         });
 
         menosC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                subtraiConvidado(totalCrianca);
+                if(totalCrianca <= 0)
+                    totalCrianca = 0;
+                else
+                    totalCrianca--;
+
                 edtCrianca.setText(totalCrianca.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
             }
         });
 
@@ -148,20 +151,6 @@ public class iniciarActivity extends ActionBarActivity {
         });
     }
 
-    public void atualizaTotal(int total){
-        txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
-    }
-
-
-    public int subtraiConvidado(int subConvidados){
-        if(subConvidados <= 0) {
-            subConvidados = 0;
-            return subConvidados;
-        } else {
-            subConvidados--;
-            return subConvidados;
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

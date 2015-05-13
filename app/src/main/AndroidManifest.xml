@@ -12,7 +12,6 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -41,10 +40,6 @@
             android:label="@string/title_activity_outro" >
         </activity>
         <activity
-            android:name=".inserirActivity"
-            android:label="@string/title_activity_inserir" >
-        </activity>
-        <activity
             android:name=".InserirCarne"
             android:label="@string/title_activity_inserir_carne" >
         </activity>
@@ -55,10 +50,6 @@
         <activity
             android:name=".FinalizarActivity"
             android:label="@string/title_activity_finalizar" >
-        </activity>
-        <activity
-            android:name=".Exemplo"
-            android:label="@string/title_activity_exemplo" >
         </activity>
     </application>
 
