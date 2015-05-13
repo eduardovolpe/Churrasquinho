@@ -60,10 +60,10 @@ public class iniciarActivity extends ActionBarActivity {
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               totalHomem++;
+                totalHomem++;
                 edtHomem.setText(totalHomem.toString());
-                total = totalHomem + totalMulher + totalCrianca;
 
+                total = totalHomem + totalMulher + totalCrianca;
                 atualizaTotal(total);
             }
         });
@@ -71,11 +71,10 @@ public class iniciarActivity extends ActionBarActivity {
         menosH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalHomem--;
+                subtraiConvidado(totalHomem);
                 edtHomem.setText(totalHomem.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
-
                 atualizaTotal(total);
             }
         });
@@ -94,8 +93,7 @@ public class iniciarActivity extends ActionBarActivity {
         menosM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                totalMulher--;
+                subtraiConvidado(totalMulher);
                 edtMulher.setText(totalMulher.toString());
 
                 total = totalHomem + totalMulher + totalCrianca;
@@ -111,15 +109,16 @@ public class iniciarActivity extends ActionBarActivity {
                edtCrianca.setText(totalCrianca.toString());
 
                total = totalHomem + totalMulher + totalCrianca;
-                atualizaTotal(total);
+               atualizaTotal(total);
             }
         });
 
         menosC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalCrianca--;
+                subtraiConvidado(totalCrianca);
                 edtCrianca.setText(totalCrianca.toString());
+
                 total = totalHomem + totalMulher + totalCrianca;
                 atualizaTotal(total);
             }
@@ -153,6 +152,16 @@ public class iniciarActivity extends ActionBarActivity {
         txtTotalConvidados.setText(String.valueOf("Total de Convidados: " + total));
     }
 
+
+    public int subtraiConvidado(int subConvidados){
+        if(subConvidados <= 0) {
+            subConvidados = 0;
+            return subConvidados;
+        } else {
+            subConvidados--;
+            return subConvidados;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
