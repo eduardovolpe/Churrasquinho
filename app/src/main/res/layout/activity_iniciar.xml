@@ -44,36 +44,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/menosH"
-
         android:src="@drawable/menos"
         android:layout_gravity="top|right"
         android:focusableInTouchMode="false"
         android:layout_below="@+id/txtHomens"
-        android:layout_toStartOf="@+id/edtHomem" />
+        android:layout_toStartOf="@+id/txtTotalHomem" />
 
-    <EditText
+    <TextView
         android:inputType="number"
         android:ems="3"
-        android:id="@+id/edtHomem"
+        android:id="@+id/txtTotalHomem"
         android:gravity="center"
         android:layout_gravity="center_horizontal|bottom"
-         android:enabled="false"
-        android:focusable="false"
-
         android:textSize="60px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/zero"
-        android:textIsSelectable="false"
-        android:linksClickable="false"
-        android:longClickable="false"
-        android:focusableInTouchMode="false"
-        android:maxLength="999"
-        android:nestedScrollingEnabled="false"
-        android:numeric="integer"
-        android:singleLine="true"
         android:layout_below="@+id/iconHomem"
-        android:layout_toEndOf="@+id/menosM" />
+        android:layout_toEndOf="@+id/menosM"
+        android:textAlignment="center"
+        android:textColor="#ff000000"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -83,13 +72,12 @@
         android:src="@drawable/mais"
         android:layout_gravity="top|left"
         android:layout_below="@+id/txtHomens"
-        android:layout_toEndOf="@+id/edtHomem" />
+        android:layout_toEndOf="@+id/txtTotalHomem" />
 
     <ImageView
         android:id="@+id/iconMulher"
         android:src="@drawable/mulher"
         android:layout_gravity="bottom|right"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/txtMulheres"
@@ -105,19 +93,18 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtHomem"
+        android:layout_below="@+id/txtTotalHomem"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30px"
         android:layout_marginTop="10px" />
 
-    <EditText
+    <TextView
         android:inputType="number"
         android:ems="3"
-        android:id="@+id/edtMulher"
+        android:id="@+id/txtTotalMulher"
         android:gravity="center"
         android:layout_columnSpan="3"
         android:layout_gravity="center_horizontal|bottom"
-
         android:textSize="60px"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -126,7 +113,9 @@
         android:enabled="false"
         android:focusable="false"
         android:layout_below="@+id/iconMulher"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="#ff000000"/>
 
     <ImageView
         android:id="@+id/iconCrianca"
@@ -146,17 +135,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtMulher"
+        android:layout_below="@+id/txtTotalMulher"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp" />
 
-    <EditText
+    <TextView
         android:inputType="number"
         android:ems="3"
-        android:id="@+id/edtCriancas"
+        android:id="@+id/txtTotalCrianca"
         android:gravity="center"
         android:layout_gravity="center_horizontal|bottom"
-
         android:textSize="60px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -165,21 +153,22 @@
         android:enabled="false"
         android:focusable="false"
         android:layout_below="@+id/iconCrianca"
-        android:layout_alignStart="@+id/edtMulher" />
+        android:layout_alignStart="@+id/txtTotalMulher"
+        android:textAlignment="center"
+        android:textColor="#ff000000"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
         android:id="@+id/txtTotalConvidados"
-
-        android:enabled="false"
-        android:editable="false"
         android:layout_above="@+id/btnCarne"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10px"
-        android:textIsSelectable="false" />
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:textColor="#ff000000" />
 
     <Button
         android:layout_width="match_parent"
@@ -202,7 +191,7 @@
         android:layout_gravity="top|right"
         android:focusableInTouchMode="false"
         android:layout_below="@+id/txtMulheres"
-        android:layout_toStartOf="@+id/edtMulher" />
+        android:layout_toStartOf="@+id/txtTotalMulher" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -221,7 +210,7 @@
         android:layout_gravity="top|right"
         android:focusableInTouchMode="false"
         android:layout_alignTop="@+id/maisC"
-        android:layout_toStartOf="@+id/edtCriancas" />
+        android:layout_toStartOf="@+id/txtTotalCrianca" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -229,7 +218,7 @@
         android:id="@+id/maisC"
         android:src="@drawable/mais"
         android:layout_gravity="top|left"
-        android:layout_alignBottom="@+id/edtCriancas"
+        android:layout_alignBottom="@+id/txtTotalCrianca"
         android:layout_alignStart="@+id/maisH" />
 
 </RelativeLayout>
