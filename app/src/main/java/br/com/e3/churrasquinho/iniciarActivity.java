@@ -24,12 +24,12 @@ public class iniciarActivity extends Activity {
     EditText txtTotalMulher;
     EditText txtTotalCrianca;
 
-    ImageView menosH;
+/*    ImageView menosH;
     ImageView maisH;
     ImageView menosM;
     ImageView maisM;
     ImageView menosC;
-    ImageView maisC;
+    ImageView maisC; */
 
     private int total;
     private int totalHomem = 0;
@@ -47,6 +47,7 @@ public class iniciarActivity extends Activity {
         txtTotalMulher = (EditText) findViewById(R.id.txtTotalMulher);
         txtTotalCrianca = (EditText) findViewById(R.id.txtTotalCrianca);
 
+        txtTotalHomem.findFocus();
 /*
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
