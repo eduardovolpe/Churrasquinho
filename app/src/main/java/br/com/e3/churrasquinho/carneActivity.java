@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class carneActivity extends ActionBarActivity {
     Button btnProsseguir;
     Button btnInserir;
 
-
+    String txt = "";
 
 
     @Override
@@ -28,6 +29,8 @@ public class carneActivity extends ActionBarActivity {
         lstCarne = (ListView) findViewById(R.id.lstCarne);
         btnProsseguir = (Button) findViewById(R.id.btnProsCarne);
         btnInserir = (Button) findViewById(R.id.btnCadCarne);
+
+        infoConvidados();
 
         dbAdapterCarne = new DBAdapterCarne(this);
         dbAdapterCarne.open();
@@ -60,5 +63,17 @@ public class carneActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void infoConvidados(){
+        Intent intent = getIntent();
+        if(intent != null){
+            Bundle params = intent.getExtras();
+            if(params != null){
+                txt = params.getString("informacao");
+            }
+        }
+
+        Toast.makeText(carneActivity.this, "Quantidade de Convidados: " + txt, Toast.LENGTH_LONG).show();
     }
 }

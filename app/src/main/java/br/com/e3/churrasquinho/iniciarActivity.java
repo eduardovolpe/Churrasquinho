@@ -16,13 +16,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class iniciarActivity extends Activity implements View.OnTouchListener {
+public class iniciarActivity extends Activity {
 
     Button btnCarne;
 
-    TextView txtTotalHomem;
-    TextView txtTotalMulher;
-    TextView txtTotalCrianca;
+    EditText txtTotalHomem;
+    EditText txtTotalMulher;
+    EditText txtTotalCrianca;
 
     ImageView menosH;
     ImageView maisH;
@@ -31,51 +31,21 @@ public class iniciarActivity extends Activity implements View.OnTouchListener {
     ImageView menosC;
     ImageView maisC;
 
-    private int total = 0;
+    private int total;
     private int totalHomem = 0;
     private int totalMulher = 0;
     private int totalCrianca = 0;
-
-    TextView txtTotal;
-
-    private int count = 0;
-    private int velocidade = 0;
-
-    private Handler handler;
-    private boolean isPressed = false;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar);
 
-        handler = new Handler();
+        btnCarne = (Button) findViewById(R.id.btnProsseguir);
 
-        btnCarne = (Button) findViewById(R.id.btnCarne);
-
-        txtTotalHomem = (TextView) findViewById(R.id.txtTotalHomem);
-        txtTotalMulher = (TextView) findViewById(R.id.txtTotalMulher);
-        txtTotalCrianca = (TextView) findViewById(R.id.txtTotalCrianca);
-        txtTotal = (TextView) findViewById(R.id.txtTotalConvidados);
-
-        menosH = (ImageView) findViewById(R.id.menosH);
-        maisH = (ImageView) findViewById(R.id.maisH);
-        menosM = (ImageView) findViewById(R.id.menosM);
-        maisM = (ImageView) findViewById(R.id.maisM);
-        menosC = (ImageView) findViewById(R.id.menosC);
-        maisC = (ImageView) findViewById(R.id.maisC);
-
-        menosH.setOnTouchListener(this);
-        maisH.setOnTouchListener(this);
-        menosM.setOnTouchListener(this);
-        maisM.setOnTouchListener(this);
-        menosC.setOnTouchListener(this);
-        maisC.setOnTouchListener(this);
-
-        txtTotal.setText("Total Convidados: " + total);
-//        txtTotalHomem.setText(totalHomem);
+        txtTotalHomem = (EditText) findViewById(R.id.txtTotalHomem);
+        txtTotalMulher = (EditText) findViewById(R.id.txtTotalMulher);
+        txtTotalCrianca = (EditText) findViewById(R.id.txtTotalCrianca);
 
 /*
         maisH.setOnClickListener(new View.OnClickListener() {
@@ -165,149 +135,28 @@ public class iniciarActivity extends Activity implements View.OnTouchListener {
         btnCarne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                totalHomem = Integer.valueOf(txtTotalHomem.getText().toString());
+                totalMulher = Integer.valueOf(txtTotalMulher.getText().toString());
+                totalCrianca = Integer.valueOf(txtTotalCrianca.getText().toString());
+
+                total = totalHomem + totalMulher + totalCrianca;
+
                 if (total == 0) {
                     alertaConvidados.show();
                 } else {
                     Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
+
+                    Bundle param = new Bundle();
+                    param.putString("informacao", String.valueOf(total));
+                    intent.putExtras(param);
+
                     startActivity(intent);
                 }
             }
 
         });
     }
-
-    public boolean onTouch(View v, MotionEvent event) {
-        // Pega o evento disparado
-        int action = event.getAction() & MotionEvent.ACTION_MASK;
-
-        // Verifica se é a view que queremos testar (no caso o botão)
-        if (v.getId() == R.id.maisH) {
-
-            // Verifica qual evento é
-            switch (action) {
-                // Evento pressionando
-                case MotionEvent.ACTION_DOWN:
-                case MotionEvent.ACTION_POINTER_DOWN: {
-                    // Altera o estado para pressionado
-                    isPressed = true;
-                    // Chama o handler que fica se "autou chamando" até que o estado
-                    // do botão seja mudado para false
-                    velocidade = 0;
-                    incrementarHomem();
-                    break;
-                }
-
-                // Evento soltando
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_POINTER_UP:
-                case MotionEvent.ACTION_CANCEL: {
-                    // Altera o estado para não pressionado
-                    isPressed = false;
-                    break;
-                }
-            }
-            return true;
-        }
-        if (v.getId() == R.id.menosH) {
-
-            // Verifica qual evento é
-            switch (action) {
-                // Evento pressionando
-                case MotionEvent.ACTION_DOWN:
-                case MotionEvent.ACTION_POINTER_DOWN: {
-                    // Altera o estado para pressionado
-                    isPressed = true;
-                    // Chama o handler que fica se "autou chamando" até que o estado
-                    // do botão seja mudado para false
-                    velocidade = 0;
-                    decrementarHomem();
-                    break;
-                }
-
-                // Evento soltando
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_POINTER_UP:
-                case MotionEvent.ACTION_CANCEL: {
-                    // Altera o estado para não pressionado
-                    isPressed = false;
-                    break;
-                }
-            }
-            return true;
-        }
-
-        else {
-            // Caso não seja a view que queremos tratar, não iremos tratar o
-            // evento
-            return false;
-        }
-    }
-
-    /**
-     * Usada para incrementar o contador.
-     */
-    public void incrementarHomem() {
-        // Se o botão está pressionado, incrementa o contador e depois chama
-        // novamente o updater() para seguir incrementando o valor
-
-        if (isPressed) {
-            velocidade++;
-            totalHomem++;
-
-            updateTextView();
-
-            Runnable notification = new Runnable() {
-                public void run() {
-                    incrementarHomem();
-                }
-            };
-            // Regula a velocidade do contador
-            VelocidadeContador(notification);
-        }
-    }
-
-    public void decrementarHomem() {
-        // Se o botão está pressionado, incrementa o contador e depois chama
-        // novamente o updater() para seguir incrementando o valor
-        if (isPressed) {
-            velocidade++;
-            totalHomem--;
-
-            updateTextView();
-
-            Runnable notification = new Runnable() {
-                public void run() {
-                    decrementarHomem();
-                }
-            };
-
-            VelocidadeContador(notification);
-        }
-
-    }
-
-    private void updateTextView() {
-        total = totalHomem + totalCrianca + totalMulher;
-
-        txtTotalHomem.setText(totalHomem);
-        txtTotalMulher.setText(totalMulher);
-        txtTotalCrianca.setText(totalCrianca);
-        txtTotal.setText("Incremento: " + total);
-
-    }
-
-    public void VelocidadeContador(Runnable notification){
-        // Regula a velocidade do contador
-        if(velocidade <= 2)
-            handler.postDelayed(notification, 300);
-        if(velocidade >= 3 && velocidade <= 5)
-            handler.postDelayed(notification, 200);
-        if(velocidade > 5 && velocidade <= 7)
-            handler.postDelayed(notification, 120);
-        if(velocidade > 7)
-            handler.postDelayed(notification, 60);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

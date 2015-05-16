@@ -6,219 +6,152 @@
     tools:context="br.com.e3.churrasquinho.iniciarActivity"
     android:background="#ffefdfc6">
 
-    <ImageView
 
-        android:id="@+id/lblConvidados"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/lbl_convidados"
-        android:layout_gravity="left|top"
-        android:layout_columnSpan="3"
-        android:layout_marginBottom="30px"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent">
 
-    <ImageView
-        android:id="@+id/iconHomem"
-        android:src="@drawable/homem"
-        android:layout_gravity="bottom|right"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_alignTop="@+id/txtHomens"
-        android:layout_alignStart="@+id/iconMulher" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleConvidados"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/lbl_convidados"
+            android:layout_marginBottom="5sp" />
 
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/homem"
-        android:id="@+id/txtHomens"
-        android:textSize="70px"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblConvidados"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30px" />
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menosH"
-        android:src="@drawable/menos"
-        android:layout_gravity="top|right"
-        android:focusableInTouchMode="false"
-        android:layout_below="@+id/txtHomens"
-        android:layout_toStartOf="@+id/txtTotalHomem" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15sp">
 
-    <TextView
-        android:inputType="number"
-        android:ems="3"
-        android:id="@+id/txtTotalHomem"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textSize="60px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iconHomem"
-        android:layout_toEndOf="@+id/menosM"
-        android:textAlignment="center"
-        android:textColor="#ff000000"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgHomem"
+                android:src="@drawable/homem" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/maisH"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/homem"
+                android:id="@+id/titleHomem"
+                android:textSize="40dp"
+                android:layout_marginLeft="10sp"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
-        android:src="@drawable/mais"
-        android:layout_gravity="top|left"
-        android:layout_below="@+id/txtHomens"
-        android:layout_toEndOf="@+id/txtTotalHomem" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtTotalHomem"
+            android:layout_gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:numeric="integer"
+            android:textColor="#ff8f273e"
+            android:text="@string/zero" />
 
-    <ImageView
-        android:id="@+id/iconMulher"
-        android:src="@drawable/mulher"
-        android:layout_gravity="bottom|right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/txtMulheres"
-        android:layout_alignStart="@+id/iconCrianca" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="15sp">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgMulher"
+                android:src="@drawable/mulher" />
 
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/mulher"
-        android:id="@+id/txtMulheres"
-        android:textSize="70px"
-        android:layout_gravity="center_horizontal"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/mulher"
+                android:id="@+id/titleMulher"
+                android:textSize="40dp"
+                android:layout_marginLeft="10sp"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtTotalHomem"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30px"
-        android:layout_marginTop="10px" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtTotalMulher"
+            android:layout_gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:numeric="integer"
+            android:textColor="#ff8f273e"
+            android:inputType="none"
+            android:text="@string/zero" />
 
-    <TextView
-        android:inputType="number"
-        android:ems="3"
-        android:id="@+id/txtTotalMulher"
-        android:gravity="center"
-        android:layout_columnSpan="3"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textSize="60px"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/zero"
-        android:focusableInTouchMode="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:layout_below="@+id/iconMulher"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textColor="#ff000000"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="15sp">
 
-    <ImageView
-        android:id="@+id/iconCrianca"
-        android:src="@drawable/crianca"
-        android:layout_gravity="bottom|right"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgCrianca"
+                android:src="@drawable/crianca" />
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/txtCrianca"
-        android:layout_toStartOf="@+id/txtTotalConvidados" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/crianca"
+                android:id="@+id/titleCrianca"
+                android:textSize="40dp"
+                android:layout_marginLeft="5sp"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/crianca"
-        android:id="@+id/txtCrianca"
-        android:textSize="70px"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtTotalMulher"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/txtTotalCrianca"
+            android:layout_gravity="center_horizontal"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:numeric="integer"
+            android:textColor="#ff8f273e"
+            android:text="@string/zero" />
 
-    <TextView
-        android:inputType="number"
-        android:ems="3"
-        android:id="@+id/txtTotalCrianca"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal|bottom"
-        android:textSize="60px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/zero"
-        android:focusableInTouchMode="true"
-        android:enabled="false"
-        android:focusable="false"
-        android:layout_below="@+id/iconCrianca"
-        android:layout_alignStart="@+id/txtTotalMulher"
-        android:textAlignment="center"
-        android:textColor="#ff000000"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:id="@+id/txtTotalConvidados"
-        android:layout_above="@+id/btnCarne"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10px"
-        android:textIsSelectable="false"
-        android:textAlignment="center"
-        android:textColor="#ff000000" />
+    </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="fill_parent"
         android:text="@string/continuar"
-        android:id="@+id/btnCarne"
-        android:gravity="center|center_vertical"
-        android:layout_gravity="center"
+        android:id="@+id/btnProsseguir"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_height="40dp"
         android:background="#ff000000"
         android:textColor="#ffefdfc6"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:textSize="15sp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menosM"
-        android:src="@drawable/menos"
-        android:layout_gravity="top|right"
-        android:focusableInTouchMode="false"
-        android:layout_below="@+id/txtMulheres"
-        android:layout_toStartOf="@+id/txtTotalMulher" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/maisM"
-        android:src="@drawable/mais"
-        android:layout_gravity="top|left"
-        android:layout_below="@+id/txtMulheres"
-        android:layout_alignStart="@+id/maisH" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menosC"
-        android:src="@drawable/menos"
-        android:layout_gravity="top|right"
-        android:focusableInTouchMode="false"
-        android:layout_alignTop="@+id/maisC"
-        android:layout_toStartOf="@+id/txtTotalCrianca" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/maisC"
-        android:src="@drawable/mais"
-        android:layout_gravity="top|left"
-        android:layout_alignBottom="@+id/txtTotalCrianca"
-        android:layout_alignStart="@+id/maisH" />
 
 </RelativeLayout>
