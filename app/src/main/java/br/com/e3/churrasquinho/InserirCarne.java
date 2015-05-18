@@ -52,27 +52,18 @@ public class InserirCarne extends ActionBarActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 switch (finalTxt) {
                     case "carne":
                         inserirCarne();
-                        Intent intCarne = new Intent(InserirCarne.this, carneActivity.class);
-                        startActivity(intCarne);
                         break;
                     case "bebida":
                         inserirBebida();
-                        Intent intBebida = new Intent(InserirCarne.this, bebidaActivity.class);
-                        startActivity(intBebida);
-                        break;
+                       break;
                     case "acompanhamento":
                         inserirAcompanhamento();
-                        Intent intAcompanhamento = new Intent(InserirCarne.this, acompanhamentoActivity.class);
-                        startActivity(intAcompanhamento);
                         break;
                     case "outro":
                         inserirDespesa();
-                        Intent intOutro = new Intent(InserirCarne.this, outroActivity.class);
-                        startActivity(intOutro);
                         break;
                     default:
                         Toast.makeText(InserirCarne.this,"Erro no Cadastro", Toast.LENGTH_LONG).show();
@@ -117,6 +108,7 @@ public class InserirCarne extends ActionBarActivity {
         dbAdapterOutro.close();
         Toast.makeText(InserirCarne.this,"Despesa inserida", Toast.LENGTH_LONG).show();
     }
+
     public void voltarTela(String finalTxt){
 
         switch (finalTxt) {
@@ -129,7 +121,6 @@ public class InserirCarne extends ActionBarActivity {
                 startActivity(intBebida);
                 break;
             case "acompanhamento":
-
                 Intent intAcompanhamento = new Intent(InserirCarne.this, acompanhamentoActivity.class);
                 startActivity(intAcompanhamento);
                 break;
@@ -141,23 +132,28 @@ public class InserirCarne extends ActionBarActivity {
 
         InserirCarne.this.finish();
     }
+
     public void alertaSair(final String finalTxt){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("Inserir");
-        alertDialogBuilder
-                .setMessage("Deseja adicionar mais " + finalTxt + " ?")
-                .setCancelable(false)
-                .setPositiveButton("Sim",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        dialog.cancel();
-                    }
-                })
-                .setNegativeButton("Não",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        voltarTela(finalTxt);
-                    }
-                });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Inserir");
+        builder.setMessage("Deseja adicionar mais " + finalTxt + " ?");
+
+        builder.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                edtNome.setText("");
+                edtValor.setText("");
+                edtNome.requestFocus();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                voltarTela(finalTxt);
+                finish();
+            }
+        });
+        builder.create().show();
+
     }
 }

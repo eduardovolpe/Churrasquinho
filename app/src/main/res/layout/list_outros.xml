@@ -16,7 +16,8 @@
             android:checked="false"
             android:textSize="20dp"
             android:layout_column="0"
-            android:layout_gravity="left|center_vertical" />
+            android:layout_gravity="left|center_vertical"
+            android:textColor="#ff8f273e"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -40,7 +41,8 @@
                 android:ems="5"
                 android:id="@+id/valorOutro"
                 android:layout_gravity="center_vertical|right"
-                android:layout_column="1"/>
+                android:layout_column="1"
+                android:textColor="#ff8f273e"/>
         </LinearLayout>
 
     </GridLayout>

@@ -16,17 +16,36 @@
             android:checked="false"
             android:textSize="40px"
             android:layout_column="0"
-            android:layout_gravity="left|center_vertical" />
+            android:layout_gravity="left|center_vertical"
+            android:textColor="#ff8f273e"/>
 
-
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="5"
-            android:id="@+id/valorBebida"
-            android:layout_gravity="center_vertical|right"
-            android:layout_column="1"/>
+            android:layout_gravity="right"
+            android:layout_column="1">
+
+            <TextView
+                android:text="@string/cifrao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="5"
+                android:id="@+id/valorBebida"
+                android:layout_gravity="center_vertical|right"
+                android:layout_column="1"
+                android:textColor="#ff8f273e"/>
+
+
+        </LinearLayout>
+
 
     </GridLayout>
 

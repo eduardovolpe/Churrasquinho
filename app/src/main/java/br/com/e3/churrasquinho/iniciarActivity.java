@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class iniciarActivity extends Activity {
 
@@ -24,7 +27,7 @@ public class iniciarActivity extends Activity {
     EditText txtTotalMulher;
     EditText txtTotalCrianca;
 
-/*    ImageView menosH;
+/*  ImageView menosH;
     ImageView maisH;
     ImageView menosM;
     ImageView maisM;
@@ -48,6 +51,7 @@ public class iniciarActivity extends Activity {
         txtTotalCrianca = (EditText) findViewById(R.id.txtTotalCrianca);
 
         txtTotalHomem.findFocus();
+
 /*
         maisH.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,17 +151,14 @@ public class iniciarActivity extends Activity {
                     alertaConvidados.show();
                 } else {
                     Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
-
-                    Bundle param = new Bundle();
-                    param.putString("informacao", String.valueOf(total));
-                    intent.putExtras(param);
-
+                    Toast.makeText(iniciarActivity.this, "Quantidade de Convidados: " + total, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 }
             }
 
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

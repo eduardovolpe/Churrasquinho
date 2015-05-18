@@ -15,7 +15,8 @@
             android:id="@+id/nomeAcompanhamento"
             android:checked="false"
             android:textSize="40sp"
-            android:layout_column="0" />
+            android:layout_column="0"
+            android:textColor="#ff8f273e"/>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -36,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="5"
-                android:id="@+id/valorAcompanhamento" />
+                android:id="@+id/valorAcompanhamento"
+                android:textColor="#ff8f273e"/>
 
         </LinearLayout>
     </GridLayout>

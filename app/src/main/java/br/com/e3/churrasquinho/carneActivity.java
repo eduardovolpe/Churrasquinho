@@ -1,8 +1,10 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -20,17 +22,15 @@ public class carneActivity extends ActionBarActivity {
 
     String txt = "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carne);
 
+
         lstCarne = (ListView) findViewById(R.id.lstCarne);
         btnProsseguir = (Button) findViewById(R.id.btnProsCarne);
         btnInserir = (Button) findViewById(R.id.btnCadCarne);
-
-        infoConvidados();
 
         dbAdapterCarne = new DBAdapterCarne(this);
         dbAdapterCarne.open();
@@ -63,17 +63,5 @@ public class carneActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public void infoConvidados(){
-        Intent intent = getIntent();
-        if(intent != null){
-            Bundle params = intent.getExtras();
-            if(params != null){
-                txt = params.getString("informacao");
-            }
-        }
-
-        Toast.makeText(carneActivity.this, "Quantidade de Convidados: " + txt, Toast.LENGTH_LONG).show();
     }
 }

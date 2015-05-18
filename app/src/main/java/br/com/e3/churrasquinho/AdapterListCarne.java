@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class AdapterListCarne extends BaseAdapter {
 
     private class ItemSuporte{
         CheckBox nomeCarne;
-        EditText valorCarne;
+        TextView valorCarne;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class AdapterListCarne extends BaseAdapter {
             item = new ItemSuporte();
 
             item.nomeCarne = (CheckBox) convertView.findViewById(R.id.nomeCarne);
-            item.valorCarne = (EditText) convertView.findViewById(R.id.valorCarne);
+            item.valorCarne = (TextView) convertView.findViewById(R.id.valorCarne);
 
             convertView.setTag(item);
         } else {
