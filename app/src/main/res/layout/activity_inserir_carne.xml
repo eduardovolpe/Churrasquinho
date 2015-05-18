@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Nome"
+            android:textColor="#ff000000"
             android:id="@+id/txtNome"
             android:layout_margin="15dp"
             android:textSize="20sp"/>
@@ -33,13 +34,16 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edtNome" />
+            android:id="@+id/edtNome"
+            android:textColor="#ff8f273e"
+            android:textSize="20sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Valor"
+            android:textColor="#ff000000"
             android:id="@+id/txtValor"
             android:layout_margin="15dp"
             android:textSize="20sp"/>
@@ -49,7 +53,8 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:id="@+id/edtValor"
-            />
+            android:textColor="#ff8f273e"
+            android:textSize="20sp"/>
 
 
         <Button
