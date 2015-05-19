@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,19 +54,35 @@ public class InserirCarne extends ActionBarActivity {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtNome == null) {
-
-                    if (!TextUtils.isEmpty(edtValor.getText().toString())  || edtValor == null) {
-
+                if (edtNome.getText().toString() != null) {
+                    try {
                         if (edtNome.length() <= 20) {
-                            inserirItem(finalTxt);
-                        }
-                        if (edtNome.length() > 20)
+                            switch (finalTxt) {
+                                case "carne":
+                                    inserirCarne();
+                                    break;
+                                case "bebida":
+                                    inserirBebida();
+                                    break;
+                                case "acompanhamento":
+                                    inserirAcompanhamento();
+                                    break;
+                                case "outro":
+                                    inserirDespesa();
+                                    break;
+                                default:
+                                    Toast.makeText(InserirCarne.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
+                            }
+                            alertaSair(finalTxt);
+                        } else
                             Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        Log.e("Exceção", "Valor preenchido incorretamente");
                     }
-                } else {
-                    Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
                 }
+                Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -155,23 +172,27 @@ public class InserirCarne extends ActionBarActivity {
     }
 
     public  void inserirItem(final String finalTxt){
-        switch (finalTxt) {
-            case "carne":
-                inserirCarne();
-                break;
-            case "bebida":
-                inserirBebida();
-                break;
-            case "acompanhamento":
-                inserirAcompanhamento();
-                break;
-            case "outro":
-                inserirDespesa();
-                break;
-            default:
-                Toast.makeText(InserirCarne.this, "Erro no Cadastro", Toast.LENGTH_LONG).show();
+        if (edtNome.length() <= 20) {
+            switch (finalTxt) {
+                case "carne":
+                    inserirCarne();
+                    break;
+                case "bebida":
+                    inserirBebida();
+                    break;
+                case "acompanhamento":
+                    inserirAcompanhamento();
+                    break;
+                case "outro":
+                    inserirDespesa();
+                    break;
+                default:
+                    Toast.makeText(InserirCarne.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
+            }
+            alertaSair(finalTxt);
         }
-        alertaSair(finalTxt);
+        else
+            Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
     }
 }
 

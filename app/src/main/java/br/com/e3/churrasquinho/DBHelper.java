@@ -39,8 +39,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String CREATE_TB_CARNE=            // Criando a tabela CARNE
             "create table " + TABELA_CARNE + " ( " +
             ID_CARNE + " integer primary key autoincrement, " +
-            NOME_CARNE + " text, " +
-            VALOR_CARNE + " double );";
+            NOME_CARNE + " text not null, " +
+            VALOR_CARNE + " double not null );";
 
             // Criando a tabela BEBIDA
      public static String CREATE_TB_BEBIDA=      " create table " + TABELA_BEBIDA + " ( " +

@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/edtNome"
             android:textColor="#ff8f273e"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:inputType="textCapSentences" />
 
         <TextView
             android:layout_width="wrap_content"
