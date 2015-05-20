@@ -28,6 +28,10 @@ public class InserirCarne extends ActionBarActivity {
     DBAdapterAcompanhamento dbAdapterAcompanhamento;
     DBAdapterOutro dbAdapterOutro;
 
+    Carne carne;
+    Bebida bebida;
+    Acompanhamento acompanhamento;
+    Outro outro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,49 +44,99 @@ public class InserirCarne extends ActionBarActivity {
         btnVoltar = (Button) findViewById(R.id.btnVoltar);
 
         String txt = "";
+        long id = 0;
 
-        Intent intent = getIntent();
-        if(intent != null){
-            Bundle params = intent.getExtras();
+        // Adicionar novo item
+        final Intent intentTxt = getIntent();
+        if(intentTxt != null){
+            Bundle params = intentTxt.getExtras();
             if(params != null){
                 txt = params.getString("texto");
             }
         }
 
+        // Se for editar
+        final Intent intentId = getIntent();
+        if (intentId != null) {
+            Bundle paramId = intentId.getExtras();
+            if (paramId != null) {
+                id = paramId.getLong("id");
+                switch (txt) {
+                    case "carne" :
+                        dbAdapterCarne = new DBAdapterCarne(this);
+                        dbAdapterCarne.open();
+                        carne = dbAdapterCarne.getCarne(id);
+                        edtNome.setText(carne.getNomeCarne());
+                        edtValor.setText((int) carne.getValorCarne());
+                        dbAdapterCarne.close();
+                        break;
+                    case "bebida" :
+                        dbAdapterBebida = new DBAdapterBebida(this);
+                        dbAdapterBebida.open();
+                        bebida = dbAdapterBebida.getBebida(id);
+                        edtNome.setText(bebida.getNomeBebida());
+                        edtValor.setText((int) bebida.getValorBebida());
+                        dbAdapterBebida.close();
+                        break;
+                }
+            }
+        }
+
+        final Long finalId = id;
         final String finalTxt = txt;
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtNome.getText().toString() != null) {
-                    try {
-                        if (edtNome.length() <= 20) {
-                            switch (finalTxt) {
-                                case "carne":
-                                    inserirCarne();
-                                    break;
-                                case "bebida":
-                                    inserirBebida();
-                                    break;
-                                case "acompanhamento":
-                                    inserirAcompanhamento();
-                                    break;
-                                case "outro":
-                                    inserirDespesa();
-                                    break;
-                                default:
-                                    Toast.makeText(InserirCarne.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
-                            }
-                            alertaSair(finalTxt);
-                        } else
-                            Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
-                    } catch (Exception e) {
+                if (intentTxt != null && intentId == null) {
+                    if (edtNome.getText().toString() != null) {
+                        try {
+                            if (edtNome.length() <= 20) {
+                                switch (finalTxt) {
+                                    case "carne":
+                                        inserirCarne();
+                                        break;
+                                    case "bebida":
+                                        inserirBebida();
+                                        break;
+                                    case "acompanhamento":
+                                        inserirAcompanhamento();
+                                        break;
+                                    case "outro":
+                                        inserirDespesa();
+                                        break;
+                                    default:
+                                        Toast.makeText(InserirCarne.this, "Erro no Cadastro", Toast.LENGTH_SHORT).show();
+                                }
+                                alertaSair(finalTxt);
+                            } else
+                                Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                            Log.e("Exceção", "Valor preenchido incorretamente");
+                        }
                         Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                        Log.e("Exceção", "Valor preenchido incorretamente");
+                    }
+
+                } if(intentId != null && intentTxt != null){
+                    switch (finalTxt) {
+                        case "carne":
+                            editarCarne();
+                            break;
+                        case "bebida":
+                            //editarBebida(finalId);
+                            break;
+                        case "acompanhamento":
+                            //editarAcompanhamento(finalId);
+                            break;
+                        case "outro":
+                            //editarOutro(finalId);
+                            break;
+                        default:
+                            Toast.makeText(InserirCarne.this, "Erro na Edição", Toast.LENGTH_SHORT).show();
                     }
                 }
-                Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -194,5 +248,15 @@ public class InserirCarne extends ActionBarActivity {
         else
             Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
     }
+
+    public void editarCarne(){
+        dbAdapterCarne = new DBAdapterCarne(this);
+        dbAdapterCarne.open();
+        carne.setNomeCarne(edtNome.getText().toString());
+        carne.setValorCarne(Double.valueOf(edtValor.getText().toString()));
+        dbAdapterCarne.editarCarne(carne);
+    }
+
+
 }
 

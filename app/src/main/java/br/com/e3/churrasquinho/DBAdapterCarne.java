@@ -80,4 +80,13 @@ public class DBAdapterCarne {
         return lista;
     }
 
+    public void editarCarne(Carne carne){
+        ContentValues valores = new ContentValues();
+        valores.put(DBHelper.NOME_CARNE, carne.getNomeCarne());
+        valores.put(DBHelper.VALOR_CARNE, carne.getValorCarne());
+
+        database.update(DBHelper.TABELA_CARNE, valores,
+                DBHelper.ID_CARNE + " = ?", new String[] {String.valueOf(carne.getIdCarne())});
+    }
+
 }

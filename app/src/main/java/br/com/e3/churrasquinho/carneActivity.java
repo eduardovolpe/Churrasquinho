@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,11 +37,30 @@ public class carneActivity extends ActionBarActivity {
         dbAdapterCarne.open();
 
         List<Carne> carne = dbAdapterCarne.listar();
-        AdapterListCarne adapter = new AdapterListCarne(this, carne);
+        final AdapterListCarne adapter = new AdapterListCarne(this, carne);
 
         lstCarne.setAdapter(adapter);
         dbAdapterCarne.close();
 
+        lstCarne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Carne carne = adapter.getItem(position);
+                Intent intent = new Intent(view.getContext(), InserirCarne.class);
+
+                Bundle param = new Bundle();
+                Bundle idItem = new Bundle();
+
+                param.putString("texto", "carne");
+                idItem.putLong("id", carne.getIdCarne());
+
+                intent.putExtras(param);
+                intent.putExtras(idItem);
+
+                startActivity(intent);
+            }
+        });
 
         btnInserir.setOnClickListener(new View.OnClickListener() {
             @Override
