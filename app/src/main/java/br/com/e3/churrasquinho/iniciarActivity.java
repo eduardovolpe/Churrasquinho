@@ -151,7 +151,7 @@ public class iniciarActivity extends Activity {
                     alertaConvidados.show();
                 } else {
                     Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
-                    Toast.makeText(iniciarActivity.this, "Quantidade de Convidados: " + total, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(iniciarActivity.this, "Quantidade de Convidados: " + total, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 }
             }
