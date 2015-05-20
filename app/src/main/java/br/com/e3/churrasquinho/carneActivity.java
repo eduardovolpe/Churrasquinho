@@ -45,9 +45,10 @@ public class carneActivity extends ActionBarActivity {
         lstCarne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Toast.makeText(carneActivity.this, "LISTA" + id, Toast.LENGTH_SHORT).show();
+/*
                 Carne carne = adapter.getItem(position);
-                Intent intent = new Intent(view.getContext(), InserirCarne.class);
+                Intent intent = new Intent(view.getContext(), editarActivity.class);
 
                 Bundle param = new Bundle();
                 Bundle idItem = new Bundle();
@@ -59,7 +60,7 @@ public class carneActivity extends ActionBarActivity {
                 intent.putExtras(idItem);
 
                 startActivity(intent);
-            }
+*/            }
         });
 
         btnInserir.setOnClickListener(new View.OnClickListener() {

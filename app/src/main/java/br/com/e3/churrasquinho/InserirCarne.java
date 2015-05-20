@@ -44,7 +44,6 @@ public class InserirCarne extends ActionBarActivity {
         btnVoltar = (Button) findViewById(R.id.btnVoltar);
 
         String txt = "";
-        long id = 0;
 
         // Adicionar novo item
         final Intent intentTxt = getIntent();
@@ -55,41 +54,12 @@ public class InserirCarne extends ActionBarActivity {
             }
         }
 
-        // Se for editar
-        final Intent intentId = getIntent();
-        if (intentId != null) {
-            Bundle paramId = intentId.getExtras();
-            if (paramId != null) {
-                id = paramId.getLong("id");
-                switch (txt) {
-                    case "carne" :
-                        dbAdapterCarne = new DBAdapterCarne(this);
-                        dbAdapterCarne.open();
-                        carne = dbAdapterCarne.getCarne(id);
-                        edtNome.setText(carne.getNomeCarne());
-                        edtValor.setText((int) carne.getValorCarne());
-                        dbAdapterCarne.close();
-                        break;
-                    case "bebida" :
-                        dbAdapterBebida = new DBAdapterBebida(this);
-                        dbAdapterBebida.open();
-                        bebida = dbAdapterBebida.getBebida(id);
-                        edtNome.setText(bebida.getNomeBebida());
-                        edtValor.setText((int) bebida.getValorBebida());
-                        dbAdapterBebida.close();
-                        break;
-                }
-            }
-        }
-
-        final Long finalId = id;
         final String finalTxt = txt;
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (intentTxt != null && intentId == null) {
-                    if (edtNome.getText().toString() != null) {
+               if (edtNome.getText().toString() != null) {
                         try {
                             if (edtNome.length() <= 20) {
                                 switch (finalTxt) {
@@ -119,31 +89,13 @@ public class InserirCarne extends ActionBarActivity {
                         Toast.makeText(InserirCarne.this, "Nome ou valor preenchido incorretamente", Toast.LENGTH_SHORT).show();
                     }
 
-                } if(intentId != null && intentTxt != null){
-                    switch (finalTxt) {
-                        case "carne":
-                            editarCarne();
-                            break;
-                        case "bebida":
-                            //editarBebida(finalId);
-                            break;
-                        case "acompanhamento":
-                            //editarAcompanhamento(finalId);
-                            break;
-                        case "outro":
-                            //editarOutro(finalId);
-                            break;
-                        default:
-                            Toast.makeText(InserirCarne.this, "Erro na Edição", Toast.LENGTH_SHORT).show();
-                    }
                 }
-            }
         });
 
     btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voltarTela(finalTxt);
+                finish();
             }
         });
     }
@@ -248,15 +200,5 @@ public class InserirCarne extends ActionBarActivity {
         else
             Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
     }
-
-    public void editarCarne(){
-        dbAdapterCarne = new DBAdapterCarne(this);
-        dbAdapterCarne.open();
-        carne.setNomeCarne(edtNome.getText().toString());
-        carne.setValorCarne(Double.valueOf(edtValor.getText().toString()));
-        dbAdapterCarne.editarCarne(carne);
-    }
-
-
 }
 
