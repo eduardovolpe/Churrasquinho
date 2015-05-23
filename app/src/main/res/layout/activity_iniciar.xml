@@ -153,6 +153,8 @@
         android:layout_height="40dp"
         android:background="#ff000000"
         android:textColor="#ffefdfc6"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:drawableRight="@drawable/next"
+        android:paddingRight="10dp"/>
 
 </RelativeLayout>

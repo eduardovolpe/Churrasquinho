@@ -1,56 +1,33 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:background="#ffefdfc6">
+    android:background="#ffefdfc6"
+    android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imgLabel"
         android:src="@drawable/label"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgRodape"
-        android:src="@drawable/rodape"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/imgLabel" />
-
+        android:layout_gravity="center_horizontal"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnIniciar"
-        android:src="@drawable/img_03"
-        android:layout_above="@+id/btnCarne"
-        android:layout_toStartOf="@+id/imgLing"
-        android:layout_alignParentLeft="true" />
+        android:src="@drawable/churrasquear"
+        android:layout_gravity="center_horizontal|center_vertical"/>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCarne"
-        android:src="@drawable/img_04"
-        android:layout_alignBottom="@+id/imgLing"
-        android:layout_alignStart="@+id/imgRodape"
-        android:layout_alignParentRight="false"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentBottom="false"
-        android:layout_alignParentLeft="true" />
+        android:id="@+id/imgRodape"
+        android:src="@drawable/rodape"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_alignStart="@+id/imgLabel" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgLing"
-        android:src="@drawable/img_02"
-        android:layout_below="@+id/imgLabel"
-        android:layout_toEndOf="@+id/btnCarne"
-        android:layout_marginLeft="1px" />
 
-</RelativeLayout>
+
+</LinearLayout>

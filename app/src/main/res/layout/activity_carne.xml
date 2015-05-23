@@ -20,7 +20,8 @@
         android:id="@+id/lstCarne"
         android:layout_below="@+id/lblCarne"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="90dp" />
+        android:layout_marginBottom="90dp"
+        />
 
     <Button
         android:layout_width="match_parent"
@@ -34,7 +35,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:textSize="15sp"
-        android:layout_marginBottom="45dp"/>
+        android:layout_marginBottom="45dp"
+        android:drawableRight="@drawable/mais"
+        android:paddingRight="10dp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -47,6 +50,8 @@
         android:textColor="#ffefdfc6"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:drawableRight="@drawable/next"
+        android:paddingRight="10dp"/>
 
 </RelativeLayout>

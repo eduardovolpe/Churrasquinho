@@ -2,6 +2,7 @@ package br.com.e3.churrasquinho;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +47,14 @@ public class carneActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(carneActivity.this, "LISTA" + id, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lstCarne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(carneActivity.this, "LISTA" + id, Toast.LENGTH_SHORT).show();
+
 /*
                 Carne carne = adapter.getItem(position);
                 Intent intent = new Intent(view.getContext(), editarActivity.class);
@@ -72,7 +81,10 @@ public class carneActivity extends ActionBarActivity {
                       param.putString("texto", "carne");
                       intent.putExtras(param);
 
+                    carneActivity.this.finish();
+
                     startActivity(intent);
+
             }
 
        });
