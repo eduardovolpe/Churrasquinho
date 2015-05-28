@@ -8,6 +8,7 @@ public class Outro {
     private long idOutro;
     private String nomeOutro;
     private double valorOutro;
+    private boolean marcado;
 
     public Outro(){}
     public Outro(long idOutro, String nomeOutro, double valorOutro){
@@ -38,6 +39,14 @@ public class Outro {
 
     public void setValorOutro(double valorOutro) {
         this.valorOutro = valorOutro;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 
 
