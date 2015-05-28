@@ -10,7 +10,6 @@ import android.widget.ImageView;
 public class MainActivity extends ActionBarActivity {
 
     ImageView btnIniciar;
-    ImageView btnEditar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +17,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         btnIniciar = (ImageView) findViewById(R.id.btnIniciar);
-        btnEditar = (ImageView) findViewById(R.id.btnCarne);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,12 +26,5 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        btnEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, editarActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

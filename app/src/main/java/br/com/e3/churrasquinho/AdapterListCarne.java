@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class AdapterListCarne extends BaseAdapter {
     public AdapterListCarne(Context context, List<Carne> carnes){
         this.carne = carnes;
         inflater = LayoutInflater.from(context);
+    }
+
+    public List<Carne> getCarnes(){
+        return carne;
     }
 
     @Override
@@ -46,7 +51,7 @@ public class AdapterListCarne extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ItemSuporte item;
 
@@ -59,6 +64,25 @@ public class AdapterListCarne extends BaseAdapter {
             item.valorCarne = (TextView) convertView.findViewById(R.id.valorCarne);
 
             convertView.setTag(item);
+
+            item.nomeCarne.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v ;
+
+                    Carne carn = getItem(position);
+
+                    String status = "";
+
+                    if (cb.isChecked() == true)
+                       status = "selecionado";
+
+                    Toast.makeText(v.getContext(),cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    carn.setMarcado(cb.isChecked());
+
+                }
+            });
+
         } else {
             item = (ItemSuporte) convertView.getTag();
         }

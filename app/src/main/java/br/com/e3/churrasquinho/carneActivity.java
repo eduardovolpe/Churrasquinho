@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +22,7 @@ public class carneActivity extends ActionBarActivity {
     DBAdapterCarne dbAdapterCarne;
     Button btnProsseguir;
     Button btnInserir;
-
+    public static List<Carne> selecionadas = new ArrayList<>();
     String txt = "";
 
     @Override
@@ -82,7 +83,6 @@ public class carneActivity extends ActionBarActivity {
                       intent.putExtras(param);
 
                     carneActivity.this.finish();
-
                     startActivity(intent);
 
             }
@@ -92,6 +92,22 @@ public class carneActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                StringBuffer responseText = new StringBuffer();
+                responseText.append("Carnes selecionadas: \n");
+
+                List<Carne> carnesList = adapter.getCarnes();
+                for(int i=0;i<carnesList.size();i++){
+                    Carne carn = carnesList.get(i);
+                    if(carn.isMarcado()){
+                        responseText.append("\n" + carn.getNomeCarne());
+                        responseText.append(" - R$: " + carn.getValorCarne());
+                    }
+                    selecionadas.add(carn);
+                }
+
+                Toast.makeText(carneActivity.this, responseText, Toast.LENGTH_SHORT).show();
+
+
                 Intent intent = new Intent(carneActivity.this, bebidaActivity.class);
                 startActivity(intent);
             }

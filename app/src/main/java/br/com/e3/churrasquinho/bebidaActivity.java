@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,6 +18,8 @@ public class bebidaActivity extends ActionBarActivity {
     ListView lstBebida;
     DBAdapterBebida dbAdapterBebida;
     Button btnInserir;
+
+    public static List<Bebida> selecionadas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +34,9 @@ public class bebidaActivity extends ActionBarActivity {
         dbAdapterBebida.open();
 
         List<Bebida> bebidas = dbAdapterBebida.listar();
-        AdapterListBebida adapter = new AdapterListBebida(this, bebidas );
+        final AdapterListBebida adapter = new AdapterListBebida(this, bebidas );
         lstBebida.setAdapter(adapter);
-       dbAdapterBebida.close();
+        dbAdapterBebida.close();
 
         btnInserir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +55,22 @@ public class bebidaActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                StringBuffer responseText = new StringBuffer();
+                responseText.append("Carnes selecionadas: \n");
+
+                List<Bebida> bebidaList = adapter.getBebidas();
+                for(int i=0;i<bebidaList.size();i++){
+                    Bebida bebidis = bebidaList.get(i);
+                    if(bebidis.isMarcado()){
+                        responseText.append("\n" + bebidis.getNomeBebida());
+                        responseText.append(" - R$: " + bebidis.getValorBebida());
+                    }
+                    selecionadas.add(bebidis);
+                }
+
+                Toast.makeText(bebidaActivity.this, responseText, Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(bebidaActivity.this, acompanhamentoActivity.class);
                 startActivity(intent);
             }

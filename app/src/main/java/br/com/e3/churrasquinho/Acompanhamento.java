@@ -7,6 +7,7 @@ public class Acompanhamento {
     private long idAcompanhamento;
     private String nomeAcompanhamento;
     private double valorAcompanhamento;
+    private boolean marcado;
 
     public Acompanhamento(){}
     public Acompanhamento(long idAcompanhamento, String nomeAcompanhamento, double valorAcompanhamento){
@@ -37,6 +38,14 @@ public class Acompanhamento {
 
     public void setValorAcompanhamento(double valorAcompanhamento) {
         this.valorAcompanhamento = valorAcompanhamento;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 
 }

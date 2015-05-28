@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ public class AdapterListAcompanhamento extends BaseAdapter {
     public AdapterListAcompanhamento(Context context, List<Acompanhamento> acompanhamento) {
         this.acompanhamento = acompanhamento;
         inflater = LayoutInflater.from(context);
+    }
+
+    public List<Acompanhamento> getAcompanhamentos(){
+        return acompanhamento;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ItemSuporte item;
 
@@ -56,6 +61,25 @@ public class AdapterListAcompanhamento extends BaseAdapter {
             item.valorAcompanhamento = (EditText) convertView.findViewById(R.id.valorAcompanhamento);
 
             convertView.setTag(item);
+
+            item.nomeAcompanhamento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v ;
+
+                    Acompanhamento acomp = getItem(position);
+
+                    String status = "";
+
+                    if (cb.isChecked() == true)
+                        status = "selecionado";
+
+                    Toast.makeText(v.getContext(), cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    acomp.setMarcado(cb.isChecked());
+
+                }
+            });
+
         } else {
             item = (ItemSuporte) convertView.getTag();
         }

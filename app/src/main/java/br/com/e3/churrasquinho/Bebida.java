@@ -7,6 +7,7 @@ public class Bebida {
     private long idBebida;
     private String nomeBebida;
     private double valorBebida;
+    private boolean marcado;
 
     public Bebida(){}
     public Bebida(long idBebida, String nomeBebida, double valorBebida){
@@ -37,6 +38,14 @@ public class Bebida {
 
     public void setValorBebida(double valorBebida) {
         this.valorBebida = valorBebida;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 
 }

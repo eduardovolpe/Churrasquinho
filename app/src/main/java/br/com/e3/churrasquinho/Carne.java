@@ -7,6 +7,7 @@ public class Carne {
     private long idCarne;
     private String nomeCarne;
     private double valorCarne;
+    private boolean marcado;
 
     public Carne(){}
     public Carne(long idCarne, String nomeCarne, double valorCarne){
@@ -37,6 +38,14 @@ public class Carne {
 
     public void setValorCarne(double valorCarne) {
       this.valorCarne = valorCarne;
+    }
+
+    public boolean isMarcado() {
+        return marcado;
+    }
+
+    public void setMarcado(boolean marcado) {
+        this.marcado = marcado;
     }
 
 }

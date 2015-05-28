@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ public class AdapterListBebida extends BaseAdapter{
     public AdapterListBebida(Context context, List<Bebida> bebidas) {
         this.bebida = bebidas;
         inflater = LayoutInflater.from(context);
+    }
+
+    public List<Bebida> getBebidas(){
+        return bebida;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class AdapterListBebida extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ItemSuporte item;
 
@@ -56,6 +61,25 @@ public class AdapterListBebida extends BaseAdapter{
             item.valorBebida = (EditText) convertView.findViewById(R.id.valorBebida);
 
             convertView.setTag(item);
+
+            item.nomeBebida.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CheckBox cb = (CheckBox) v ;
+
+                    Bebida bebidis = getItem(position);
+
+                    String status = "";
+
+                    if (cb.isChecked() == true)
+                        status = "selecionado";
+
+                    Toast.makeText(v.getContext(), cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    bebidis.setMarcado(cb.isChecked());
+
+                }
+            });
+
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
