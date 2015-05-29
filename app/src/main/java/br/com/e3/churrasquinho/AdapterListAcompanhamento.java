@@ -71,15 +71,15 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
                     Acompanhamento acomp = getItem(position);
 
-                    String s = "";
+                    String s;
 
-                    if (cb.isChecked() == true)
+                    if (cb.isChecked())
                         qtd ++;
-                    if (cb.isChecked() == false)
+                    if (!cb.isChecked())
                         qtd --;
 
                     if (qtd >= 2)
-                        s = "s selecionad0s.";
+                        s = "s selecionados.";
                     else
                         s = " selecionado.";
 

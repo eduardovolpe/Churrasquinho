@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,11 +73,11 @@ public class AdapterListCarne extends BaseAdapter {
 
                     Carne carn = getItem(position);
 
-                    String s = "";
+                    String s;
 
-                    if (cb.isChecked() == true)
+                    if (cb.isChecked())
                         qtd ++;
-                    if (cb.isChecked() == false)
+                    if (!cb.isChecked())
                         qtd --;
 
                     if (qtd >= 2)
