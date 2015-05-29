@@ -18,6 +18,8 @@ import java.util.List;
 public class AdapterListBebida extends BaseAdapter{
     private LayoutInflater inflater;
     private List<Bebida> bebida;
+    int qtd = 0;
+
 
     public AdapterListBebida(Context context, List<Bebida> bebidas) {
         this.bebida = bebidas;
@@ -70,12 +72,22 @@ public class AdapterListBebida extends BaseAdapter{
 
                     Bebida bebidis = getItem(position);
 
-                    String status = "";
+                    String s = "";
 
                     if (cb.isChecked() == true)
-                        status = "selecionado";
+                        qtd ++;
+                    if (cb.isChecked() == false)
+                        qtd --;
 
-                    Toast.makeText(v.getContext(), cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    if (qtd >= 2)
+                        s = "s selecionadas";
+                    else
+                        s = " selecionada";
+
+                    if (qtd == 0)
+                        Toast.makeText(v.getContext(), "Nenhuma bebida selecionada.", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(v.getContext(), qtd + " bebida" + s, Toast.LENGTH_SHORT).show();
                     bebidis.setMarcado(cb.isChecked());
 
                 }

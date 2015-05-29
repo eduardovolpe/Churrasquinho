@@ -18,6 +18,7 @@ import java.util.List;
 public class AdapterListAcompanhamento extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Acompanhamento> acompanhamento;
+    int qtd = 0;
 
     public AdapterListAcompanhamento(Context context, List<Acompanhamento> acompanhamento) {
         this.acompanhamento = acompanhamento;
@@ -70,12 +71,22 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
                     Acompanhamento acomp = getItem(position);
 
-                    String status = "";
+                    String s = "";
 
                     if (cb.isChecked() == true)
-                        status = "selecionado";
+                        qtd ++;
+                    if (cb.isChecked() == false)
+                        qtd --;
 
-                    Toast.makeText(v.getContext(), cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    if (qtd >= 2)
+                        s = "s selecionad0s.";
+                    else
+                        s = " selecionado.";
+
+                    if (qtd == 0)
+                        Toast.makeText(v.getContext(), "Nenhum acompanhamento selecionado.", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(v.getContext(), qtd + " acompanhamento" + s, Toast.LENGTH_SHORT).show();
                     acomp.setMarcado(cb.isChecked());
 
                 }

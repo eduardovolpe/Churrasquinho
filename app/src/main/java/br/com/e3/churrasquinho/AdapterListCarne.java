@@ -20,6 +20,8 @@ import java.util.List;
 public class AdapterListCarne extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Carne> carne;
+    int qtd = 0;
+
 
     public AdapterListCarne(Context context, List<Carne> carnes){
         this.carne = carnes;
@@ -72,12 +74,23 @@ public class AdapterListCarne extends BaseAdapter {
 
                     Carne carn = getItem(position);
 
-                    String status = "";
+                    String s = "";
 
                     if (cb.isChecked() == true)
-                       status = "selecionado";
+                        qtd ++;
+                    if (cb.isChecked() == false)
+                        qtd --;
 
-                    Toast.makeText(v.getContext(),cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
+                    if (qtd >= 2)
+                        s = "s selecionadas.";
+                    else
+                        s = " selecionada.";
+
+                    if (qtd == 0)
+                        Toast.makeText(v.getContext(), "Nenhuma carne selecionada.", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(v.getContext(), qtd + " carne" + s, Toast.LENGTH_SHORT).show();
+
                     carn.setMarcado(cb.isChecked());
 
                 }
