@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class AdapterListBebida extends BaseAdapter{
 
     private class ItemSuporte {
         CheckBox nomeBebida;
-        EditText valorBebida;
+        TextView valorBebida;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class AdapterListBebida extends BaseAdapter{
             item = new ItemSuporte();
 
             item.nomeBebida = (CheckBox) convertView.findViewById(R.id.nomeBebida);
-            item.valorBebida = (EditText) convertView.findViewById(R.id.valorBebida);
+            item.valorBebida = (TextView) convertView.findViewById(R.id.valorBebida);
 
             convertView.setTag(item);
 

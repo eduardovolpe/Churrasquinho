@@ -6,15 +6,15 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="wrap_content">
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nomeAcompanhamento"
             android:checked="false"
-            android:textSize="40sp"
+            android:textSize="20dp"
+            android:layout_gravity="left|center_vertical"
             android:layout_column="0"
             android:textColor="#ff8f273e"/>
 
@@ -32,11 +32,15 @@
                 android:layout_gravity="center_vertical"
                 android:textSize="15sp" />
 
-            <EditText
+            <TextView
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:ems="5"
+                android:numeric="decimal"
+                android:textAlignment="center"
+                android:ems="4"
+                android:textSize="25sp"
+                android:layout_gravity="right"
                 android:id="@+id/valorAcompanhamento"
                 android:textColor="#ff8f273e"/>
 

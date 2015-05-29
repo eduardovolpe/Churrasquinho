@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout">
 
         <Button
             android:layout_width="fill_parent"
@@ -65,6 +66,29 @@
             android:paddingRight="10dp"
             />
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_marginTop="65dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/lblResumo"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/linearLayout">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/txtCarnes" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class AdapterListOutro extends BaseAdapter {
 
     private class ItemSuporte{
         CheckBox nomeOutro;
-        EditText valorOutro;
+        TextView valorOutro;
     }
 
     @Override
@@ -58,24 +59,26 @@ public class AdapterListOutro extends BaseAdapter {
             item = new ItemSuporte();
 
             item.nomeOutro = (CheckBox) convertView.findViewById(R.id.nomeOutro);
-            item.valorOutro = (EditText) convertView.findViewById(R.id.valorOutro);
+            item.valorOutro = (TextView) convertView.findViewById(R.id.valorOutro);
 
             convertView.setTag(item);
-            item.nomeOutro.setOnClickListener(new View.OnClickListener() {
+
+          item.nomeOutro.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v ;
 
-                    Outro outros = getItem(position);
+                    Outro outro = getItem(position);
 
                     String status = "";
 
                     if (cb.isChecked() == true)
-                        status = "selecionado";
+                        status = "selecionado.";
+                    if (cb.isChecked() == false)
+                        status = "desmarcado.";
 
                     Toast.makeText(v.getContext(), cb.getText() + " foi " + status, Toast.LENGTH_SHORT).show();
-                    outros.setMarcado(cb.isChecked());
-
+                    outro.setMarcado(cb.isChecked());
                 }
             });
         } else {

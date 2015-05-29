@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
     private class ItemSuporte {
         CheckBox nomeAcompanhamento;
-        EditText valorAcompanhamento;
+        TextView valorAcompanhamento;
     }
 
     @Override
@@ -58,7 +59,7 @@ public class AdapterListAcompanhamento extends BaseAdapter {
             item = new ItemSuporte();
 
             item.nomeAcompanhamento = (CheckBox) convertView.findViewById(R.id.nomeAcompanhamento);
-            item.valorAcompanhamento = (EditText) convertView.findViewById(R.id.valorAcompanhamento);
+            item.valorAcompanhamento = (TextView) convertView.findViewById(R.id.valorAcompanhamento);
 
             convertView.setTag(item);
 
