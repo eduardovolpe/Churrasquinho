@@ -38,7 +38,16 @@
     <string name="valorTtl">Valor Total</string>
     <string name="title_activity_exemplo">Exemplo</string>
     <string name="localizacao">Localização</string>
+    <string name="title_activity_local">Localização</string>
+    <string name="endereco">Endereço: </string>
+    <string name="btnBuscar">Buscar</string>
+    <string name="referencia">Ponto de Referência:</string>
+    <string name="uf">UF:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="complemento">Complemento:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="numero">Número:</string>
+    <string name="informe_cep">Informe o CEP:</string>
 
-    <string name="hello_world">Hello world!</string>
 
 </resources>
