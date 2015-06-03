@@ -29,6 +29,7 @@ public class ResumoActivity extends ActionBarActivity {
         btnLocalizacao = (Button) findViewById(R.id.btnLocalizacao);
 
 
+
          btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

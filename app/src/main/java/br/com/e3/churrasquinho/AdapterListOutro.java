@@ -54,7 +54,7 @@ public class AdapterListOutro extends BaseAdapter {
         ItemSuporte item;
 
         if(convertView == null){
-            convertView = inflater.inflate(R.layout.list_carne, null);
+            convertView = inflater.inflate(R.layout.list_outros, null);
 
             item = new ItemSuporte();
 
@@ -63,40 +63,46 @@ public class AdapterListOutro extends BaseAdapter {
 
             convertView.setTag(item);
 
-          item.nomeOutro.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    CheckBox cb = (CheckBox) v ;
+            if(item.nomeOutro !=null) {
 
-                    Outro outro = getItem(position);
+                item.nomeOutro.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CheckBox cb = (CheckBox) v;
 
-                    String s = "";
+                        Outro outro = getItem(position);
 
-                    if (cb.isChecked() == true)
-                         qtd ++;
-                    if (cb.isChecked() == false)
-                        qtd --;
+                        String s = "";
 
-                    if (qtd >= 2)
-                        s = "s selecionadas";
-                    else
-                        s = " selecionada";
+                        if (cb.isChecked() == true)
+                            qtd++;
+                        if (cb.isChecked() == false)
+                            qtd--;
 
-                    if (qtd == 0)
-                        Toast.makeText(v.getContext(), "Nenhuma despesa selecionada.", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(v.getContext(), qtd + " despesa" + s, Toast.LENGTH_SHORT).show();
+                        if (qtd >= 2)
+                            s = "s selecionadas";
+                        else
+                            s = " selecionada";
 
-                    outro.setMarcado(cb.isChecked());
-                }
-            });
+                        if (qtd == 0)
+                            Toast.makeText(v.getContext(), "Nenhuma despesa selecionada.", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(v.getContext(), qtd + " despesa" + s, Toast.LENGTH_SHORT).show();
+
+                        outro.setMarcado(cb.isChecked());
+                    }
+                });
+            }
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
 
         Outro outro = getItem(position);
-        item.nomeOutro.setText(outro.getNomeOutro());
-        item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
+        if(item.nomeOutro !=null) {
+            item.nomeOutro.setText(outro.getNomeOutro());
+        }
+        if(item.valorOutro != null)
+            item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
 
         return convertView;
     }

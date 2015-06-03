@@ -2,40 +2,29 @@ package br.com.e3.churrasquinho;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.*;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 
 public class localActivity extends ActionBarActivity {
 
-    String cep,logradouro,bairro,cidade,uf,resultado;
-    EditText etCep, etLogradouro, etBairro, etCidade, etUf, edtComplemento, edtReferencia, edtNumero;
-    Button btnBuscar, btnSalvar;
+    EditText edtCep, edtLogradouro, edtBairro, edtCidade, edtUf, edtComplemento, edtReferencia, edtNumero;
+    Button btnConsultar, btnSalvar;
     private ProgressDialog dialog;
     final Context context = this;
 
@@ -44,110 +33,80 @@ public class localActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local);
 
-        etCep = (EditText) findViewById(R.id.etCep);
-
-        etLogradouro = (EditText) findViewById(R.id.etLogradouro);
-        etBairro = (EditText) findViewById(R.id.etBairro);
-        etCidade = (EditText) findViewById(R.id.etCidade);
-        etUf = (EditText) findViewById(R.id.etUf);
-        edtComplemento = (EditText) findViewById(R.id.edtComplemento);
+        //edtComplemento = (EditText) findViewById(R.id.edtComplemento);
         edtReferencia = (EditText) findViewById(R.id.edtReferencia);
         edtNumero = (EditText) findViewById(R.id.edtNumero);
 
-        btnBuscar = (Button) findViewById(R.id.btnBuscar);
-        btnSalvar = (Button) findViewById(R.id.btnSalvar);
-        //btnSalvos = (Button) findViewById(R.id.btnSalvos);
-        //btnAlert = (Button) findViewById(R.id.btnAlert);
+        btnConsultar = (Button) findViewById(R.id.btnBuscar);
+       // btnLimpar = (Button) findViewById(R.id.btnSalvar);
 
+        edtCep = (EditText) findViewById(R.id.etCep);
+        edtLogradouro = (EditText) findViewById(R.id.etLogradouro);
+        edtBairro = (EditText) findViewById(R.id.etBairro);
+        edtCidade = (EditText) findViewById(R.id.etCidade);
+        edtUf = (EditText) findViewById(R.id.etUf);
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
+        edtCep.findFocus();
+
+        btnConsultar.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                HttpGetter get = new HttpGetter();
-                get.execute();
+                final String cep = edtCep.getText().toString();
+                final String url = "http://viacep.com.br/ws/"+cep+"/json/";
 
-                etCep = (EditText) findViewById(R.id.etCep);
-                InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                mgr.hideSoftInputFromWindow(etCep.getWindowToken(), 0);
+                //if(edtCep.length() == 9) {
+                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+                    JsonObjectRequest getRequest =
+                            new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject jsonObject) {
+                                    try {
+                                        limpar();
+
+                                        if (jsonObject.has("logradouro")) {
+                                            edtLogradouro.setText(jsonObject.getString("logradouro"));
+                                        }
+                                        if (jsonObject.has("localidade")) {
+                                            edtCidade.setText(jsonObject.getString("localidade"));
+                                        }
+                                        if (jsonObject.has("bairro")) {
+                                            edtBairro.setText(jsonObject.getString("bairro"));
+                                        }
+                                        if (jsonObject.has("uf")) {
+                                            edtUf.setText(jsonObject.getString("uf"));
+                                        }
+                                        if (jsonObject.has("erro")) {
+                                            Toast.makeText(localActivity.this, "CEP " + cep + " inválido!", Toast.LENGTH_SHORT).show();
+                                            edtCep.setText("");
+                                        }
+
+                                        Log.d("Resposta: ", jsonObject.toString());
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError volleyError) {
+                                    Log.d("Error.Response", volleyError.getMessage());
+                                }
+                            });
+                    queue.add(getRequest);
+                /*} else {
+                    Toast.makeText(localActivity.this, "CEP " + cep + " inválido!", Toast.LENGTH_SHORT).show();
+                }*/
             }
         });
-
     }
-        private class HttpGetter extends AsyncTask<Void, Void, Void> {
-            @Override
-            protected void onPreExecute() {
 
-                if (localActivity.this.dialog != null) {
-                    localActivity.this.dialog.dismiss();
-                }
-                localActivity.this.dialog = ProgressDialog.show(localActivity.this, "Aguarde", "Processando", true, false);
-            }
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-                StringBuilder builder = new StringBuilder();
-                HttpClient client = new DefaultHttpClient();
-
-                cep = etCep.getEditableText().toString();
-
-                HttpGet httpGet = new HttpGet("http://viacep.com.br/ws/" + cep + "/json/");
-
-                try {
-                    HttpResponse response = client.execute(httpGet);
-                    StatusLine statusLine = response.getStatusLine();
-                    int statusCode = statusLine.getStatusCode();
-                    if (statusCode == 200) {
-                        HttpEntity entity = response.getEntity();
-                        InputStream content = entity.getContent();
-                        BufferedReader reader = new BufferedReader(
-                                new InputStreamReader(content));
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            builder.append(line);
-                        }
-
-                        JSONObject jsonObj = new JSONObject(builder.toString());
-                        resultado = jsonObj.getString("resultado_txt");
-
-                        if (resultado.equalsIgnoreCase("sucesso")) {
-
-                            logradouro = jsonObj.getString("logradouro");
-                            bairro = jsonObj.getString("bairro");
-                            cidade = jsonObj.getString("cidade");
-                            uf = jsonObj.getString("uf");
-                        }
-                    } else {
-                        Log.e("Falha", "Falha ao acessar o serviço.");
-                    }
-                } catch (ClientProtocolException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void r) {
-                localActivity.this.dialog.dismiss();
-
-                if (resultado.equalsIgnoreCase("sucesso")) {
-                    etLogradouro.setText(logradouro);
-                    etBairro.setText(bairro);
-                    etCidade.setText(cidade);
-                    etUf.setText(uf);
-                } else {
-                    Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-                    etLogradouro.setText("");
-                    etBairro.setText("");
-                    etCidade.setText("");
-                    etUf.setText("");
-                }
-            }
-        }
-
+    public void limpar(){
+        edtBairro.setText("");
+        edtLogradouro.setText("");
+        edtUf.setText("");
+        edtCidade.setText("");
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
