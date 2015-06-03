@@ -1,9 +1,6 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:orientation="vertical"
@@ -19,10 +16,14 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
+
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:text="@string/informe_cep"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"
                     />
 
 
@@ -32,12 +33,14 @@
                 android:layout_gravity="center">
 
                 <br.com.e3.churrasquinho.mascaraCep
-                    android:layout_width="wrap_content"
+                    android:layout_width="201dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/etCep"
-                    android:layout_gravity="fill_horizontal|center"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"
                     android:textAlignment="center"
-                    android:ems="5" />
+                    android:ems="5"
+                    android:layout_gravity="right" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -47,45 +50,61 @@
                     android:layout_below="@+id/txtCidade"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="15dp"
+                    android:background="#ff000000"
+                    android:textColor="#ffefdfc6"
+                    android:textSize="15sp"
+                    android:drawableStart="@drawable/lupa"
                     android:layout_gravity="fill_horizontal|center" />
 
             </GridLayout>
 
 
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:text="@string/endereco"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etLogradouro"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"
                     android:layout_below="@+id/txtCidade"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/numero"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/textView3"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edtNumero"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"/>
 
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:text="@string/bairro"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -93,13 +112,18 @@
                     android:id="@+id/etBairro"
                     android:layout_below="@+id/txtCidade"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"/>
 
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:text="@string/cidade"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -107,12 +131,18 @@
                     android:id="@+id/etCidade"
                     android:layout_below="@+id/txtCidade"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"/>
+
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:text="@string/uf"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -120,26 +150,36 @@
                     android:id="@+id/etUf"
                     android:layout_below="@+id/txtCidade"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"/>
 
                 <TextView
+                    android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/referencia"
-                    android:id="@+id/textView2" />
+                    android:id="@+id/textView2"
+                    android:textColor="#ff000000"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edtReferencia" />
+                    android:id="@+id/edtReferencia"
+                    android:textColor="#ff8f273e"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/salvar"
+                    android:text="@string/inserir"
                     android:id="@+id/btnSalvarEndereco"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:background="#ff000000"
+                    android:textColor="#ffefdfc6"
+                    android:textSize="15sp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -27,9 +27,9 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Nome"
             android:textColor="#ff000000"
+            android:textSize="20sp"
             android:id="@+id/txtNome"
-            android:layout_margin="15dp"
-            android:textSize="20sp"/>
+            android:layout_margin="15dp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -81,9 +81,9 @@
             android:layout_gravity="center"
             android:background="#ff000000"
             android:textColor="#ffefdfc6"
+            android:textSize="15sp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:textSize="15sp"
             android:layout_marginTop="15dp"/>
 
     </LinearLayout>

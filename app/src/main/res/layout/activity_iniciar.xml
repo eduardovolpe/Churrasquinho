@@ -8,153 +8,159 @@
     >
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/titleConvidados"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/lbl_convidados"
-            android:layout_marginBottom="5sp" />
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView3" >
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="15sp">
+            android:layout_height="fill_parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imgHomem"
-                android:src="@drawable/homem" />
+                android:id="@+id/titleConvidados"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/lbl_convidados"
+                android:layout_marginBottom="5sp" />
 
-            <TextView
+            <ScrollView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="15sp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imgHomem"
+                    android:src="@drawable/homem" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/homem"
+                    android:id="@+id/titleHomem"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/homem"
-                android:id="@+id/titleHomem"
+                android:id="@+id/txtTotalHomem"
+                android:layout_gravity="center_horizontal"
                 android:textSize="40dp"
-                android:layout_marginLeft="10sp"
-                android:layout_gravity="center" />
-        </LinearLayout>
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:numeric="integer"
+                android:textColor="#ff8f273e"
+                android:text="@string/zero" />
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/txtTotalHomem"
-            android:layout_gravity="center_horizontal"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:numeric="integer"
-            android:textColor="#ff8f273e"
-            android:text="@string/zero" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="15sp">
-
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imgMulher"
-                android:src="@drawable/mulher" />
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="15sp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imgMulher"
+                    android:src="@drawable/mulher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/mulher"
+                    android:id="@+id/titleMulher"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/mulher"
-                android:id="@+id/titleMulher"
+                android:id="@+id/txtTotalMulher"
+                android:layout_gravity="center_horizontal"
                 android:textSize="40dp"
-                android:layout_marginLeft="10sp"
-                android:layout_gravity="center" />
-        </LinearLayout>
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:numeric="integer"
+                android:textColor="#ff8f273e"
+                android:inputType="none"
+                android:text="@string/zero" />
 
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/txtTotalMulher"
-            android:layout_gravity="center_horizontal"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:numeric="integer"
-            android:textColor="#ff8f273e"
-            android:inputType="none"
-            android:text="@string/zero" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="15sp">
-
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imgCrianca"
-                android:src="@drawable/crianca" />
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="15sp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imgCrianca"
+                    android:src="@drawable/crianca" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/crianca"
+                    android:id="@+id/titleCrianca"
+                    android:textSize="40dp"
+                    android:layout_marginLeft="5sp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/crianca"
-                android:id="@+id/titleCrianca"
+                android:id="@+id/txtTotalCrianca"
+                android:layout_gravity="center_horizontal"
                 android:textSize="40dp"
-                android:layout_marginLeft="5sp"
-                android:layout_gravity="center" />
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:numeric="integer"
+                android:textColor="#ff8f273e"
+                android:text="@string/zero" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:text="@string/continuar"
+                android:id="@+id/btnProsseguir"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="true"
+                android:layout_height="40dp"
+                android:background="#ff000000"
+                android:textColor="#ffefdfc6"
+                android:textSize="15sp"
+                android:drawableRight="@drawable/next"
+                android:paddingRight="10dp"/>
+
         </LinearLayout>
-
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/txtTotalCrianca"
-            android:layout_gravity="center_horizontal"
-            android:textSize="40dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:numeric="integer"
-            android:textColor="#ff8f273e"
-            android:text="@string/zero" />
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:text="@string/continuar"
-        android:id="@+id/btnProsseguir"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
-        android:layout_height="40dp"
-        android:background="#ff000000"
-        android:textColor="#ffefdfc6"
-        android:textSize="15sp"
-        android:drawableRight="@drawable/next"
-        android:paddingRight="10dp"/>
+    </ScrollView>
 
 </RelativeLayout>

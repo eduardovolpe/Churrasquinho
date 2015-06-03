@@ -44,35 +44,6 @@ public class carneActivity extends ActionBarActivity {
         lstCarne.setAdapter(adapter);
         dbAdapterCarne.close();
 
-        lstCarne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(carneActivity.this, "LISTA" + id, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        lstCarne.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(carneActivity.this, "LISTA" + id, Toast.LENGTH_SHORT).show();
-
-/*
-                Carne carne = adapter.getItem(position);
-                Intent intent = new Intent(view.getContext(), editarActivity.class);
-
-                Bundle param = new Bundle();
-                Bundle idItem = new Bundle();
-
-                param.putString("texto", "carne");
-                idItem.putLong("id", carne.getIdCarne());
-
-                intent.putExtras(param);
-                intent.putExtras(idItem);
-
-                startActivity(intent);
-*/            }
-        });
-
         btnInserir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

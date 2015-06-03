@@ -63,9 +63,7 @@ public class AdapterListOutro extends BaseAdapter {
 
             convertView.setTag(item);
 
-            if(item.nomeOutro !=null) {
-
-                item.nomeOutro.setOnClickListener(new View.OnClickListener() {
+                   item.nomeOutro.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         CheckBox cb = (CheckBox) v;
@@ -92,17 +90,13 @@ public class AdapterListOutro extends BaseAdapter {
                         outro.setMarcado(cb.isChecked());
                     }
                 });
-            }
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
 
         Outro outro = getItem(position);
-        if(item.nomeOutro !=null) {
-            item.nomeOutro.setText(outro.getNomeOutro());
-        }
-        if(item.valorOutro != null)
-            item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
+        item.nomeOutro.setText(outro.getNomeOutro());
+        item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
 
         return convertView;
     }

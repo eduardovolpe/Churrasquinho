@@ -19,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class iniciarActivity extends Activity {
 
     Button btnCarne;
@@ -38,6 +42,7 @@ public class iniciarActivity extends Activity {
     private int totalHomem = 0;
     private int totalMulher = 0;
     private int totalCrianca = 0;
+    public static List selecionadas = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,82 +56,6 @@ public class iniciarActivity extends Activity {
         txtTotalCrianca = (EditText) findViewById(R.id.txtTotalCrianca);
 
         txtTotalHomem.findFocus();
-
-/*
-        maisH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                totalHomem++;
-                edtHomem.setText(totalHomem.toString());
-
-                total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-
-        menosH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(totalHomem <= 0)
-                    totalHomem = 0;
-                else
-                    totalHomem--;
-
-
-                edtHomem.setText(totalHomem.toString());
-
-                total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-
-        maisM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                totalMulher++;
-                edtMulher.setText(totalMulher.toString());
-
-                total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-
-        menosM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(totalMulher <= 0)
-                    totalMulher = 0;
-                else
-                    totalMulher--;
-
-                edtMulher.setText(totalMulher.toString());
-
-                total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-
-        maisC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               totalCrianca++;
-               edtCrianca.setText(totalCrianca.toString());
-
-               total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-
-        menosC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(totalCrianca <= 0)
-                    totalCrianca = 0;
-                else
-                    totalCrianca--;
-
-                edtCrianca.setText(totalCrianca.toString());
-
-                total = totalHomem + totalMulher + totalCrianca;
-            }
-        });
-*/
-
         // MessageBox aparece caso nenhum convidado seja colocado e usuário queira prosseguir
         final AlertDialog alertaConvidados = new AlertDialog.Builder(this).create();
         alertaConvidados.setTitle("Nenhum Convidado");
@@ -154,6 +83,10 @@ public class iniciarActivity extends Activity {
                     Toast.makeText(iniciarActivity.this, "Quantidade de Convidados: " + total, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
+
+                selecionadas.add(totalHomem);
+                selecionadas.add(totalMulher);
+                selecionadas.add(totalCrianca);
             }
 
         });
