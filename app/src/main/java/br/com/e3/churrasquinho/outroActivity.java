@@ -18,8 +18,10 @@ public class outroActivity extends ActionBarActivity {
     DBAdapterOutro dbAdapterOutro;
     Button btnInserir;
     Button btnProsseguir;
+    int j = 0;
 
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<Double> valores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class outroActivity extends ActionBarActivity {
                 StringBuffer responseText = new StringBuffer();
                 responseText.append("Despesas selecionadas: \n");
                 selecionadas.clear();
+                valores.clear();
                 List<Outro> outroList = adapter.getOutros();
                 for(int i=0;i<outroList.size();i++){
                     Outro outro = outroList.get(i);
@@ -65,16 +68,13 @@ public class outroActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + outro.getValorOutro());
 
                         selecionadas.add(outro.getNomeOutro());
+                        valores.add(outro.getValorOutro());
+                        j++;
                     }
                 }
-
-                //Toast.makeText(outroActivity.this, responseText, Toast.LENGTH_SHORT).show();
-                StringBuffer nomes = new StringBuffer();
-                for(int i=0; i<selecionadas.size(); i++){
-                    nomes.append(selecionadas.get(i));
+                if (j > 0 ) {
+                    Toast.makeText(outroActivity.this, responseText, Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(outroActivity.this, nomes, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(outroActivity.this, ResumoActivity.class);
                 startActivity(intent);

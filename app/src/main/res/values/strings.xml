@@ -49,6 +49,7 @@
     <string name="numero">Número:</string>
     <string name="informe_cep">Informe o CEP:</string>
     <string name="inserir">Inserir</string>
+    <string name="finalizar">Finalizar</string>
 
 
 </resources>

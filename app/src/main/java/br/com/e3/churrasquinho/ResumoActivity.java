@@ -1,6 +1,7 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
+import android.renderscript.Sampler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,16 @@ public class ResumoActivity extends ActionBarActivity {
 
     Button btnProsseguir;
     Button btnLocalizacao;
-    TextView txtCarnes, txtBebidas, txtAcompanhamentos, txtDespesas;
+    TextView txtCarnes, txtBebidas, txtAcompanhamentos, txtDespesas, vlrDespesas;
 
     StringBuffer txtCarne = new StringBuffer();
     StringBuffer txtBebida = new StringBuffer();
     StringBuffer txtAcompanhamento = new StringBuffer();
     StringBuffer txtDespesa = new StringBuffer();
+
+    StringBuffer vlrDespesa = new StringBuffer();
+
+    double ttlDespesa = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,9 @@ public class ResumoActivity extends ActionBarActivity {
         txtBebidas = (TextView) findViewById(R.id.txtBebidas);
         txtAcompanhamentos = (TextView) findViewById(R.id.txtAcompanhamentos);
         txtDespesas = (TextView) findViewById(R.id.txtDespesas);
+
+        vlrDespesas = (TextView) findViewById(R.id.vlrDespesas);
+
         btnProsseguir = (Button) findViewById(R.id.btnProsResumo);
         btnLocalizacao = (Button) findViewById(R.id.btnLocalizacao);
 
@@ -64,9 +72,13 @@ public class ResumoActivity extends ActionBarActivity {
         txtDespesa.append("Despesas: ");
         for (int i = 0; i < outroActivity.selecionadas.size(); i++){
             txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
+            vlrDespesa.append(outroActivity.valores.get(i));
+
+           // ttlDespesa = Double.parseDouble(String.valueOf(vlrDespesa)) + ttlDespesa;
         }
         txtDespesa.append("\n");
         txtDespesas.setText(txtDespesa);
+        vlrDespesas.setText("R$: " + vlrDespesa);
 
 
          btnProsseguir.setOnClickListener(new View.OnClickListener() {

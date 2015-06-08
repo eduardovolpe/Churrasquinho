@@ -19,7 +19,9 @@ public class acompanhamentoActivity extends ActionBarActivity {
     Button btnInserir;
     Button btnProsseguir;
 
-    public static List<Acompanhamento> selecionadas = new ArrayList<>();
+    int j = 0;
+
+    public static List<String> selecionadas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +69,16 @@ public class acompanhamentoActivity extends ActionBarActivity {
                     if(acomp.isMarcado()){
                         responseText.append("\n" + acomp.getNomeAcompanhamento());
                         responseText.append(" - R$: " + acomp.getValorAcompanhamento());
-                        selecionadas.add(acomp);
+
+                        selecionadas.add(acomp.getNomeAcompanhamento());
+                        j++;
                     }
 
                 }
 
-                //Toast.makeText(acompanhamentoActivity.this, responseText, Toast.LENGTH_SHORT).show();
-
-
+                if (j > 0) {
+                    Toast.makeText(acompanhamentoActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                }
 
                 Intent intent = new Intent(acompanhamentoActivity.this, outroActivity.class);
                 startActivity(intent);

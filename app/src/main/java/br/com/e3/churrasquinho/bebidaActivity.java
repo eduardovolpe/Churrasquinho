@@ -19,7 +19,9 @@ public class bebidaActivity extends ActionBarActivity {
     DBAdapterBebida dbAdapterBebida;
     Button btnInserir;
 
-    public static List<Bebida> selecionadas = new ArrayList<>();
+    int j = 0;
+
+    public static List<String> selecionadas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +68,15 @@ public class bebidaActivity extends ActionBarActivity {
                     if(bebidis.isMarcado()){
                         responseText.append("\n" + bebidis.getNomeBebida());
                         responseText.append(" - R$: " + bebidis.getValorBebida());
-                        selecionadas.add(bebidis);
+
+                        selecionadas.add(bebidis.getNomeBebida());
+                        j++;
                     }
                 }
 
-                Toast.makeText(bebidaActivity.this, responseText, Toast.LENGTH_SHORT).show();
-
+                if (j > 0) {
+                    Toast.makeText(bebidaActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                }
                 Intent intent = new Intent(bebidaActivity.this, acompanhamentoActivity.class);
                 startActivity(intent);
             }

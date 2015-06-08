@@ -1,13 +1,9 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,8 +18,9 @@ public class carneActivity extends ActionBarActivity {
     DBAdapterCarne dbAdapterCarne;
     Button btnProsseguir;
     Button btnInserir;
-    public static List<Carne> selecionadas = new ArrayList<>();
-    String txt = "";
+    public static List<String> selecionadas = new ArrayList<>();
+
+    int j = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +72,16 @@ public class carneActivity extends ActionBarActivity {
                     if(carn.isMarcado()){
                         responseText.append("\n" + carn.getNomeCarne());
                         responseText.append(" - R$: " + carn.getValorCarne());
-                        selecionadas.add(carn);
+
+                        selecionadas.add(carn.getNomeCarne());
+                        j++;
                     }
 
                 }
 
-                Toast.makeText(carneActivity.this, responseText, Toast.LENGTH_SHORT).show();
-
+                if (j > 0) {
+                    Toast.makeText(carneActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                }
 
                 Intent intent = new Intent(carneActivity.this, bebidaActivity.class);
                 startActivity(intent);
