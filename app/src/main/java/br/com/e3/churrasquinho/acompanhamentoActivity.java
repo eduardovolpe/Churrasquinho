@@ -52,7 +52,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
+        selecionadas.clear();
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,11 +67,14 @@ public class acompanhamentoActivity extends ActionBarActivity {
                     if(acomp.isMarcado()){
                         responseText.append("\n" + acomp.getNomeAcompanhamento());
                         responseText.append(" - R$: " + acomp.getValorAcompanhamento());
+                        selecionadas.add(acomp);
                     }
-                    selecionadas.add(acomp);
+
                 }
 
-                Toast.makeText(acompanhamentoActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(acompanhamentoActivity.this, responseText, Toast.LENGTH_SHORT).show();
+
+
 
                 Intent intent = new Intent(acompanhamentoActivity.this, outroActivity.class);
                 startActivity(intent);

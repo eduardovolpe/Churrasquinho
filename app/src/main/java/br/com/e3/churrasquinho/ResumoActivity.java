@@ -1,30 +1,23 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
-import android.renderscript.Sampler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
-import static br.com.e3.churrasquinho.carneActivity.*;
 
 
 public class ResumoActivity extends ActionBarActivity {
 
     Button btnProsseguir;
     Button btnLocalizacao;
-    TextView txtCarnes;
+    TextView txtCarnes, txtBebidas, txtAcompanhamentos, txtDespesas;
 
-    List<Carne> carnesSelecionadas;
+    StringBuffer txtCarne = new StringBuffer();
+    StringBuffer txtBebida = new StringBuffer();
+    StringBuffer txtAcompanhamento = new StringBuffer();
+    StringBuffer txtDespesa = new StringBuffer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +25,57 @@ public class ResumoActivity extends ActionBarActivity {
         setContentView(R.layout.activity_resumo);
 
         txtCarnes = (TextView) findViewById(R.id.txtCarnes);
+        txtBebidas = (TextView) findViewById(R.id.txtBebidas);
+        txtAcompanhamentos = (TextView) findViewById(R.id.txtAcompanhamentos);
+        txtDespesas = (TextView) findViewById(R.id.txtDespesas);
         btnProsseguir = (Button) findViewById(R.id.btnProsResumo);
         btnLocalizacao = (Button) findViewById(R.id.btnLocalizacao);
 
+        txtCarne.delete(0, txtCarne.length());
+        txtBebida.delete(0, txtBebida.length());
+        txtDespesa.delete(0, txtDespesa.length());
+        txtAcompanhamento.delete(0, txtAcompanhamento.length());
 
-        //carneActivity.selecionadas = carnesSelecionadas;
+        /* CARNES */
+       txtCarne.append("Carnes: ");
+       for (int i = 0;  i < carneActivity.selecionadas.size(); i++) {
+           txtCarne.append(carneActivity.selecionadas.get(i) + ", ");
+       }
+        txtCarne.append("\n");
+        txtCarnes.setText(txtCarne);
 
-        //txtCarnes.setText(carnesSelecionadas.size());
+        /* BEBIDAS */
+        txtBebida.append("Bebidas: ");
+        for (int i = 0; i < bebidaActivity.selecionadas.size(); i++){
+            txtBebida.append(bebidaActivity.selecionadas.get(i) + ", ");
+        }
+        txtBebida.append("\n");
+        txtBebidas.setText(txtBebida);
+
+        /* ACOMPANHAMENTOS */
+        txtAcompanhamento.append("Acompanhamentos: ");
+        for (int i = 0; i < acompanhamentoActivity.selecionadas.size(); i++){
+            txtAcompanhamento.append(acompanhamentoActivity.selecionadas.get(i) + ", ");
+        }
+        txtAcompanhamento.append("\n");
+        txtAcompanhamentos.setText(txtAcompanhamento);
+
+        /* DESPESAS */
+        txtDespesa.append("Despesas: ");
+        for (int i = 0; i < outroActivity.selecionadas.size(); i++){
+            txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
+        }
+        txtDespesa.append("\n");
+        txtDespesas.setText(txtDespesa);
+
 
          btnProsseguir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
-                startActivity(intent);
-            }
-        });
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
+                 startActivity(intent);
+             }
+         });
 
         btnLocalizacao.setOnClickListener(new View.OnClickListener() {
             @Override

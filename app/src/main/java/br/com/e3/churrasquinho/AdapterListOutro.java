@@ -70,23 +70,6 @@ public class AdapterListOutro extends BaseAdapter {
 
                         Outro outro = getItem(position);
 
-                        String s = "";
-
-                        if (cb.isChecked() == true)
-                            qtd++;
-                        if (cb.isChecked() == false)
-                            qtd--;
-
-                        if (qtd >= 2)
-                            s = "s selecionadas";
-                        else
-                            s = " selecionada";
-
-                        if (qtd == 0)
-                            Toast.makeText(v.getContext(), "Nenhuma despesa selecionada.", Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(v.getContext(), qtd + " despesa" + s, Toast.LENGTH_SHORT).show();
-
                         outro.setMarcado(cb.isChecked());
                     }
                 });

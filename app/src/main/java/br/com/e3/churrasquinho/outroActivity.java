@@ -19,7 +19,7 @@ public class outroActivity extends ActionBarActivity {
     Button btnInserir;
     Button btnProsseguir;
 
-    public static List<Outro> selecionadas = new ArrayList<>();
+    public static List<String> selecionadas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +49,32 @@ public class outroActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 StringBuffer responseText = new StringBuffer();
                 responseText.append("Despesas selecionadas: \n");
-
+                selecionadas.clear();
                 List<Outro> outroList = adapter.getOutros();
                 for(int i=0;i<outroList.size();i++){
                     Outro outro = outroList.get(i);
                     if(outro.isMarcado()){
                         responseText.append("\n" + outro.getNomeOutro());
                         responseText.append(" - R$: " + outro.getValorOutro());
+
+                        selecionadas.add(outro.getNomeOutro());
                     }
-                    selecionadas.add(outro);
                 }
 
-                Toast.makeText(outroActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(outroActivity.this, responseText, Toast.LENGTH_SHORT).show();
+                StringBuffer nomes = new StringBuffer();
+                for(int i=0; i<selecionadas.size(); i++){
+                    nomes.append(selecionadas.get(i));
+                }
+
+                Toast.makeText(outroActivity.this, nomes, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(outroActivity.this, ResumoActivity.class);
                 startActivity(intent);

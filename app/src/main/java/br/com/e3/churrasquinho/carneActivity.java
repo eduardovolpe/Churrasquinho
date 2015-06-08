@@ -60,10 +60,13 @@ public class carneActivity extends ActionBarActivity {
 
        });
 
+        selecionadas.clear();
+
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StringBuffer responseText = new StringBuffer();
+
                 responseText.append("Carnes selecionadas: \n");
 
                 List<Carne> carnesList = adapter.getCarnes();
@@ -72,8 +75,9 @@ public class carneActivity extends ActionBarActivity {
                     if(carn.isMarcado()){
                         responseText.append("\n" + carn.getNomeCarne());
                         responseText.append(" - R$: " + carn.getValorCarne());
+                        selecionadas.add(carn);
                     }
-                    selecionadas.add(carn);
+
                 }
 
                 Toast.makeText(carneActivity.this, responseText, Toast.LENGTH_SHORT).show();

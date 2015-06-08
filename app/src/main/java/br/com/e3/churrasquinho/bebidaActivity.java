@@ -52,6 +52,7 @@ public class bebidaActivity extends ActionBarActivity {
 
         });
 
+        selecionadas.clear();
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,8 +66,8 @@ public class bebidaActivity extends ActionBarActivity {
                     if(bebidis.isMarcado()){
                         responseText.append("\n" + bebidis.getNomeBebida());
                         responseText.append(" - R$: " + bebidis.getValorBebida());
+                        selecionadas.add(bebidis);
                     }
-                    selecionadas.add(bebidis);
                 }
 
                 Toast.makeText(bebidaActivity.this, responseText, Toast.LENGTH_SHORT).show();
