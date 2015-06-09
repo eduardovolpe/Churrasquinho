@@ -134,7 +134,8 @@
                 <ImageView
                     android:src="@drawable/data"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"/>
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/imgData"/>
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -2,6 +2,7 @@ package br.com.e3.churrasquinho;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,9 +25,11 @@ import org.json.JSONObject;
 public class localActivity extends ActionBarActivity {
 
     EditText edtCep, edtLogradouro, edtBairro, edtCidade, edtUf, edtComplemento, edtReferencia, edtNumero;
-    Button btnConsultar, btnSalvar;
+    Button btnConsultar, btnInserir;
     private ProgressDialog dialog;
     final Context context = this;
+
+    public static String[] endereco = new String[7];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,7 @@ public class localActivity extends ActionBarActivity {
         edtNumero = (EditText) findViewById(R.id.edtNumero);
 
         btnConsultar = (Button) findViewById(R.id.btnBuscar);
-       // btnLimpar = (Button) findViewById(R.id.btnSalvar);
+        btnInserir = (Button) findViewById(R.id.btnSalvarEndereco);
 
         edtCep = (EditText) findViewById(R.id.etCep);
         edtLogradouro = (EditText) findViewById(R.id.etLogradouro);
@@ -99,14 +102,43 @@ public class localActivity extends ActionBarActivity {
                 }*/
             }
         });
+
+        btnInserir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(localActivity.this, ResumoActivity.class);
+
+                Bundle param = new Bundle();
+                param.putInt("end", 1);
+                intent.putExtras(param);
+
+                endereco[0] = edtLogradouro.getText().toString();
+                endereco[1] = edtNumero.getText().toString();
+                endereco[2] = edtBairro.getText().toString();
+                endereco[3] = edtCidade.getText().toString();
+                endereco[4] = edtUf.getText().toString();
+                endereco[5] = edtCep.getText().toString();
+                endereco[6] = edtReferencia.getText().toString();
+
+                localActivity.this.finish();
+                startActivity(intent);
+
+            }
+        });
     }
 
     public void limpar(){
-        edtBairro.setText("");
-        edtLogradouro.setText("");
-        edtUf.setText("");
-        edtCidade.setText("");
+        edtBairro.setText(" ");
+        edtLogradouro.setText(" ");
+        edtUf.setText(" ");
+        edtCidade.setText(" ");
+        edtReferencia.setText(" ");
+        edtNumero.setText(" ");
+
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
