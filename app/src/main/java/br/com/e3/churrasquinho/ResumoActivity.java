@@ -5,7 +5,9 @@ import android.renderscript.Sampler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -14,6 +16,7 @@ public class ResumoActivity extends ActionBarActivity {
     Button btnProsseguir;
     Button btnLocalizacao;
     TextView txtCarnes, txtBebidas, txtAcompanhamentos, txtDespesas, vlrDespesas;
+    ImageView imgLine;
 
     StringBuffer txtCarne = new StringBuffer();
     StringBuffer txtBebida = new StringBuffer();
@@ -21,6 +24,7 @@ public class ResumoActivity extends ActionBarActivity {
     StringBuffer txtDespesa = new StringBuffer();
 
     StringBuffer vlrDespesa = new StringBuffer();
+
 
     double ttlDespesa = 0.0;
 
@@ -39,10 +43,15 @@ public class ResumoActivity extends ActionBarActivity {
         btnProsseguir = (Button) findViewById(R.id.btnProsResumo);
         btnLocalizacao = (Button) findViewById(R.id.btnLocalizacao);
 
+        /* LINHA DIVISÓRIA LOCALIZAÇÃO */
+        imgLine = (ImageView) findViewById(R.id.line);
+        imgLine.setVisibility(ViewGroup.GONE);
+
         txtCarne.delete(0, txtCarne.length());
         txtBebida.delete(0, txtBebida.length());
         txtDespesa.delete(0, txtDespesa.length());
         txtAcompanhamento.delete(0, txtAcompanhamento.length());
+
 
         /* CARNES */
        txtCarne.append("Carnes: ");

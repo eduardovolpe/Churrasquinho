@@ -50,6 +50,9 @@
     <string name="informe_cep">Informe o CEP:</string>
     <string name="inserir">Inserir</string>
     <string name="finalizar">Finalizar</string>
+    <string name="local">Local do Churras:</string>
+    <string name="cep">CEP</string>
+    <string name="inf_data">Data do Churras:</string>
 
 
 </resources>
