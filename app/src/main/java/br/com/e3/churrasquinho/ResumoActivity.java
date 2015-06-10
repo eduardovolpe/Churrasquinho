@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 
 public class ResumoActivity extends ActionBarActivity {
@@ -86,38 +90,50 @@ public class ResumoActivity extends ActionBarActivity {
         txtReferencia.setText("");
 
         /* CARNES */
-       txtCarne.append("Carnes: ");
-       for (int i = 0;  i < carneActivity.selecionadas.size(); i++) {
-           txtCarne.append(carneActivity.selecionadas.get(i) + ", ");
-       }
+        txtCarne.append("Carnes: ");
+        for (int i = 0; i < carneActivity.selecionadas.size(); i++) {
+            txtCarne.append(carneActivity.selecionadas.get(i) + ", ");
+
+            double carnes = 0.0;
+            carnes = Double.parseDouble(String.valueOf(carneActivity.valores.get(i)));
+
+            ttlCarne = carnes + ttlCarne;
+        }
         txtCarne.append("\n");
         txtCarnes.setText(txtCarne);
+        vlrCarnes.setText("Total R$: " + ttlCarne);
 
         /* BEBIDAS */
         txtBebida.append("Bebidas: ");
-        for (int i = 0; i < bebidaActivity.selecionadas.size(); i++){
+        for (int i = 0; i < bebidaActivity.selecionadas.size(); i++) {
             txtBebida.append(bebidaActivity.selecionadas.get(i) + ", ");
+
+            double bebida = 0.0;
+            bebida = Double.parseDouble(String.valueOf(bebidaActivity.valores.get(i)));
+
+            ttlBebida = bebida + ttlBebida;
         }
         txtBebida.append("\n");
         txtBebidas.setText(txtBebida);
+        vlrBebidas.setText("Total R$: " + ttlBebida);
 
         /* ACOMPANHAMENTOS */
         txtAcompanhamento.append("Acompanhamentos: ");
-        for (int i = 0; i < acompanhamentoActivity.selecionadas.size(); i++){
+        for (int i = 0; i < acompanhamentoActivity.selecionadas.size(); i++) {
             txtAcompanhamento.append(acompanhamentoActivity.selecionadas.get(i) + ", ");
 
-            double despesa = 0.0;
-            despesa = Double.parseDouble(String.valueOf(acompanhamentoActivity.valores.get(i)));
+            double acompanhamento = 0.0;
+            acompanhamento = Double.parseDouble(String.valueOf(acompanhamentoActivity.valores.get(i)));
 
-            ttlAcompanhamento = despesa + ttlAcompanhamento;
+            ttlAcompanhamento = acompanhamento + ttlAcompanhamento;
         }
         txtAcompanhamento.append("\n");
         txtAcompanhamentos.setText(txtAcompanhamento);
-        vlrAcompanhamentos.setText("R$: " + ttlAcompanhamento);
+        vlrAcompanhamentos.setText("Total R$: " + ttlAcompanhamento);
 
         /* DESPESAS */
         txtDespesa.append("Despesas: ");
-        for (int i = 0; i < outroActivity.selecionadas.size(); i++){
+        for (int i = 0; i < outroActivity.selecionadas.size(); i++) {
 
             txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
 
@@ -128,53 +144,48 @@ public class ResumoActivity extends ActionBarActivity {
         }
         txtDespesa.append("\n");
         txtDespesas.setText(txtDespesa);
-        vlrDespesas.setText("R$: " + ttlDespesa);
+        vlrDespesas.setText("Total R$: " + ttlDespesa);
 
 
 
         /* INSERE ENDEREÇO */
         Intent end = getIntent();
-        if(end != null){
+        if (end != null) {
             Bundle params = end.getExtras();
-            if(params != null){
+            if (params != null) {
                 int txt = params.getInt("end");
-                if(txt == 1) {
+                if (txt == 1) {
 
                     txtLocal.setVisibility(ViewGroup.VISIBLE);
                     imgLine.setVisibility(ViewGroup.VISIBLE);
 
-                    txtEndereco.setText(localActivity.endereco[0].toString());
-                    txtNumero.setText(localActivity.endereco[1].toString());
-                    txtBairro.setText(localActivity.endereco[2].toString());
-                    txtCidade.setText(localActivity.endereco[3].toString());
-                    txtUf.setText(localActivity.endereco[4].toString());
-                    txtCep.setText(localActivity.endereco[5].toString());
-                    txtReferencia.setText(localActivity.endereco[6].toString());
+                    txtEndereco.setText(localActivity.endereco[0]);
+                    txtNumero.setText(localActivity.endereco[1]);
+                    txtBairro.setText(localActivity.endereco[2]);
+                    txtCidade.setText(localActivity.endereco[3]);
+                    txtUf.setText(localActivity.endereco[4]);
+                    txtCep.setText(localActivity.endereco[5]);
+                    txtReferencia.setText(localActivity.endereco[6]);
+
+                    calendario();
 
                 }
             }
         }
 
-        /* INSERE A DATA */
-        imgData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                calendario();
-
-                    }
-            });
 
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
 
-                 calendario();
+                if(txtData.getText() != ""){
+                    calendario();
+                }
 
-                 startActivity(intent);
-             }
-         });
+                startActivity(intent);
+            }
+        });
 
         btnLocalizacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +196,7 @@ public class ResumoActivity extends ActionBarActivity {
         });
     }
 
-    public void calendario(){
+    public void calendario() {
         // get prompts.xml view
         LayoutInflater layoutInflater = LayoutInflater.from(ResumoActivity.this);
         View promptView = layoutInflater.inflate(R.layout.prompt_data, null);
@@ -202,15 +213,18 @@ public class ResumoActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         // get user input and set it to result
                         txtData.setText(input.getText());
+                        imgData.setVisibility(ViewGroup.VISIBLE);
+
                     }
                 })
                 .setNegativeButton("Cancelar",
                         new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,	int id) {
+                            public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         });
         AlertDialog alertD = alertDialogBuilder.create();
         alertD.show();
     }
+
 }

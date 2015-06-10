@@ -22,7 +22,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
     int j = 0;
 
     public static List<String> selecionadas = new ArrayList<>();
-    public static List<String> valores = new ArrayList<>();
+    public static List<Double> valores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + acomp.getValorAcompanhamento());
 
                         selecionadas.add(acomp.getNomeAcompanhamento());
-                        valores.add(acomp.getNomeAcompanhamento());
+                        valores.add(acomp.getValorAcompanhamento());
                         j++;
                     }
 

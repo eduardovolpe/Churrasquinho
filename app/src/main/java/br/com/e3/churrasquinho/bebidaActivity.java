@@ -22,6 +22,7 @@ public class bebidaActivity extends ActionBarActivity {
     int j = 0;
 
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<Double> valores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class bebidaActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 StringBuffer responseText = new StringBuffer();
-                responseText.append("Carnes selecionadas: \n");
+                responseText.append("Bebidas selecionadas: \n");
 
                 List<Bebida> bebidaList = adapter.getBebidas();
                 for(int i=0;i<bebidaList.size();i++){
@@ -70,6 +71,7 @@ public class bebidaActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + bebidis.getValorBebida());
 
                         selecionadas.add(bebidis.getNomeBebida());
+                        valores.add(bebidis.getValorBebida());
                         j++;
                     }
                 }

@@ -18,7 +18,9 @@ public class carneActivity extends ActionBarActivity {
     DBAdapterCarne dbAdapterCarne;
     Button btnProsseguir;
     Button btnInserir;
+
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<Double> valores = new ArrayList<>();
 
     int j = 0;
 
@@ -74,6 +76,7 @@ public class carneActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + carn.getValorCarne());
 
                         selecionadas.add(carn.getNomeCarne());
+                        valores.add(carn.getValorCarne());
                         j++;
                     }
 
