@@ -71,22 +71,6 @@ public class AdapterListBebida extends BaseAdapter{
 
                     Bebida bebidis = getItem(position);
 
-                    String s;
-
-                    if (cb.isChecked())
-                        qtd ++;
-                    if (!cb.isChecked())
-                        qtd --;
-
-                    if (qtd >= 2)
-                        s = "s selecionadas";
-                    else
-                        s = " selecionada";
-
-                    if (qtd == 0)
-                        Toast.makeText(v.getContext(), "Nenhuma bebida selecionada.", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(v.getContext(), qtd + " bebida" + s, Toast.LENGTH_SHORT).show();
                     bebidis.setMarcado(cb.isChecked());
 
                 }

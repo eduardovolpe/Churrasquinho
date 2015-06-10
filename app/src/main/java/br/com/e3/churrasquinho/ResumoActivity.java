@@ -3,7 +3,6 @@ package br.com.e3.churrasquinho;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.renderscript.Sampler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +19,7 @@ public class ResumoActivity extends ActionBarActivity {
     Button btnProsseguir;
     Button btnLocalizacao;
     TextView txtCarnes, txtBebidas, txtAcompanhamentos, txtDespesas, vlrDespesas, txtData, txtEndereco, txtNumero,
-            txtBairro, txtCidade, txtUf, txtCep, txtReferencia, txtLocal;
+            txtBairro, txtCidade, txtUf, txtCep, txtReferencia, txtLocal, vlrAcompanhamentos, vlrCarnes, vlrBebidas;
     ImageView imgLine, imgData;
 
     StringBuffer txtCarne = new StringBuffer();
@@ -28,10 +27,11 @@ public class ResumoActivity extends ActionBarActivity {
     StringBuffer txtAcompanhamento = new StringBuffer();
     StringBuffer txtDespesa = new StringBuffer();
 
-    StringBuffer vlrDespesa = new StringBuffer();
-
-
+    double ttlCarne = 0.0;
+    double ttlBebida = 0.0;
+    double ttlAcompanhamento = 0.0;
     double ttlDespesa = 0.0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,9 @@ public class ResumoActivity extends ActionBarActivity {
         txtLocal = (TextView) findViewById(R.id.txtLocal);
         txtCep = (TextView) findViewById(R.id.txtCep);
 
+        vlrCarnes = (TextView) findViewById(R.id.vlrCarnes);
+        vlrBebidas = (TextView) findViewById(R.id.vlrBebidas);
+        vlrAcompanhamentos = (TextView) findViewById(R.id.vlrAcompanhamentos);
         vlrDespesas = (TextView) findViewById(R.id.vlrDespesas);
 
         btnProsseguir = (Button) findViewById(R.id.btnProsResumo);
@@ -66,6 +69,7 @@ public class ResumoActivity extends ActionBarActivity {
 
         /* CALENDÁRIO */
         imgData = (ImageView) findViewById(R.id.imgData);
+        imgData.setVisibility(ViewGroup.GONE);
 
         txtCarne.delete(0, txtCarne.length());
         txtBebida.delete(0, txtBebida.length());
@@ -101,21 +105,30 @@ public class ResumoActivity extends ActionBarActivity {
         txtAcompanhamento.append("Acompanhamentos: ");
         for (int i = 0; i < acompanhamentoActivity.selecionadas.size(); i++){
             txtAcompanhamento.append(acompanhamentoActivity.selecionadas.get(i) + ", ");
+
+            double despesa = 0.0;
+            despesa = Double.parseDouble(String.valueOf(acompanhamentoActivity.valores.get(i)));
+
+            ttlAcompanhamento = despesa + ttlAcompanhamento;
         }
         txtAcompanhamento.append("\n");
         txtAcompanhamentos.setText(txtAcompanhamento);
+        vlrAcompanhamentos.setText("R$: " + ttlAcompanhamento);
 
         /* DESPESAS */
         txtDespesa.append("Despesas: ");
         for (int i = 0; i < outroActivity.selecionadas.size(); i++){
-            txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
-            vlrDespesa.append(outroActivity.valores.get(i));
 
-           // ttlDespesa = Double.parseDouble(String.valueOf(vlrDespesa)) + ttlDespesa;
+            txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
+
+            double despesa = 0.0;
+            despesa = Double.parseDouble(String.valueOf(outroActivity.valores.get(i)));
+
+            ttlDespesa = despesa + ttlDespesa;
         }
         txtDespesa.append("\n");
         txtDespesas.setText(txtDespesa);
-        vlrDespesas.setText("R$: " + vlrDespesa);
+        vlrDespesas.setText("R$: " + ttlDespesa);
 
 
 
@@ -137,6 +150,7 @@ public class ResumoActivity extends ActionBarActivity {
                     txtUf.setText(localActivity.endereco[4].toString());
                     txtCep.setText(localActivity.endereco[5].toString());
                     txtReferencia.setText(localActivity.endereco[6].toString());
+
                 }
             }
         }
@@ -145,34 +159,8 @@ public class ResumoActivity extends ActionBarActivity {
         imgData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        // get prompts.xml view
-                        LayoutInflater layoutInflater = LayoutInflater.from(ResumoActivity.this);
-                        View promptView = layoutInflater.inflate(R.layout.prompt_data, null);
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ResumoActivity.this);
 
-                        // set prompts.xml to be the layout file of the alertdialog builder
-                        alertDialogBuilder.setView(promptView);
-                        final EditText input = (EditText) promptView.findViewById(R.id.edtData);
-
-                        // setup a dialog window
-                        alertDialogBuilder
-                                .setCancelable(false)
-                                .setPositiveButton("Inserir", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        // get user input and set it to result
-                                        txtData.setText(input.getText());
-                                    }
-                                })
-                                .setNegativeButton("Cancelar",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog,	int id) {
-                                                dialog.cancel();
-                                            }
-                                        });
-
-
-                        AlertDialog alertD = alertDialogBuilder.create();
-                        alertD.show();
+                calendario();
 
                     }
             });
@@ -181,6 +169,9 @@ public class ResumoActivity extends ActionBarActivity {
              @Override
              public void onClick(View v) {
                  Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
+
+                 calendario();
+
                  startActivity(intent);
              }
          });
@@ -192,5 +183,34 @@ public class ResumoActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void calendario(){
+        // get prompts.xml view
+        LayoutInflater layoutInflater = LayoutInflater.from(ResumoActivity.this);
+        View promptView = layoutInflater.inflate(R.layout.prompt_data, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ResumoActivity.this);
+
+        // set prompts.xml to be the layout file of the alertdialog builder
+        alertDialogBuilder.setView(promptView);
+        final EditText input = (EditText) promptView.findViewById(R.id.edtData);
+
+        // setup a dialog window
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Inserir", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // get user input and set it to result
+                        txtData.setText(input.getText());
+                    }
+                })
+                .setNegativeButton("Cancelar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,	int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alertD = alertDialogBuilder.create();
+        alertD.show();
     }
 }

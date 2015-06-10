@@ -71,22 +71,6 @@ public class AdapterListAcompanhamento extends BaseAdapter {
 
                     Acompanhamento acomp = getItem(position);
 
-                    String s;
-
-                    if (cb.isChecked())
-                        qtd ++;
-                    if (!cb.isChecked())
-                        qtd --;
-
-                    if (qtd >= 2)
-                        s = "s selecionados.";
-                    else
-                        s = " selecionado.";
-
-                    if (qtd == 0)
-                        Toast.makeText(v.getContext(), "Nenhum acompanhamento selecionado.", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(v.getContext(), qtd + " acompanhamento" + s, Toast.LENGTH_SHORT).show();
                     acomp.setMarcado(cb.isChecked());
 
                 }
