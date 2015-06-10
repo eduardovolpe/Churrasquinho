@@ -100,6 +100,7 @@ public class localActivity extends ActionBarActivity {
                 /*} else {
                     Toast.makeText(localActivity.this, "CEP " + cep + " inválido!", Toast.LENGTH_SHORT).show();
                 }*/
+                final String finalCep = cep;
             }
         });
 

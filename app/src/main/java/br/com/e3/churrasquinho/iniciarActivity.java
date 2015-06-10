@@ -31,18 +31,13 @@ public class iniciarActivity extends Activity {
     EditText txtTotalMulher;
     EditText txtTotalCrianca;
 
-/*  ImageView menosH;
-    ImageView maisH;
-    ImageView menosM;
-    ImageView maisM;
-    ImageView menosC;
-    ImageView maisC; */
-
     private int total;
     private int totalHomem = 0;
     private int totalMulher = 0;
     private int totalCrianca = 0;
+
     public static List selecionadas = new ArrayList();
+    public static Integer[] convidados = new Integer[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,14 +74,16 @@ public class iniciarActivity extends Activity {
                 if (total == 0) {
                     alertaConvidados.show();
                 } else {
+
+                    convidados[0] = totalHomem;
+                    convidados[1] = totalMulher;
+                    convidados[2] = totalCrianca;
+
                     Intent intent = new Intent(iniciarActivity.this, carneActivity.class);
                     Toast.makeText(iniciarActivity.this, "Quantidade de Convidados: " + total, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
 
-                selecionadas.add(totalHomem);
-                selecionadas.add(totalMulher);
-                selecionadas.add(totalCrianca);
             }
 
         });

@@ -51,6 +51,7 @@ public class ResumoActivity extends ActionBarActivity {
         txtUf = (TextView) findViewById(R.id.txtUf);
         txtReferencia = (TextView) findViewById(R.id.txtReferencia);
         txtLocal = (TextView) findViewById(R.id.txtLocal);
+        txtCep = (TextView) findViewById(R.id.txtCep);
 
         vlrDespesas = (TextView) findViewById(R.id.vlrDespesas);
 
@@ -72,7 +73,13 @@ public class ResumoActivity extends ActionBarActivity {
         txtAcompanhamento.delete(0, txtAcompanhamento.length());
 
         /* LIMPA AS LABELS DO ENDEREÇO */
-       // limparEndereco();
+        txtCep.setText("");
+        txtEndereco.setText("");
+        txtNumero.setText("");
+        txtBairro.setText("");
+        txtCidade.setText("");
+        txtUf.setText("");
+        txtReferencia.setText("");
 
         /* CARNES */
        txtCarne.append("Carnes: ");
@@ -123,13 +130,16 @@ public class ResumoActivity extends ActionBarActivity {
                     txtLocal.setVisibility(ViewGroup.VISIBLE);
                     imgLine.setVisibility(ViewGroup.VISIBLE);
 
-                    txtEndereco.setText(localActivity.endereco[1]);
-//                    txtCep.setText(localActivity.endereco[5]);
+                    txtEndereco.setText(localActivity.endereco[0].toString());
+                    txtNumero.setText(localActivity.endereco[1].toString());
+                    txtBairro.setText(localActivity.endereco[2].toString());
+                    txtCidade.setText(localActivity.endereco[3].toString());
+                    txtUf.setText(localActivity.endereco[4].toString());
+                    txtCep.setText(localActivity.endereco[5].toString());
+                    txtReferencia.setText(localActivity.endereco[6].toString());
                 }
             }
         }
-
-
 
         /* INSERE A DATA */
         imgData.setOnClickListener(new View.OnClickListener() {
