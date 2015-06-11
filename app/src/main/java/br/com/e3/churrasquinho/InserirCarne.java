@@ -11,10 +11,14 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
 
 
 public class InserirCarne extends ActionBarActivity {
@@ -23,6 +27,8 @@ public class InserirCarne extends ActionBarActivity {
     EditText edtValor;
     Button btnCadastrar;
     Button btnVoltar;
+
+    Spinner spnInserir;
 
     DBAdapterCarne dbAdapterCarne;
     DBAdapterBebida dbAdapterBebida;
@@ -43,6 +49,7 @@ public class InserirCarne extends ActionBarActivity {
         edtValor = (EditText) findViewById(R.id.edtValor);
         btnCadastrar = (Button) findViewById(R.id.btnSalvar);
         btnVoltar = (Button) findViewById(R.id.btnVoltar);
+        spnInserir = (Spinner) findViewById(R.id.spnInserir);
 
         String txt = "";
 
@@ -56,6 +63,9 @@ public class InserirCarne extends ActionBarActivity {
         }
 
         final String finalTxt = txt;
+
+        carregarSpinner(finalTxt);
+
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,31 +113,30 @@ public class InserirCarne extends ActionBarActivity {
     public void inserirCarne() {
         dbAdapterCarne = new DBAdapterCarne(InserirCarne.this);
         dbAdapterCarne.open();
-        dbAdapterCarne.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterCarne.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString());
         dbAdapterCarne.close();
-        //carneActivity.class.finish();
-        Toast.makeText(InserirCarne.this,"Carne inserida", Toast.LENGTH_LONG).show();
+        Toast.makeText(InserirCarne.this,"Carne inserida", Toast.LENGTH_SHORT).show();
     }
     public void inserirBebida() {
         dbAdapterBebida = new DBAdapterBebida(InserirCarne.this);
         dbAdapterBebida.open();
-        dbAdapterBebida.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterBebida.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString());
         dbAdapterBebida.close();
-        Toast.makeText(InserirCarne.this,"Bebida inserida", Toast.LENGTH_LONG).show();
+        Toast.makeText(InserirCarne.this,"Bebida inserida", Toast.LENGTH_SHORT).show();
     }
     public void inserirAcompanhamento() {
         dbAdapterAcompanhamento = new DBAdapterAcompanhamento(InserirCarne.this);
         dbAdapterAcompanhamento.open();
-        dbAdapterAcompanhamento.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterAcompanhamento.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString());
         dbAdapterAcompanhamento.close();
-        Toast.makeText(InserirCarne.this,"Acompanhamento inserido", Toast.LENGTH_LONG).show();
+        Toast.makeText(InserirCarne.this,"Acompanhamento inserido", Toast.LENGTH_SHORT).show();
     }
     public void inserirDespesa() {
         dbAdapterOutro = new DBAdapterOutro(InserirCarne.this);
         dbAdapterOutro.open();
-        dbAdapterOutro.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()));
+        dbAdapterOutro.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString());
         dbAdapterOutro.close();
-        Toast.makeText(InserirCarne.this,"Despesa inserida", Toast.LENGTH_LONG).show();
+        Toast.makeText(InserirCarne.this,"Despesa inserida", Toast.LENGTH_SHORT).show();
     }
 
     public void voltarTela(String finalTxt){
@@ -199,6 +208,31 @@ public class InserirCarne extends ActionBarActivity {
         }
         else
            Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
+    }
+
+    public void carregarSpinner(String spinner){
+        switch (spinner) {
+            case "carne":
+                ArrayAdapter<CharSequence> adapterC = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.carnes, android.R.layout.simple_spinner_item);
+                adapterC.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnInserir.setAdapter(adapterC);
+                break;
+            case "bebida":
+                ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
+                adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnInserir.setAdapter(adapterB);
+                break;
+            case "acompanhamento":
+                ArrayAdapter<CharSequence> adapterA = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
+                adapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnInserir.setAdapter(adapterA);
+                break;
+            case "outro":
+                ArrayAdapter<CharSequence> adapterO = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
+                adapterO.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnInserir.setAdapter(adapterO);
+                break;
+        }
     }
 }
 

@@ -15,7 +15,7 @@ public class DBAdapterOutro {
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
-    private String[] colunas = {DBHelper.ID_OUTRO,DBHelper.NOME_OUTRO,DBHelper.VALOR_OUTRO};
+    private String[] colunas = {DBHelper.ID_OUTRO,DBHelper.NOME_OUTRO,DBHelper.VALOR_OUTRO,DBHelper.TIPO_OUTRO};
 
     public DBAdapterOutro(Context context){
         dbHelper = new DBHelper(context);
@@ -29,12 +29,13 @@ public class DBAdapterOutro {
         database.close();
     }
 
-    public void adicionar (String nomeOutro, double valorOutro){
+    public void adicionar (String nomeOutro, double valorOutro, String tipoOutro){
         ContentValues contentValues = new ContentValues();
 
         // pega e atribui os dados
         contentValues.put(DBHelper.NOME_OUTRO, nomeOutro);
         contentValues.put(DBHelper.VALOR_OUTRO, valorOutro);
+        contentValues.put(DBHelper.TIPO_OUTRO, tipoOutro);
 
         //insere no banco
         database.insert(DBHelper.TABELA_OUTRO,null,contentValues);
@@ -42,7 +43,7 @@ public class DBAdapterOutro {
 
     public Cursor getOutro(){
         Cursor cursor = database.rawQuery(
-                "select idOutro, nomeOutro, valorOutro from " + DBHelper.TABELA_OUTRO, null);
+                "select idOutro, nomeOutro, valorOutro, tipoOutro from " + DBHelper.TABELA_OUTRO, null);
 
         return cursor;
 
@@ -51,7 +52,8 @@ public class DBAdapterOutro {
     private Outro cursorOutro(Cursor cursor){
         Outro outro = new Outro(cursor.getLong(0),
                 cursor.getString(1),
-                cursor.getDouble(2));
+                cursor.getDouble(2),
+                cursor.getString(3));
         return outro;
     }
     public Outro getOutro(long idOutro){

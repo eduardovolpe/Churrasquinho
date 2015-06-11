@@ -7,13 +7,14 @@ public class Bebida {
     private long idBebida;
     private String nomeBebida;
     private double valorBebida;
+    private String tipoBebida;
     private boolean marcado;
 
-    public Bebida(){}
-    public Bebida(long idBebida, String nomeBebida, double valorBebida){
+    public Bebida(long idBebida, String nomeBebida, double valorBebida, String tipoBebida){
         this.setIdBebida(idBebida);
         this.setNomeBebida(nomeBebida);
         this.setValorBebida(valorBebida);
+        this.setTipoBebida(tipoBebida);
     }
 
     public long getIdBebida() {
@@ -38,6 +39,14 @@ public class Bebida {
 
     public void setValorBebida(double valorBebida) {
         this.valorBebida = valorBebida;
+    }
+
+    public String setTipoBebida() {
+        return tipoBebida;
+    }
+
+    public void setTipoBebida(String tipoBebida) {
+        this.tipoBebida = tipoBebida;
     }
 
     public boolean isMarcado() {

@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class ResumoActivity extends ActionBarActivity {
@@ -36,6 +38,10 @@ public class ResumoActivity extends ActionBarActivity {
     double ttlAcompanhamento = 0.0;
     double ttlDespesa = 0.0;
 
+    double homens, mulheres, criancas;
+
+    public static Integer[] quantidades = new Integer[4];
+    static final List<String> itens = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +73,17 @@ public class ResumoActivity extends ActionBarActivity {
 
         txtLocal.setVisibility(ViewGroup.GONE);
 
+        /* RECUPERANDO A QUANTIDADE DE CONVIDADOS */
+        homens = iniciarActivity.convidados[0];
+        mulheres = iniciarActivity.convidados[1];
+        criancas = iniciarActivity.convidados[2];
+
         /* LINHA DIVISÓRIA LOCALIZAÇÃO */
         imgLine = (ImageView) findViewById(R.id.line);
         imgLine.setVisibility(ViewGroup.GONE);
 
         /* CALENDÁRIO */
         imgData = (ImageView) findViewById(R.id.imgData);
-        imgData.setVisibility(ViewGroup.GONE);
 
         txtCarne.delete(0, txtCarne.length());
         txtBebida.delete(0, txtBebida.length());
@@ -96,12 +106,15 @@ public class ResumoActivity extends ActionBarActivity {
 
             double carnes = 0.0;
             carnes = Double.parseDouble(String.valueOf(carneActivity.valores.get(i)));
-
             ttlCarne = carnes + ttlCarne;
+
+            quantidades[0] = i;
+            itens.add(carneActivity.selecionadas.get(i));
         }
         txtCarne.append("\n");
         txtCarnes.setText(txtCarne);
-        vlrCarnes.setText("Total R$: " + ttlCarne);
+        double totalCarne = (((ttlCarne*homens)*2.5)+((ttlCarne*mulheres)*1.8)+((ttlCarne*criancas)*1));
+        vlrCarnes.setText("Total R$: " + totalCarne);
 
         /* BEBIDAS */
         txtBebida.append("Bebidas: ");
@@ -112,10 +125,14 @@ public class ResumoActivity extends ActionBarActivity {
             bebida = Double.parseDouble(String.valueOf(bebidaActivity.valores.get(i)));
 
             ttlBebida = bebida + ttlBebida;
+
+            quantidades[1] = i;
         }
         txtBebida.append("\n");
         txtBebidas.setText(txtBebida);
-        vlrBebidas.setText("Total R$: " + ttlBebida);
+        double totalBebida = (((ttlBebida*homens)*2.5)+((ttlBebida*mulheres)*1.8)+((ttlBebida*criancas)*1));
+
+        vlrBebidas.setText("Total R$: " + totalBebida);
 
         /* ACOMPANHAMENTOS */
         txtAcompanhamento.append("Acompanhamentos: ");
@@ -126,10 +143,13 @@ public class ResumoActivity extends ActionBarActivity {
             acompanhamento = Double.parseDouble(String.valueOf(acompanhamentoActivity.valores.get(i)));
 
             ttlAcompanhamento = acompanhamento + ttlAcompanhamento;
+
+            quantidades[2] = i;
         }
         txtAcompanhamento.append("\n");
         txtAcompanhamentos.setText(txtAcompanhamento);
-        vlrAcompanhamentos.setText("Total R$: " + ttlAcompanhamento);
+        double totalAcompanhamento = (((ttlAcompanhamento*homens)*2.5)+((ttlAcompanhamento*mulheres)*1.8)+((ttlAcompanhamento*criancas)*1));
+        vlrAcompanhamentos.setText("Total R$: " + totalAcompanhamento);
 
         /* DESPESAS */
         txtDespesa.append("Despesas: ");
@@ -141,6 +161,8 @@ public class ResumoActivity extends ActionBarActivity {
             despesa = Double.parseDouble(String.valueOf(outroActivity.valores.get(i)));
 
             ttlDespesa = despesa + ttlDespesa;
+
+            quantidades[3] = i;
         }
         txtDespesa.append("\n");
         txtDespesas.setText(txtDespesa);
@@ -167,23 +189,23 @@ public class ResumoActivity extends ActionBarActivity {
                     txtCep.setText(localActivity.endereco[5]);
                     txtReferencia.setText(localActivity.endereco[6]);
 
-                    calendario();
-
                 }
             }
         }
 
+        imgData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendario();
+            }
+        });
 
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
-
-                if(txtData.getText() != ""){
-                    calendario();
-                }
-
                 startActivity(intent);
+
             }
         });
 
@@ -214,7 +236,6 @@ public class ResumoActivity extends ActionBarActivity {
                         // get user input and set it to result
                         txtData.setText(input.getText());
                         imgData.setVisibility(ViewGroup.VISIBLE);
-
                     }
                 })
                 .setNegativeButton("Cancelar",
@@ -223,6 +244,7 @@ public class ResumoActivity extends ActionBarActivity {
                                 dialog.cancel();
                             }
                         });
+
         AlertDialog alertD = alertDialogBuilder.create();
         alertD.show();
     }

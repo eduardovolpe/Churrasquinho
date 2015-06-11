@@ -18,49 +18,60 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String ID_CARNE     = "idCarne";
     public static String NOME_CARNE   = "nomeCarne";
     public static String VALOR_CARNE  = "valorCarne";
+    public static String TIPO_CARNE  = "tipoCarne";
     public static String TABELA_CARNE = "carne";
 
     public static String ID_BEBIDA     = "idBebida";
     public static String NOME_BEBIDA   = "nomeBebida";
     public static String VALOR_BEBIDA  = "valorBebida";
+    public static String TIPO_BEBIDA  = "tipoBebida";
     public static String TABELA_BEBIDA = "bebida";
 
     public static String ID_ACOMPANHAMENTO     = "idAcompanhamento";
     public static String NOME_ACOMPANHAMENTO   = "nomeAcompanhamento";
     public static String VALOR_ACOMPANHAMENTO  = "valorAcompanhamento";
+    public static String TIPO_ACOMPANHAMENTO  = "tipoAcompanhamento";
     public static String TABELA_ACOMPANHAMENTO = "acompanhamento";
 
     public static String ID_OUTRO      = "idOutro";
     public static String NOME_OUTRO    = "nomeOutro";
     public static String VALOR_OUTRO   = "valorOutro";
+    public static String TIPO_OUTRO   = "tipoOutro";
     public static String TABELA_OUTRO  = "outro";
 
-
-    public static String CREATE_TB_CARNE=            // Criando a tabela CARNE
+             // Criando a tabela CARNE
+    public static String CREATE_TB_CARNE=
             "create table " + TABELA_CARNE + " ( " +
             ID_CARNE + " integer primary key autoincrement, " +
             NOME_CARNE + " text not null, " +
-            VALOR_CARNE + " double not null );";
+            VALOR_CARNE + " double not null, " +
+            TIPO_CARNE + " text );";
 
             // Criando a tabela BEBIDA
-     public static String CREATE_TB_BEBIDA=      " create table " + TABELA_BEBIDA + " ( " +
+     public static String CREATE_TB_BEBIDA=
+            " create table " + TABELA_BEBIDA + " ( " +
             ID_BEBIDA + " integer primary key autoincrement, " +
             NOME_BEBIDA + " text, " +
-            VALOR_BEBIDA + " double );";
+            VALOR_BEBIDA + " double," +
+            TIPO_BEBIDA + " text );";
 
             // Criando a tabela ACOMPANHAMENTOS
-     public static String CREATE_TB_ACOMPANHAMENTO = " create table " + TABELA_ACOMPANHAMENTO + " ( " +
+     public static String CREATE_TB_ACOMPANHAMENTO =
+            " create table " + TABELA_ACOMPANHAMENTO + " ( " +
             ID_ACOMPANHAMENTO + " integer primary key autoincrement ," +
             NOME_ACOMPANHAMENTO + " text, " +
-            VALOR_ACOMPANHAMENTO + " double );";
+            VALOR_ACOMPANHAMENTO + " double, " +
+            TIPO_ACOMPANHAMENTO + " text );";
 
             // Criando a tabela outro
-     public static String CREATE_TB_OUTRO = " create table " + TABELA_OUTRO + " ( " +
+     public static String CREATE_TB_OUTRO =
+            " create table " + TABELA_OUTRO + " ( " +
             ID_OUTRO + " integer primary key autoincrement, " +
             NOME_OUTRO + " text, " +
-            VALOR_OUTRO + " double );";
+            VALOR_OUTRO + " double, " +
+            TIPO_OUTRO + " text );";
 
-    public static String DROP_DATABASE =
+     public static String DROP_DATABASE =
             "drop table if exists " + TABELA_CARNE + " ; " +
             "drop table if exists " + TABELA_BEBIDA + " ; " +
             "drop table if exists " + TABELA_ACOMPANHAMENTO + " ; " +

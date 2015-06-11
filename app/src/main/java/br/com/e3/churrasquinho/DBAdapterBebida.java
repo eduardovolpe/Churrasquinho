@@ -15,7 +15,7 @@ public class DBAdapterBebida {
 
     private SQLiteDatabase database;
     private DBHelper dbHelper;
-    private String[] colunas = {DBHelper.ID_BEBIDA,DBHelper.NOME_BEBIDA,DBHelper.VALOR_BEBIDA};
+    private String[] colunas = {DBHelper.ID_BEBIDA,DBHelper.NOME_BEBIDA,DBHelper.VALOR_BEBIDA, DBHelper.TIPO_BEBIDA};
 
     public DBAdapterBebida(Context context){
         dbHelper = new DBHelper(context);
@@ -29,12 +29,13 @@ public class DBAdapterBebida {
         database.close();
     }
 
-    public void adicionar (String nomeBebida, double valorBebida){
+    public void adicionar (String nomeBebida, double valorBebida, String tipoBebida){
         ContentValues contentValues = new ContentValues();
 
         // pega e atribui os dados
         contentValues.put(DBHelper.NOME_BEBIDA, nomeBebida);
         contentValues.put(DBHelper.VALOR_BEBIDA, valorBebida);
+        contentValues.put(DBHelper.TIPO_BEBIDA, tipoBebida);
 
         //insere no banco
         database.insert(DBHelper.TABELA_BEBIDA,null,contentValues);
@@ -42,12 +43,8 @@ public class DBAdapterBebida {
 
     public Cursor getBebidas(){
 
-
-
             Cursor cursor = database.rawQuery(
-                    "select idBebida,nomeBebida,valorBebida from bebida", null);
-
-
+                    "select idBebida, nomeBebida, valorBebida, tipoBebida from bebida", null);
 
         return cursor;
 
@@ -56,7 +53,8 @@ public class DBAdapterBebida {
     private Bebida cursorBebida(Cursor cursor){
         Bebida bebida = new Bebida(cursor.getLong(0),
                 cursor.getString(1),
-                cursor.getDouble(2));
+                cursor.getDouble(2),
+                cursor.getString(3));
         return bebida;
     }
     public Bebida getBebida(long idBebida){

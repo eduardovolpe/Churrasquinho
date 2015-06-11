@@ -55,5 +55,39 @@
     <string name="cep">CEP</string>
     <string name="inf_data">Data do Churras:</string>
 
+        <string-array name="carnes">
+            <item>Bovino Com Osso</item>
+            <item>Bovino Sem Osso</item>
+            <item>Frango</item>
+            <item>Suino</item>
+            <item>Embutido</item>
+        </string-array>
+
+        <string-array name="bebidas">
+            <item>Lata Slim 269ml</item>
+            <item>Lata 350ml</item>
+            <item>Long Neck 250ml</item>
+            <item>Long Neck 275ml</item>
+            <item>Garrafa 300ml</item>
+            <item>Long Neck 355ml</item>
+            <item>Latão 473ml</item>
+            <item>Garrafa 500ml</item>
+            <item>Latão+ 550ml</item>
+            <item>Garrafa 970ml</item>
+            <item>Garrafa 1L</item>
+            <item>Garrafa 1,5L</item>
+            <item>Garrafa 2L</item>
+            <item>Garrafa 3L</item>
+        </string-array>
+
+        <string-array name="acompanhamentos">
+            <item>Valor por Grama</item>
+            <item>Valor por Quilo</item>
+        </string-array>
+
+        <string-array name="outros">
+            <item>Valor Fixo</item>
+            <item>Valor Variável</item>
+        </string-array>
 
 </resources>

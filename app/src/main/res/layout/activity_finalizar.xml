@@ -75,5 +75,14 @@
         android:drawableRight="@drawable/ic_share"
         />
 
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView"
+        android:layout_below="@+id/gridLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:numColumns="4" />
+
 
 </RelativeLayout>

@@ -6,18 +6,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FinalizarActivity extends ActionBarActivity {
 
     Button btnShareChurras;
+    GridView grid;
 
-
+    static final List<String> itens = new ArrayList<>();
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -26,6 +34,18 @@ public class FinalizarActivity extends ActionBarActivity {
         setContentView(R.layout.activity_finalizar);
 
         btnShareChurras = (Button) findViewById(R.id.btnShareChurras);
+        grid = (GridView) findViewById(R.id.gridView);
+
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, itens);
+
+        grid.setAdapter(adapter);
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnShareChurras.setOnClickListener(new View.OnClickListener() {
             @Override

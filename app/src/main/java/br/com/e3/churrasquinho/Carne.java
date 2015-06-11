@@ -7,13 +7,14 @@ public class Carne {
     private long idCarne;
     private String nomeCarne;
     private double valorCarne;
+    private String tipoCarne;
     private boolean marcado;
 
-    public Carne(){}
-    public Carne(long idCarne, String nomeCarne, double valorCarne){
+    public Carne(long idCarne, String nomeCarne, double valorCarne, String tipoCarne){
         this.setIdCarne(idCarne);
         this.setNomeCarne(nomeCarne);
         this.setValorCarne(valorCarne);
+        this.setTipoCarne(tipoCarne);
     }
 
     public long getIdCarne() {
@@ -39,6 +40,10 @@ public class Carne {
     public void setValorCarne(double valorCarne) {
       this.valorCarne = valorCarne;
     }
+
+    public String getTipoCarne() {return tipoCarne; }
+
+    public void setTipoCarne(String tipoCarne){this.tipoCarne = tipoCarne; }
 
     public boolean isMarcado() {
         return marcado;

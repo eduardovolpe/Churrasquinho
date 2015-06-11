@@ -79,7 +79,7 @@ public class editarActivity extends ActionBarActivity {
         Toast.makeText(editarActivity.this, "Texto: " + txt + " - ID: " + id, Toast.LENGTH_SHORT).show();
 
     }
-
+/*
     public void editarCarne(){
         dbAdapterCarne = new DBAdapterCarne(this);
         dbAdapterCarne.open();
@@ -87,6 +87,7 @@ public class editarActivity extends ActionBarActivity {
         carne.setValorCarne(Double.valueOf(edtValor.getText().toString()));
         dbAdapterCarne.editarCarne(carne);
     }
+*/
 
 
 }

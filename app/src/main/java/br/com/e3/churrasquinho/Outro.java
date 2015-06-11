@@ -8,13 +8,15 @@ public class Outro {
     private long idOutro;
     private String nomeOutro;
     private double valorOutro;
+    private String tipoOutro;
     private boolean marcado;
 
-    public Outro(){}
-    public Outro(long idOutro, String nomeOutro, double valorOutro){
+
+    public Outro(long idOutro, String nomeOutro, double valorOutro, String tipoOutro){
         this.setIdOutro(idOutro);
         this.setNomeOutro(nomeOutro);
         this.setValorOutro(valorOutro);
+        this.setTipoOutro(tipoOutro);
     }
 
     public long getIdOutro() {
@@ -39,6 +41,14 @@ public class Outro {
 
     public void setValorOutro(double valorOutro) {
         this.valorOutro = valorOutro;
+    }
+
+    public String getTipoOutro() {
+        return tipoOutro;
+    }
+
+    public void setTipoOutro(String tipoOutro) {
+        this.tipoOutro = tipoOutro;
     }
 
     public boolean isMarcado() {
