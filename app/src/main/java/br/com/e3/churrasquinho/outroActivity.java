@@ -21,6 +21,7 @@ public class outroActivity extends ActionBarActivity {
     int j = 0;
 
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<String> categoria = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
 
     @Override
@@ -46,7 +47,7 @@ public class outroActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(outroActivity.this, InserirCarne.class);
                 Bundle param = new Bundle();
-                param.putString("texto", "outro");
+                param.putString("texto", "despesa");
                 intent.putExtras(param);
                 startActivity(intent);
             }
@@ -59,6 +60,7 @@ public class outroActivity extends ActionBarActivity {
                 StringBuffer responseText = new StringBuffer();
                 responseText.append("Despesas selecionadas: \n");
                 selecionadas.clear();
+                categoria.clear();
                 valores.clear();
                 List<Outro> outroList = adapter.getOutros();
                 for(int i=0;i<outroList.size();i++){
@@ -68,6 +70,7 @@ public class outroActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + outro.getValorOutro());
 
                         selecionadas.add(outro.getNomeOutro());
+                        categoria.add(outro.getTipoOutro());
                         valores.add(outro.getValorOutro());
                         j++;
                     }

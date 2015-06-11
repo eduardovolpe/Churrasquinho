@@ -20,6 +20,7 @@ public class carneActivity extends ActionBarActivity {
     Button btnInserir;
 
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<String> categoria = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
 
     int j = 0;
@@ -59,7 +60,7 @@ public class carneActivity extends ActionBarActivity {
 
        });
 
-        selecionadas.clear();
+
 
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +68,9 @@ public class carneActivity extends ActionBarActivity {
                 StringBuffer responseText = new StringBuffer();
 
                 responseText.append("Carnes selecionadas: \n");
-
+                selecionadas.clear();
+                categoria.clear();
+                valores.clear();
                 List<Carne> carnesList = adapter.getCarnes();
                 for(int i=0;i<carnesList.size();i++){
                     Carne carn = carnesList.get(i);
@@ -76,6 +79,7 @@ public class carneActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + carn.getValorCarne());
 
                         selecionadas.add(carn.getNomeCarne());
+                        categoria.add(carn.getTipoCarne());
                         valores.add(carn.getValorCarne());
                         j++;
                     }

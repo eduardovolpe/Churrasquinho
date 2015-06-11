@@ -22,6 +22,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
     int j = 0;
 
     public static List<String> selecionadas = new ArrayList<>();
+    public static List<String> categorias = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
 
     @Override
@@ -55,13 +56,17 @@ public class acompanhamentoActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-        selecionadas.clear();
+
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 StringBuffer responseText = new StringBuffer();
                 responseText.append("Acompanhamentos selecionados: \n");
+
+                selecionadas.clear();
+                valores.clear();
+                categorias.clear();
 
                 List<Acompanhamento> acompanhamentosList = adapter.getAcompanhamentos();
 
@@ -72,6 +77,7 @@ public class acompanhamentoActivity extends ActionBarActivity {
                         responseText.append(" - R$: " + acomp.getValorAcompanhamento());
 
                         selecionadas.add(acomp.getNomeAcompanhamento());
+                        categorias.add(acomp.getTipoAcompanhamento());
                         valores.add(acomp.getValorAcompanhamento());
                         j++;
                     }

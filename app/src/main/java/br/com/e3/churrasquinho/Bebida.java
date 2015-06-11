@@ -41,7 +41,7 @@ public class Bebida {
         this.valorBebida = valorBebida;
     }
 
-    public String setTipoBebida() {
+    public String getTipoBebida() {
         return tipoBebida;
     }
 

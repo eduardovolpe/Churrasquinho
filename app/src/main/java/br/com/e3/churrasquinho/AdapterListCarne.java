@@ -70,11 +70,9 @@ public class AdapterListCarne extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     CheckBox cb = (CheckBox) v ;
-
                     Carne carn = getItem(position);
 
                     carn.setMarcado(cb.isChecked());
-
                 }
             });
 

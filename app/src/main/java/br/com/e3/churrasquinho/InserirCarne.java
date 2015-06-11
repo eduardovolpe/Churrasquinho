@@ -83,7 +83,7 @@ public class InserirCarne extends ActionBarActivity {
                                case "acompanhamento":
                                    inserirAcompanhamento();
                                    break;
-                               case "outro":
+                               case "despesa":
                                    inserirDespesa();
                                    break;
                                default:
@@ -154,7 +154,7 @@ public class InserirCarne extends ActionBarActivity {
                 Intent intAcompanhamento = new Intent(InserirCarne.this, acompanhamentoActivity.class);
                 startActivity(intAcompanhamento);
                 break;
-            case "outro":
+            case "despesa":
                 Intent intOutro = new Intent(InserirCarne.this, outroActivity.class);
                 startActivity(intOutro);
                 break;
@@ -198,7 +198,7 @@ public class InserirCarne extends ActionBarActivity {
                 case "acompanhamento":
                     inserirAcompanhamento();
                     break;
-                case "outro":
+                case "despesa":
                     inserirDespesa();
                     break;
                 default:
@@ -227,7 +227,7 @@ public class InserirCarne extends ActionBarActivity {
                 adapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnInserir.setAdapter(adapterA);
                 break;
-            case "outro":
+            case "despesa":
                 ArrayAdapter<CharSequence> adapterO = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
                 adapterO.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnInserir.setAdapter(adapterO);
