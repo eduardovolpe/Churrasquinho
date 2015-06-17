@@ -25,6 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String NOME_BEBIDA   = "nomeBebida";
     public static String VALOR_BEBIDA  = "valorBebida";
     public static String TIPO_BEBIDA  = "tipoBebida";
+    public static String CATEGORIA = "categoria";
     public static String TABELA_BEBIDA = "bebida";
 
     public static String ID_ACOMPANHAMENTO     = "idAcompanhamento";
@@ -53,7 +54,8 @@ public class DBHelper extends SQLiteOpenHelper {
             ID_BEBIDA + " integer primary key autoincrement, " +
             NOME_BEBIDA + " text, " +
             VALOR_BEBIDA + " double," +
-            TIPO_BEBIDA + " text );";
+            TIPO_BEBIDA + " text, " +
+            CATEGORIA + " text );";
 
             // Criando a tabela ACOMPANHAMENTOS
      public static String CREATE_TB_ACOMPANHAMENTO =

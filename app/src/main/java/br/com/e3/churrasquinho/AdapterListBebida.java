@@ -46,6 +46,7 @@ public class AdapterListBebida extends BaseAdapter{
 
     private class ItemSuporte {
         CheckBox nomeBebida;
+        TextView txtTipoBebida;
         TextView valorBebida;
     }
 
@@ -61,6 +62,7 @@ public class AdapterListBebida extends BaseAdapter{
 
             item.nomeBebida = (CheckBox) convertView.findViewById(R.id.nomeBebida);
             item.valorBebida = (TextView) convertView.findViewById(R.id.valorBebida);
+            item.txtTipoBebida = (TextView) convertView.findViewById(R.id.txtTipoBebida);
 
             convertView.setTag(item);
 
@@ -83,6 +85,7 @@ public class AdapterListBebida extends BaseAdapter{
         Bebida bebida = getItem(position);
         item.nomeBebida.setText(bebida.getNomeBebida());
         item.valorBebida.setText(String.valueOf(bebida.getValorBebida()));
+        item.txtTipoBebida.setText(bebida.getTipoBebida());
 
         return convertView;
 

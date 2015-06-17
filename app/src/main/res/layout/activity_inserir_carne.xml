@@ -50,14 +50,39 @@
                 android:textColor="#ff000000"
                 android:textSize="20sp"
                 android:id="@+id/txtCategoria"
-                android:layout_margin="15dp"/>
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp" />
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/spnInserir"
-                android:layout_margin="15dp"
                 android:textColor="#ff8f273e"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tipo"
+                android:id="@+id/txtTipo"
+                android:textColor="#ff000000"
+                android:textSize="20sp"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_marginLeft="15dp" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnTipo"
+                android:textColor="#ff8f273e"
+                android:layout_row="1"
+                android:layout_column="1" />
 
         </GridLayout>
 

@@ -11,11 +11,13 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
@@ -25,10 +27,12 @@ public class InserirCarne extends ActionBarActivity {
 
     EditText edtNome;
     EditText edtValor;
+    TextView txtTipo;
     Button btnCadastrar;
     Button btnVoltar;
 
     Spinner spnInserir;
+    Spinner spnTipo;
 
     DBAdapterCarne dbAdapterCarne;
     DBAdapterBebida dbAdapterBebida;
@@ -47,9 +51,14 @@ public class InserirCarne extends ActionBarActivity {
 
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtValor = (EditText) findViewById(R.id.edtValor);
+        txtTipo = (TextView) findViewById(R.id.txtTipo);
         btnCadastrar = (Button) findViewById(R.id.btnSalvar);
         btnVoltar = (Button) findViewById(R.id.btnVoltar);
         spnInserir = (Spinner) findViewById(R.id.spnInserir);
+        spnTipo = (Spinner) findViewById(R.id.spnTipo);
+
+        spnTipo.setVisibility(ViewGroup.GONE);
+        txtTipo.setVisibility(ViewGroup.GONE);
 
         String txt = "";
 
@@ -120,7 +129,7 @@ public class InserirCarne extends ActionBarActivity {
     public void inserirBebida() {
         dbAdapterBebida = new DBAdapterBebida(InserirCarne.this);
         dbAdapterBebida.open();
-        dbAdapterBebida.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString());
+        dbAdapterBebida.adicionar(edtNome.getText().toString(), Double.parseDouble(edtValor.getText().toString()), spnInserir.getSelectedItem().toString(), spnTipo.getSelectedItem().toString());
         dbAdapterBebida.close();
         Toast.makeText(InserirCarne.this,"Bebida inserida", Toast.LENGTH_SHORT).show();
     }
@@ -187,7 +196,7 @@ public class InserirCarne extends ActionBarActivity {
     }
 
     public  void inserirItem(final String finalTxt){
-        if (edtNome.length() <= 20) {
+        if (edtNome.length() <= 15) {
             switch (finalTxt) {
                 case "carne":
                     inserirCarne();
@@ -207,7 +216,7 @@ public class InserirCarne extends ActionBarActivity {
             alertaSair(finalTxt);
         }
         else
-           Toast.makeText(InserirCarne.this, "Nome não pode exceder 20 caracteres", Toast.LENGTH_SHORT).show();
+           Toast.makeText(InserirCarne.this, "Nome não pode exceder 15 caracteres", Toast.LENGTH_SHORT).show();
     }
 
     public void carregarSpinner(String spinner){
@@ -218,17 +227,25 @@ public class InserirCarne extends ActionBarActivity {
                 spnInserir.setAdapter(adapterC);
                 break;
             case "bebida":
+
+                txtTipo.setVisibility(ViewGroup.VISIBLE);
+                spnTipo.setVisibility(ViewGroup.VISIBLE);
+
                 ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
                 adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnInserir.setAdapter(adapterB);
+
+                ArrayAdapter<CharSequence> adapterB1 = ArrayAdapter.createFromResource(InserirCarne.this, R.array.tipoBebida, android.R.layout.simple_spinner_item);
+                adapterB1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnTipo.setAdapter(adapterB1);
                 break;
             case "acompanhamento":
-                ArrayAdapter<CharSequence> adapterA = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> adapterA = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.acompanhamentos, android.R.layout.simple_spinner_item);
                 adapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnInserir.setAdapter(adapterA);
                 break;
             case "despesa":
-                ArrayAdapter<CharSequence> adapterO = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.bebidas, android.R.layout.simple_spinner_item);
+                ArrayAdapter<CharSequence> adapterO = ArrayAdapter.createFromResource(InserirCarne.this ,R.array.outros, android.R.layout.simple_spinner_item);
                 adapterO.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spnInserir.setAdapter(adapterO);
                 break;
