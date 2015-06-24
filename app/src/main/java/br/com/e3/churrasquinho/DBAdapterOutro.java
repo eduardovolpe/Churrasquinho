@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Eduardo on 08/04/2015.
- */
+
 public class DBAdapterOutro {
 
     private SQLiteDatabase database;

@@ -7,19 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.text.DecimalFormat;
 import java.util.List;
 
-/**
- * Created by Eduardo on 08/04/2015.
- */
 public class AdapterListBebida extends BaseAdapter{
     private LayoutInflater inflater;
     private List<Bebida> bebida;
-    int qtd = 0;
-
 
     public AdapterListBebida(Context context, List<Bebida> bebidas) {
         this.bebida = bebidas;

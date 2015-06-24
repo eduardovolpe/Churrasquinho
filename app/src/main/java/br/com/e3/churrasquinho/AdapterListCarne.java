@@ -7,21 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.text.DecimalFormat;
 import java.util.List;
-
-/**
- * Created by Eduardo on 06/04/2015.
- */
-
 
 public class AdapterListCarne extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Carne> carne;
-    int qtd = 0;
-
 
     public AdapterListCarne(Context context, List<Carne> carnes){
         this.carne = carnes;

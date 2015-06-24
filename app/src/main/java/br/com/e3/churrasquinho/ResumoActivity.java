@@ -5,8 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -38,7 +35,7 @@ public class ResumoActivity extends ActionBarActivity {
     double ttlBebida = 0.0;
     double ttlAcompanhamento = 0.0;
     double ttlDespesa = 0.0;
-    int j,h,k;
+    int j,h;
     double homens, mulheres, criancas;
 
     public static Integer[] quantidades = new Integer[4];
@@ -111,7 +108,7 @@ public class ResumoActivity extends ActionBarActivity {
         for (int i = 0; i < carneActivity.selecionadas.size(); i++) {
             txtCarne.append(carneActivity.selecionadas.get(i) + ", ");
 
-            double carnes = 0.0;
+            double carnes;
             carnes = Double.parseDouble(String.valueOf(carneActivity.valores.get(i)));
             ttlCarne = carnes + ttlCarne;
 
@@ -130,7 +127,7 @@ public class ResumoActivity extends ActionBarActivity {
         for (int i = 0; i < bebidaActivity.selecionadas.size(); i++) {
             txtBebida.append(bebidaActivity.selecionadas.get(i) + ", ");
 
-            double bebida = 0.0;
+            double bebida;
             bebida = Double.parseDouble(String.valueOf(bebidaActivity.valores.get(i)));
 
             ttlBebida = bebida + ttlBebida;
@@ -151,7 +148,7 @@ public class ResumoActivity extends ActionBarActivity {
         for (int i = 0; i < acompanhamentoActivity.selecionadas.size(); i++) {
             txtAcompanhamento.append(acompanhamentoActivity.selecionadas.get(i) + ", ");
 
-            double acompanhamento = 0.0;
+            double acompanhamento;
             acompanhamento = Double.parseDouble(String.valueOf(acompanhamentoActivity.valores.get(i)));
 
             ttlAcompanhamento = acompanhamento + ttlAcompanhamento;
@@ -171,7 +168,7 @@ public class ResumoActivity extends ActionBarActivity {
 
             txtDespesa.append(outroActivity.selecionadas.get(i) + ", ");
 
-            double despesa = 0.0;
+            double despesa;
             despesa = Double.parseDouble(String.valueOf(outroActivity.valores.get(i)));
 
             ttlDespesa = despesa + ttlDespesa;

@@ -6,16 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.text.DecimalFormat;
 import java.util.List;
 
-/**
- * Created by Eduardo on 08/04/2015.
- */
 public class AdapterListAcompanhamento extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Acompanhamento> acompanhamento;

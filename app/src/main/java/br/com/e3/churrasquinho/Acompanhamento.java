@@ -1,8 +1,5 @@
 package br.com.e3.churrasquinho;
 
-/**
- * Created by Eduardo on 08/04/2015.
- */
 public class Acompanhamento {
     private long idAcompanhamento;
     private String nomeAcompanhamento;

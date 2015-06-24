@@ -1,6 +1,5 @@
 package br.com.e3.churrasquinho;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -26,7 +25,6 @@ public class localActivity extends ActionBarActivity {
 
     EditText edtCep, edtLogradouro, edtBairro, edtCidade, edtUf, edtComplemento, edtReferencia, edtNumero;
     Button btnConsultar, btnInserir;
-    private ProgressDialog dialog;
     final Context context = this;
 
     public static String[] endereco = new String[7];
