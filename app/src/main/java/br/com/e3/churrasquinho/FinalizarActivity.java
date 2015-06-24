@@ -29,13 +29,15 @@ public class FinalizarActivity extends ActionBarActivity {
         grid.setAdapter(adapter);
 
 
+
+
         btnShareChurras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-                //intent.setType("");
-                intent.putExtra(Intent.EXTRA_TEXT, R.string.compartilhar);
-                intent.putExtra(Intent.EXTRA_SUBJECT, String.valueOf(adapter));
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, String.valueOf(ResumoActivity.itens));
+                intent.putExtra(Intent.EXTRA_SUBJECT, "TESTE");
                 startActivity(Intent.createChooser(intent, "Compartilhar"));
 
             }
