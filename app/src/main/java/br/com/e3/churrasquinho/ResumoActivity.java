@@ -39,6 +39,7 @@ public class ResumoActivity extends ActionBarActivity {
     double homens, mulheres, criancas;
 
     public static Integer[] quantidades = new Integer[4];
+    public static String[] data = new String[4];
     static final List<String> itens = new ArrayList<>();
 
     @Override
@@ -233,14 +234,18 @@ public class ResumoActivity extends ActionBarActivity {
                 itens.add("Total:");
                 itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
 
+                String vHomem = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.47)/homens));
+                String vMulher = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.33)/mulheres));
+                String vCrianca = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.20)/criancas));
+
                 itens.add("-- Rateio --");
                 itens.add("");
                 itens.add("Cada Homem Pagará:");
-                itens.add("R$" + String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.47)/homens)));
+                itens.add("R$" + vHomem);
                 itens.add("Cada Mulher Pagará:");
-                itens.add("R$" + String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.33)/mulheres)));
+                itens.add("R$" + vMulher);
                 itens.add("Cada Criança Pagará:");
-                itens.add("R$" + String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.20)/criancas)));
+                itens.add("R$" + vCrianca);
 
 
                 itens.add("-- Local --");
@@ -253,7 +258,11 @@ public class ResumoActivity extends ActionBarActivity {
                 itens.add("UF: " + localActivity.endereco[4]);
                 itens.add("Referência: " + localActivity.endereco[6]);
 
-                itens.add("Data: " + txtData.getText());
+                itens.add("Data: " + data[3].toString());
+
+                data[0] = vHomem;
+                data[1] = vMulher;
+                data[2] = vCrianca;
 
             }
         });
@@ -285,6 +294,7 @@ public class ResumoActivity extends ActionBarActivity {
                         // get user input and set it to result
                         txtData.setText(input.getText());
                         imgData.setVisibility(ViewGroup.VISIBLE);
+                        data[3] = input.getText().toString();
                     }
                 })
                 .setNegativeButton("Cancelar",
