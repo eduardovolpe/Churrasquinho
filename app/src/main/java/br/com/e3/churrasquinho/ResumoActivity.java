@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -37,7 +38,7 @@ public class ResumoActivity extends ActionBarActivity {
     double ttlBebida = 0.0;
     double ttlAcompanhamento = 0.0;
     double ttlDespesa = 0.0;
-
+    int j,h,k;
     double homens, mulheres, criancas;
 
     public static Integer[] quantidades = new Integer[4];
@@ -47,7 +48,7 @@ public class ResumoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
-
+        final DecimalFormat dc = new DecimalFormat("0.00");
         txtCarnes = (TextView) findViewById(R.id.txtCarnes);
         txtBebidas = (TextView) findViewById(R.id.txtBebidas);
         txtAcompanhamentos = (TextView) findViewById(R.id.txtAcompanhamentos);
@@ -99,6 +100,7 @@ public class ResumoActivity extends ActionBarActivity {
         txtUf.setText("");
         txtReferencia.setText("");
 
+
         /* CARNES */
         txtCarne.append("Carnes: ");
         for (int i = 0; i < carneActivity.selecionadas.size(); i++) {
@@ -110,11 +112,13 @@ public class ResumoActivity extends ActionBarActivity {
 
             quantidades[0] = i;
             itens.add(carneActivity.selecionadas.get(i));
+            itens.add("R$" + String.valueOf(dc.format(carnes)));
+            j++;
         }
         txtCarne.append("\n");
         txtCarnes.setText(txtCarne);
-        double totalCarne = (((ttlCarne*homens)*2.5)+((ttlCarne*mulheres)*1.8)+((ttlCarne*criancas)*1));
-        vlrCarnes.setText("Total R$: " + totalCarne);
+        final double totalCarne = (((ttlCarne*homens)*0.6)+((ttlCarne*mulheres)*0.5)+((ttlCarne*criancas)*0.4))/j;
+        vlrCarnes.setText("Total R$: " + dc.format(totalCarne));
 
         /* BEBIDAS */
         txtBebida.append("Bebidas: ");
@@ -127,12 +131,15 @@ public class ResumoActivity extends ActionBarActivity {
             ttlBebida = bebida + ttlBebida;
 
             quantidades[1] = i;
+            itens.add(bebidaActivity.selecionadas.get(i));
+            itens.add("R$" + String.valueOf(dc.format(bebida)));
+            h++;
         }
         txtBebida.append("\n");
         txtBebidas.setText(txtBebida);
-        double totalBebida = (((ttlBebida*homens)*2.5)+((ttlBebida*mulheres)*1.8)+((ttlBebida*criancas)*1));
+        final double totalBebida = (((ttlBebida*homens)*1)+((ttlBebida*mulheres)*0.6)+((ttlBebida*criancas)*0.4))/h;
 
-        vlrBebidas.setText("Total R$: " + totalBebida);
+        vlrBebidas.setText("Total R$: " + dc.format(totalBebida));
 
         /* ACOMPANHAMENTOS */
         txtAcompanhamento.append("Acompanhamentos: ");
@@ -145,11 +152,13 @@ public class ResumoActivity extends ActionBarActivity {
             ttlAcompanhamento = acompanhamento + ttlAcompanhamento;
 
             quantidades[2] = i;
+            itens.add(acompanhamentoActivity.selecionadas.get(i));
+            itens.add("R$" + String.valueOf(dc.format(acompanhamento)));
         }
         txtAcompanhamento.append("\n");
         txtAcompanhamentos.setText(txtAcompanhamento);
-        double totalAcompanhamento = (((ttlAcompanhamento*homens)*2.5)+((ttlAcompanhamento*mulheres)*1.8)+((ttlAcompanhamento*criancas)*1));
-        vlrAcompanhamentos.setText("Total R$: " + totalAcompanhamento);
+        final double totalAcompanhamento = (((ttlAcompanhamento*homens)*0.8)+((ttlAcompanhamento*mulheres)*0.6)+((ttlAcompanhamento*criancas)*0.4));
+        vlrAcompanhamentos.setText("Total R$: " + dc.format(totalAcompanhamento));
 
         /* DESPESAS */
         txtDespesa.append("Despesas: ");
@@ -163,11 +172,14 @@ public class ResumoActivity extends ActionBarActivity {
             ttlDespesa = despesa + ttlDespesa;
 
             quantidades[3] = i;
+
+            itens.add(outroActivity.selecionadas.get(i));
+            itens.add("R$" + String.valueOf(dc.format(despesa)));
+
         }
         txtDespesa.append("\n");
         txtDespesas.setText(txtDespesa);
-        vlrDespesas.setText("Total R$: " + ttlDespesa);
-
+        vlrDespesas.setText("Total R$: " + dc.format(ttlDespesa));
 
 
         /* INSERE ENDEREÇO */
@@ -205,6 +217,55 @@ public class ResumoActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
                 startActivity(intent);
+
+                itens.add("----------");
+                itens.add("----------");
+                itens.add("Valor Carne:");
+                itens.add(String.valueOf("R$" + dc.format(totalCarne)));
+                itens.add("Cada Homem Pagará:");
+                itens.add(String.valueOf("R$" + dc.format((totalCarne * 0.4)/homens)));
+                itens.add("Cada Mulher Pagará:");
+                itens.add(String.valueOf("R$" + dc.format((totalCarne * 0.33)/mulheres)));
+                itens.add("Cada Criança Pagará:");
+                itens.add(String.valueOf("R$" + dc.format((totalCarne * 0.27)/criancas)));
+
+                itens.add("----------");
+                itens.add("----------");
+                itens.add("Valor Bebida:");
+                itens.add(String.valueOf("R$" + dc.format(totalBebida)));
+                itens.add("Cada Homem Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalBebida * 0.5)));
+                itens.add("Cada Mulher Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalBebida * 0.3)));
+                itens.add("Cada Criança Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalBebida * 0.2)));
+
+                itens.add("----------");
+                itens.add("----------");
+                itens.add("Valor Acompanhamentos:");
+                itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento)));
+                itens.add("Cada Homem Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento * 0.45)));
+                itens.add("Cada Mulher Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento * 0.33)));
+                itens.add("Cada Criança Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento * 0.22)));
+
+                itens.add("----------");
+                itens.add("----------");
+                itens.add("Valor das Despesas:");
+                itens.add(String.valueOf("R$" + dc.format(ttlDespesa)));
+                itens.add("Cada Homem Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(ttlDespesa * 0.5)));
+                itens.add("Cada Mulher Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(ttlDespesa * 0.3)));
+                itens.add("Cada Criança Pagará:");
+                itens.add(String.valueOf("R$" + dc.format(ttlDespesa * 0.2)));
+
+                itens.add("----------");
+                itens.add("----------");
+                itens.add("Valor do Churras:");
+                itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
 
             }
         });

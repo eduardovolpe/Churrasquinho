@@ -29,15 +29,6 @@
             android:layout_column="0"
             android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/txtQtdFinalizar"
-            android:text="@string/quantidade"
-            android:layout_column="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,14 +41,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/txtValorTotalFinalizar"
-            android:layout_gravity="center|right"
-            android:text="@string/valorTtl"
-            android:layout_column="3" />
+
     </GridLayout>
 
     <Button
@@ -82,7 +66,7 @@
         android:layout_below="@+id/gridLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:numColumns="4" />
+        android:numColumns="2" />
 
 
 </RelativeLayout>

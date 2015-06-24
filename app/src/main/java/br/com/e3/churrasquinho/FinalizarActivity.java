@@ -25,7 +25,7 @@ public class FinalizarActivity extends ActionBarActivity {
     Button btnShareChurras;
     GridView grid;
 
-    static final List<String> itens = new ArrayList<>();
+   // static final List<String> itens = new ArrayList<>();
     private ShareActionProvider mShareActionProvider;
 
     @Override
@@ -36,7 +36,7 @@ public class FinalizarActivity extends ActionBarActivity {
         btnShareChurras = (Button) findViewById(R.id.btnShareChurras);
         grid = (GridView) findViewById(R.id.gridView);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, itens);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ResumoActivity.itens );
 
         grid.setAdapter(adapter);
 
