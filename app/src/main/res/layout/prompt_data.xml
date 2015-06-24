@@ -22,7 +22,7 @@
         android:maxLength="10"
         android:textColor="#ff8f273e"
         android:singleLine="true"
-        android:inputType="date"
+        android:inputType="text"
         android:ems="5">
         <requestFocus />
     </EditText>

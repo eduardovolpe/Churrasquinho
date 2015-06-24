@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/nomeBebida"
             android:checked="false"
-            android:textSize="40px"
+            android:textSize="25sp"
             android:layout_column="0"
             android:layout_gravity="left|center_vertical"
             android:textColor="#ff8f273e"/>

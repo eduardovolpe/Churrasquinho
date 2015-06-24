@@ -233,19 +233,20 @@ public class ResumoActivity extends ActionBarActivity {
                 itens.add(String.valueOf("R$" + dc.format(ttlDespesa)));
                 itens.add("Total:");
                 itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
+                Double total = ttlDespesa + totalAcompanhamento + totalBebida + totalCarne;
 
-                String vHomem = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.47)/homens));
-                String vMulher = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.33)/mulheres));
-                String vCrianca = String.valueOf(dc.format(((ttlDespesa + totalAcompanhamento + totalBebida + totalCarne) * 0.20)/criancas));
+                String vHomem = dc.format((total * 0.47) / homens);
+                String vMulher = dc.format(((total - total * 0.47) * 0.6 ) / mulheres);
+                String vCrianca = dc.format((total - ((((total - total * 0.47) * 0.6 )) + ((total * 0.47)))) / criancas);
 
                 itens.add("-- Rateio --");
                 itens.add("");
                 itens.add("Cada Homem Pagará:");
-                itens.add("R$" + vHomem);
+                itens.add("R$" + vHomem.toString());
                 itens.add("Cada Mulher Pagará:");
-                itens.add("R$" + vMulher);
+                itens.add("R$" + vMulher.toString());
                 itens.add("Cada Criança Pagará:");
-                itens.add("R$" + vCrianca);
+                itens.add("R$" + vCrianca.toString());
 
 
                 itens.add("-- Local --");
