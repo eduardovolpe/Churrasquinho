@@ -1,6 +1,7 @@
 package br.com.e3.churrasquinho;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,24 +37,18 @@ public class FinalizarActivity extends ActionBarActivity {
         btnShareChurras = (Button) findViewById(R.id.btnShareChurras);
         grid = (GridView) findViewById(R.id.gridView);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ResumoActivity.itens );
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ResumoActivity.itens );
 
         grid.setAdapter(adapter);
 
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Toast.makeText(getApplicationContext(),
-                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         btnShareChurras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-                intent.setType("text/plain");
+                Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+                //intent.setType("");
                 intent.putExtra(Intent.EXTRA_TEXT, R.string.compartilhar);
-                intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Compartilhar via...");
+                intent.putExtra(Intent.EXTRA_SUBJECT, String.valueOf(adapter));
                 startActivity(Intent.createChooser(intent, "Compartilhar"));
 
             }

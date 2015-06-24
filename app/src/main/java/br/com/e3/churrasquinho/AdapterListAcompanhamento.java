@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -79,10 +80,10 @@ public class AdapterListAcompanhamento extends BaseAdapter {
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
-
+        final DecimalFormat dc = new DecimalFormat("0.00");
         Acompanhamento acompanhamento = getItem(position);
         item.nomeAcompanhamento.setText(acompanhamento.getNomeAcompanhamento());
-        item.valorAcompanhamento.setText(String.valueOf(acompanhamento.getValorAcompanhamento()));
+        item.valorAcompanhamento.setText(String.valueOf(dc.format(acompanhamento.getValorAcompanhamento())));
 
         return convertView;
 

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -81,10 +82,10 @@ public class AdapterListBebida extends BaseAdapter{
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
-
+        final DecimalFormat dc = new DecimalFormat("0.00");
         Bebida bebida = getItem(position);
         item.nomeBebida.setText(bebida.getNomeBebida());
-        item.valorBebida.setText(String.valueOf(bebida.getValorBebida()));
+        item.valorBebida.setText(String.valueOf(dc.format(bebida.getValorBebida())));
         item.txtTipoBebida.setText(bebida.getTipoBebida());
 
         return convertView;

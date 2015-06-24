@@ -36,7 +36,6 @@ public class iniciarActivity extends Activity {
     private int totalMulher = 0;
     private int totalCrianca = 0;
 
-    public static List selecionadas = new ArrayList();
     public static Integer[] convidados = new Integer[3];
 
     @Override
@@ -45,6 +44,9 @@ public class iniciarActivity extends Activity {
         setContentView(R.layout.activity_iniciar);
 
         btnCarne = (Button) findViewById(R.id.btnProsseguir);
+        convidados[0] = 0;
+        convidados[1] = 0;
+        convidados[2] = 0;
 
         txtTotalHomem = (EditText) findViewById(R.id.txtTotalHomem);
         txtTotalMulher = (EditText) findViewById(R.id.txtTotalMulher);

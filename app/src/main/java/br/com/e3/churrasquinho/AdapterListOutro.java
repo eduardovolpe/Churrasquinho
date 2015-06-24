@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -76,10 +77,10 @@ public class AdapterListOutro extends BaseAdapter {
         } else {
             item = (ItemSuporte) convertView.getTag();
         }
-
+        final DecimalFormat dc = new DecimalFormat("0.00");
         Outro outro = getItem(position);
         item.nomeOutro.setText(outro.getNomeOutro());
-        item.valorOutro.setText(String.valueOf(outro.getValorOutro()));
+        item.valorOutro.setText(String.valueOf(dc.format(outro.getValorOutro())));
 
         return convertView;
     }

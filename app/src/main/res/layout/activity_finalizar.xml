@@ -20,29 +20,7 @@
         android:layout_marginTop="60dp"
         android:id="@+id/gridLayout">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/txtNomeFinalizar"
-            android:text="@string/nome"
-            android:layout_column="0"
-            android:layout_marginRight="5dp" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/txtValorUnFinalizar"
-            android:text="@string/valorUn"
-            android:layout_column="2"
-            android:layout_gravity="right"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp" />
-
-
-    </GridLayout>
+   </GridLayout>
 
     <Button
         android:layout_width="match_parent"
