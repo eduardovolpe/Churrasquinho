@@ -1,6 +1,7 @@
 package br.com.e3.churrasquinho;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -37,16 +38,18 @@ public class ResumoActivity extends ActionBarActivity {
     double ttlDespesa = 0.0;
     int j,h;
     double homens, mulheres, criancas;
+    String vHomem, vMulher, vCrianca;
 
     public static Integer[] quantidades = new Integer[4];
     public static String[] data = new String[4];
     static final List<String> itens = new ArrayList<>();
+    public static ProgressDialog pResumo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
-
+        outroActivity.pOutro.dismiss();
         itens.clear();
         final DecimalFormat dc = new DecimalFormat("0.00");
 
@@ -218,6 +221,7 @@ public class ResumoActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pResumo = ProgressDialog.show(ResumoActivity.this, "Processando", "Aguarde...", true, false);
                 Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
                 startActivity(intent);
 
@@ -233,20 +237,36 @@ public class ResumoActivity extends ActionBarActivity {
                 itens.add(String.valueOf("R$" + dc.format(ttlDespesa)));
                 itens.add("Total:");
                 itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
+
                 Double total = ttlDespesa + totalAcompanhamento + totalBebida + totalCarne;
 
-                String vHomem = dc.format((total * 0.47) / homens);
-                String vMulher = dc.format(((total - total * 0.47) * 0.6 ) / mulheres);
-                String vCrianca = dc.format((total - ((((total - total * 0.47) * 0.6 )) + ((total * 0.47)))) / criancas);
+                if (homens != 0) {
+                    vHomem = "R$" + dc.format((total * 0.47) / homens);
+                }
+                if (homens == 0) {
+                    vHomem = "Nenhum selecionado.";
+                }
+                if (mulheres != 0) {
+                    vMulher = "R$" + dc.format(((total - total * 0.47) * 0.6) / mulheres);
+                }
+                if (mulheres == 0){
+                    vMulher = "Nenhuma selecionada.";
+                }
+                if (criancas != 0) {
+                    vCrianca = "R$" + dc.format((total - (((total - total * 0.47) * 0.6) + (total * 0.47))) / criancas);
+                }
+                if (criancas == 0){
+                    vCrianca = "Nenhuma selecionada.";
+                }
 
                 itens.add("-- Rateio --");
                 itens.add("");
                 itens.add("Cada Homem Pagará:");
-                itens.add("R$" + vHomem.toString());
+                itens.add(vHomem);
                 itens.add("Cada Mulher Pagará:");
-                itens.add("R$" + vMulher.toString());
+                itens.add(vMulher);
                 itens.add("Cada Criança Pagará:");
-                itens.add("R$" + vCrianca.toString());
+                itens.add(vCrianca);
 
 
                 itens.add("-- Local --");

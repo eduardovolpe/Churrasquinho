@@ -1,5 +1,6 @@
 package br.com.e3.churrasquinho;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -28,11 +29,13 @@ public class localActivity extends ActionBarActivity {
     final Context context = this;
 
     public static String[] endereco = new String[7];
+    private ProgressDialog pLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local);
+
 
         //edtComplemento = (EditText) findViewById(R.id.edtComplemento);
         edtReferencia = (EditText) findViewById(R.id.edtReferencia);
@@ -49,13 +52,24 @@ public class localActivity extends ActionBarActivity {
 
         edtCep.findFocus();
 
+        endereco[0] = "";
+        endereco[1] = "";
+        endereco[2] = "";
+        endereco[3] = "";
+        endereco[4] = "";
+        endereco[5] = "";
+        endereco[6] = "";
+
+
         btnConsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pLocal = ProgressDialog.show(localActivity.this, "Processando","Aguarde enquanto o CEP é processado.",true,false);
+
                 final String cep = edtCep.getText().toString();
                 final String url = "http://viacep.com.br/ws/"+cep+"/json/";
 
-                //if(edtCep.length() == 9) {
+                if(edtCep.length() == 9) {
                     RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
                     JsonObjectRequest getRequest =
@@ -91,14 +105,19 @@ public class localActivity extends ActionBarActivity {
                             }, new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError volleyError) {
-                                    Log.d("Error.Response", volleyError.getMessage());
+//                                    Log.d("Error.Response", volleyError.getMessage());
+                                    Toast.makeText(localActivity.this, "Preencha o CEP corretamente!", Toast.LENGTH_SHORT).show();
+                                    limpar();
+                                    edtCep.findFocus();
                                 }
                             });
                     queue.add(getRequest);
-                /*} else {
+
+                } else {
                     Toast.makeText(localActivity.this, "CEP " + cep + " inválido!", Toast.LENGTH_SHORT).show();
-                }*/
+                }
                 final String finalCep = cep;
+                pLocal.dismiss();
             }
         });
 
@@ -128,12 +147,12 @@ public class localActivity extends ActionBarActivity {
     }
 
     public void limpar(){
-        edtBairro.setText(" ");
-        edtLogradouro.setText(" ");
-        edtUf.setText(" ");
-        edtCidade.setText(" ");
-        edtReferencia.setText(" ");
-        edtNumero.setText(" ");
+        edtBairro.setText("");
+        edtLogradouro.setText("");
+        edtUf.setText("");
+        edtCidade.setText("");
+        edtReferencia.setText("");
+        edtNumero.setText("");
 
     }
 

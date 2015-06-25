@@ -2,6 +2,7 @@ package br.com.e3.churrasquinho;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class iniciarActivity extends Activity {
     private int totalCrianca = 0;
 
     public static Integer[] convidados = new Integer[3];
+    public static ProgressDialog pConvidados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class iniciarActivity extends Activity {
         btnCarne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pConvidados = ProgressDialog.show(iniciarActivity.this, "Processando", "Aguarde...", true, false);
 
                 totalHomem = Integer.valueOf(txtTotalHomem.getText().toString());
                 totalMulher = Integer.valueOf(txtTotalMulher.getText().toString());
@@ -63,6 +66,7 @@ public class iniciarActivity extends Activity {
                 total = totalHomem + totalMulher + totalCrianca;
 
                 if (total == 0) {
+                    pConvidados.dismiss();
                     alertaConvidados.show();
                 } else {
 
