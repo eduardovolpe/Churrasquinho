@@ -49,7 +49,7 @@ public class ResumoActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
-        outroActivity.pOutro.dismiss();
+
         itens.clear();
         final DecimalFormat dc = new DecimalFormat("0.00");
 
@@ -187,6 +187,22 @@ public class ResumoActivity extends ActionBarActivity {
         txtDespesas.setText(txtDespesa);
         vlrDespesas.setText("Total R$: " + dc.format(ttlDespesa));
 
+        //Confirmação de Finalização
+        final AlertDialog.Builder alertaFinalizar = new AlertDialog.Builder(this);
+        alertaFinalizar.setTitle("Finalizar");
+        alertaFinalizar.setMessage("Essa operação não poderá ser desfeita.");
+        alertaFinalizar.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
+                startActivity(intent);
+            }
+        });
+        alertaFinalizar.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which){
+                pResumo.dismiss();
+            }
+        });
+        alertaFinalizar.setIcon(R.drawable.ic_launcher);
 
         /* INSERE ENDEREÇO */
         Intent end = getIntent();
@@ -222,8 +238,7 @@ public class ResumoActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 pResumo = ProgressDialog.show(ResumoActivity.this, "Processando", "Aguarde...", true, false);
-                Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
-                startActivity(intent);
+
 
                 itens.add("-- Totais --");
                 itens.add("");
@@ -284,6 +299,8 @@ public class ResumoActivity extends ActionBarActivity {
                 data[0] = vHomem;
                 data[1] = vMulher;
                 data[2] = vCrianca;
+
+                alertaFinalizar.create().show();
 
             }
         });

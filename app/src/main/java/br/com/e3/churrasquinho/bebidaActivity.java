@@ -24,13 +24,12 @@ public class bebidaActivity extends ActionBarActivity {
     public static List<String> selecionadas = new ArrayList<>();
     public static List<String> categoria = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
-    public static ProgressDialog pBebida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bebida);
-        carneActivity.pCarne.dismiss();
+
         lstBebida = (ListView) findViewById(R.id.lstBebidas);
         btnProsseguir = (Button) findViewById(R.id.btnProsseguir);
         btnInserir = (Button) findViewById(R.id.btnCadBebida);
@@ -61,7 +60,7 @@ public class bebidaActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pBebida = ProgressDialog.show(bebidaActivity.this, "Processando", "Aguarde...", true, false);
+
                 StringBuffer responseText = new StringBuffer();
                 responseText.append("Bebidas selecionadas: \n");
 

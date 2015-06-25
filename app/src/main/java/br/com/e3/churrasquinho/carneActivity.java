@@ -22,7 +22,6 @@ public class carneActivity extends ActionBarActivity {
     public static List<String> selecionadas = new ArrayList<>();
     public static List<String> categoria = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
-    public static ProgressDialog pCarne;
 
     int j = 0;
 
@@ -30,8 +29,6 @@ public class carneActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carne);
-
-        iniciarActivity.pConvidados.dismiss();
 
         lstCarne = (ListView) findViewById(R.id.lstCarne);
         btnProsseguir = (Button) findViewById(R.id.btnProsCarne);
@@ -67,7 +64,7 @@ public class carneActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pCarne = ProgressDialog.show(carneActivity.this, "Processando", "Aguarde...", true, false);
+
                 StringBuffer responseText = new StringBuffer();
 
                 responseText.append("Carnes selecionadas: \n");

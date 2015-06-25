@@ -22,14 +22,12 @@ public class outroActivity extends ActionBarActivity {
     public static List<String> selecionadas = new ArrayList<>();
     public static List<String> categoria = new ArrayList<>();
     public static List<Double> valores = new ArrayList<>();
-    public static ProgressDialog pOutro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outro);
 
-        acompanhamentoActivity.pAcompanhamento.dismiss();
         lstOutro = (ListView) findViewById(R.id.lstOutro);
         btnInserir = (Button) findViewById(R.id.btnCadOutro);
         btnProsseguir = (Button) findViewById(R.id.btnProsOutro);
@@ -57,8 +55,8 @@ public class outroActivity extends ActionBarActivity {
         btnProsseguir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pOutro = ProgressDialog.show(outroActivity.this, "Processando", "Aguarde...", true, false);
-                StringBuffer responseText = new StringBuffer();
+
+                               StringBuffer responseText = new StringBuffer();
                 responseText.append("Despesas selecionadas: \n");
                 selecionadas.clear();
                 categoria.clear();
