@@ -188,21 +188,7 @@ public class ResumoActivity extends ActionBarActivity {
         vlrDespesas.setText("Total R$: " + dc.format(ttlDespesa));
 
         //Confirmação de Finalização
-        final AlertDialog.Builder alertaFinalizar = new AlertDialog.Builder(this);
-        alertaFinalizar.setTitle("Finalizar");
-        alertaFinalizar.setMessage("Essa operação não poderá ser desfeita.");
-        alertaFinalizar.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
-                startActivity(intent);
-            }
-        });
-        alertaFinalizar.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dialog, int which){
-                pResumo.dismiss();
-            }
-        });
-        alertaFinalizar.setIcon(R.drawable.ic_launcher);
+
 
         /* INSERE ENDEREÇO */
         Intent end = getIntent();
@@ -239,66 +225,82 @@ public class ResumoActivity extends ActionBarActivity {
             public void onClick(View v) {
                 pResumo = ProgressDialog.show(ResumoActivity.this, "Processando", "Aguarde...", true, false);
 
+                final AlertDialog.Builder alertaFinalizar = new AlertDialog.Builder(ResumoActivity.this);
+                alertaFinalizar.setTitle("Finalizar");
+                alertaFinalizar.setMessage("Essa operação não poderá ser desfeita.");
+                alertaFinalizar.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(ResumoActivity.this, FinalizarActivity.class);
+                        startActivity(intent);
 
-                itens.add("-- Totais --");
-                itens.add("");
-                itens.add("Carne:");
-                itens.add(String.valueOf("R$" + dc.format(totalCarne)));
-                itens.add("Bebida:");
-                itens.add(String.valueOf("R$" + dc.format(totalBebida)));
-                itens.add("Acompanhamentos:");
-                itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento)));
-                itens.add("Despesas:");
-                itens.add(String.valueOf("R$" + dc.format(ttlDespesa)));
-                itens.add("Total:");
-                itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
+                        itens.add("-- Totais --");
+                        itens.add("");
+                        itens.add("Carne:");
+                        itens.add(String.valueOf("R$" + dc.format(totalCarne)));
+                        itens.add("Bebida:");
+                        itens.add(String.valueOf("R$" + dc.format(totalBebida)));
+                        itens.add("Acompanhamentos:");
+                        itens.add(String.valueOf("R$" + dc.format(totalAcompanhamento)));
+                        itens.add("Despesas:");
+                        itens.add(String.valueOf("R$" + dc.format(ttlDespesa)));
+                        itens.add("Total:");
+                        itens.add("R$" + String.valueOf(dc.format(ttlDespesa + totalAcompanhamento + totalBebida + totalCarne)));
 
-                Double total = ttlDespesa + totalAcompanhamento + totalBebida + totalCarne;
+                        Double total = ttlDespesa + totalAcompanhamento + totalBebida + totalCarne;
 
-                if (homens != 0) {
-                    vHomem = "R$" + dc.format((total * 0.47) / homens);
-                }
-                if (homens == 0) {
-                    vHomem = "Nenhum selecionado.";
-                }
-                if (mulheres != 0) {
-                    vMulher = "R$" + dc.format(((total - total * 0.47) * 0.6) / mulheres);
-                }
-                if (mulheres == 0){
-                    vMulher = "Nenhuma selecionada.";
-                }
-                if (criancas != 0) {
-                    vCrianca = "R$" + dc.format((total - (((total - total * 0.47) * 0.6) + (total * 0.47))) / criancas);
-                }
-                if (criancas == 0){
-                    vCrianca = "Nenhuma selecionada.";
-                }
+                        if (homens != 0) {
+                            vHomem = "R$" + dc.format((total * 0.47) / homens);
+                        }
+                        if (homens == 0) {
+                            vHomem = "Nenhum selecionado.";
+                        }
+                        if (mulheres != 0) {
+                            vMulher = "R$" + dc.format(((total - total * 0.47) * 0.6) / mulheres);
+                        }
+                        if (mulheres == 0){
+                            vMulher = "Nenhuma selecionada.";
+                        }
+                        if (criancas != 0) {
+                            vCrianca = "R$" + dc.format((total - (((total - total * 0.47) * 0.6) + (total * 0.47))) / criancas);
+                        }
+                        if (criancas == 0){
+                            vCrianca = "Nenhuma selecionada.";
+                        }
 
-                itens.add("-- Rateio --");
-                itens.add("");
-                itens.add("Cada Homem Pagará:");
-                itens.add(vHomem);
-                itens.add("Cada Mulher Pagará:");
-                itens.add(vMulher);
-                itens.add("Cada Criança Pagará:");
-                itens.add(vCrianca);
+                        itens.add("-- Rateio --");
+                        itens.add("");
+                        itens.add("Cada Homem Pagará:");
+                        itens.add(vHomem);
+                        itens.add("Cada Mulher Pagará:");
+                        itens.add(vMulher);
+                        itens.add("Cada Criança Pagará:");
+                        itens.add(vCrianca);
 
 
-                itens.add("-- Local --");
-                itens.add("");
-                itens.add("Endereço: " + localActivity.endereco[0]);
-                itens.add("nº " + localActivity.endereco[1]);
-                itens.add("Bairro: " + localActivity.endereco[2]);
-                itens.add("CEP: " + localActivity.endereco[5]);
-                itens.add("Cidade: " + localActivity.endereco[3]);
-                itens.add("UF: " + localActivity.endereco[4]);
-                itens.add("Referência: " + localActivity.endereco[6]);
+                        itens.add("-- Local --");
+                        itens.add("");
+                        itens.add("Endereço: " + localActivity.endereco[0]);
+                        itens.add("nº " + localActivity.endereco[1]);
+                        itens.add("Bairro: " + localActivity.endereco[2]);
+                        itens.add("CEP: " + localActivity.endereco[5]);
+                        itens.add("Cidade: " + localActivity.endereco[3]);
+                        itens.add("UF: " + localActivity.endereco[4]);
+                        itens.add("Referência: " + localActivity.endereco[6]);
 
-                itens.add("Data: " + data[3].toString());
+                        itens.add("Data: " + data[3].toString());
 
-                data[0] = vHomem;
-                data[1] = vMulher;
-                data[2] = vCrianca;
+                        data[0] = vHomem;
+                        data[1] = vMulher;
+                        data[2] = vCrianca;
+
+                    }
+                });
+                alertaFinalizar.setNegativeButton("Cancelar",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which){
+                        pResumo.dismiss();
+                    }
+                });
+                alertaFinalizar.setIcon(R.drawable.ic_launcher);
 
                 alertaFinalizar.create().show();
 

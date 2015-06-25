@@ -45,9 +45,9 @@ public class FinalizarActivity extends ActionBarActivity {
         shareText.append("Churras dia " + data);
         shareText.append(", na " + rua + " nº" + numero + ", no " + bairro + ", em " + cidade + ", perto do(a) " + referencia + "." + "\n");
         shareText.append("O valor da vaquinha ficou: \n" +
-                         "Homem - R$:" + vHomem + ", \n" +
-                         "Mulher - R$:" + vMulher + " e \n" +
-                         "Criança - R$:" + vCrianca + ".\n");
+                         "Homem - " + vHomem + ", \n" +
+                         "Mulher - " + vMulher + " e \n" +
+                         "Criança - " + vCrianca + ".\n");
         shareText.append("Quem for, da um grito ae!🙊🙉"+"\n" + "\n");
         shareText.append("\n" + "-- Churrasquinho. BAIXEM!");
 
